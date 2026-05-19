@@ -54,14 +54,14 @@ export default function WarhaulHomepage() {
   };
 
   return (
-    <main className="min-h-screen bg-black text-white">
+    <main className="min-h-screen bg-black text-white overflow-x-hidden">
       {/* NAV */}
       <header className="sticky top-0 z-50 border-b border-white/10 bg-black/70 backdrop-blur-xl">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 md:px-8">
           <img
             src="/images/Warhaul-BLK.png"
             alt="Warhaul"
-            className="h-16 md:h-20 invert"
+            className="h-14 md:h-20 invert"
           />
 
           <nav className="hidden items-center gap-8 md:flex">
@@ -168,58 +168,84 @@ export default function WarhaulHomepage() {
       {/* SERVICES */}
       <section id="services" className="bg-white px-5 py-24 text-black md:px-8">
         <div className="mx-auto max-w-7xl">
-          <p className="mb-3 text-xs uppercase tracking-[0.32em] text-black/45">
-            Services
-          </p>
+          <div className="mb-14 flex flex-col justify-between gap-6 md:flex-row md:items-end">
+            <div>
+              <p className="mb-3 text-xs uppercase tracking-[0.32em] text-black/45">
+                Services
+              </p>
 
-          <h2 className="text-5xl font-black uppercase leading-none tracking-[-0.06em] md:text-7xl">
-            Creative Services
-          </h2>
+              <h2 className="text-5xl font-black uppercase leading-none tracking-[-0.06em] md:text-7xl">
+                Creative Services
+              </h2>
+            </div>
 
-          <div className="mt-14 grid gap-5 md:grid-cols-3">
+            <p className="max-w-xl text-lg leading-8 text-black/55">
+              From concept to execution — Warhaul supports creators,
+              brands, artists, and events with production, strategy,
+              and content.
+            </p>
+          </div>
+
+          <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {[
               [
+                "01",
                 "Photography",
-                "Portraits, campaigns, editorials, studio shoots, and event coverage.",
+                "Portraits, campaigns, editorials, studio shoots, product content, and event coverage.",
               ],
               [
+                "02",
                 "Videography",
-                "Music videos, commercials, social content, and branded visuals.",
+                "Music videos, commercials, social content, recaps, interviews, and branded visuals.",
               ],
               [
+                "03",
                 "Audio Production",
-                "Recording, vocal production, mixing, and mastering.",
+                "Recording, vocal production, mixing, mastering, and engineer-supported sessions.",
               ],
               [
+                "04",
                 "DJing",
-                "Live DJ sets, filmed mixes, and private events.",
+                "Live DJ sets, filmed mixes, curated sound, private events, and radio-style performances.",
               ],
               [
+                "05",
                 "Events",
-                "Event planning, launch parties, activations, and creative experiences.",
+                "Event planning, launch parties, activations, listening sessions, and creative experiences.",
               ],
               [
+                "06",
                 "Branding + Marketing Consulting",
-                "Brand strategy, social media, rollout planning, audience growth, and campaign direction.",
+                "Brand strategy, rollout planning, audience growth, social media, campaign direction, and promotional strategy.",
               ],
-            ].map(([title, text]) => (
+            ].map(([number, title, text]) => (
               <div
                 key={title}
-                className="rounded-[2rem] border border-black/10 bg-black/[0.03] p-8"
+                className="group relative overflow-hidden rounded-[2rem] border border-black/10 bg-black p-8 text-white transition duration-300 hover:-translate-y-1 hover:bg-white hover:text-black"
               >
-                <h3 className="text-3xl font-black uppercase">{title}</h3>
+                <div className="absolute right-6 top-6 text-6xl font-black tracking-[-0.08em] text-white/10 transition group-hover:text-black/10">
+                  {number}
+                </div>
 
-                <p className="mt-5 text-lg leading-8 text-black/60">
+                <p className="mb-12 text-xs uppercase tracking-[0.28em] text-white/45 transition group-hover:text-black/45">
+                  Warhaul Service
+                </p>
+
+                <h3 className="relative text-3xl font-black uppercase leading-none tracking-[-0.04em]">
+                  {title}
+                </h3>
+
+                <p className="relative mt-6 text-lg leading-8 text-white/60 transition group-hover:text-black/60">
                   {text}
                 </p>
               </div>
             ))}
           </div>
 
-          <div className="mt-12">
+          <div className="mt-12 flex justify-center">
             <a
               href="#contact"
-              className="inline-flex rounded-full bg-black px-7 py-4 text-sm uppercase tracking-[0.16em] text-white transition hover:bg-black/80"
+              className="inline-flex rounded-full bg-black px-8 py-4 text-sm uppercase tracking-[0.18em] text-white transition hover:bg-black/80"
             >
               Contact Us
             </a>
@@ -266,6 +292,91 @@ export default function WarhaulHomepage() {
         </div>
       </section>
 
+      {/* STUDIO */}
+      <section id="studio" className="mx-auto max-w-7xl px-5 py-24 md:px-8">
+        <div className="mb-12">
+          <p className="mb-3 text-xs uppercase tracking-[0.32em] text-white/45">
+            Book Warhaul
+          </p>
+
+          <h2 className="text-5xl font-black uppercase leading-none tracking-[-0.06em] md:text-7xl">
+            Studio Rentals
+          </h2>
+        </div>
+
+        <div className="grid gap-5 md:grid-cols-3">
+          <div className="rounded-[2rem] border border-white/10 bg-white/[0.06] p-7">
+            <Camera className="mb-8 h-8 w-8" />
+
+            <h3 className="text-3xl font-black uppercase">
+              Photo Studio
+            </h3>
+
+            <p className="mt-4 text-white/60">
+              Cyclorama wall, lighting gear, dressing area,
+              parking, and flexible open space.
+            </p>
+
+            <p className="mt-8 border-t border-white/10 pt-6 text-4xl font-black">
+              $90 / 2hr
+            </p>
+
+            <a
+              href="#contact"
+              className="mt-8 inline-flex rounded-full bg-white px-6 py-4 text-sm uppercase tracking-[0.16em] text-black transition hover:bg-white/85"
+            >
+              Book Studio
+            </a>
+          </div>
+
+          <div className="rounded-[2rem] bg-white p-7 text-black">
+            <Mic2 className="mb-8 h-8 w-8" />
+
+            <h3 className="text-3xl font-black uppercase">
+              Audio Studio
+            </h3>
+
+            <p className="mt-4 text-black/60">
+              Recording, mixing, mastering, and engineer-supported sessions.
+            </p>
+
+            <p className="mt-8 border-t border-black/10 pt-6 text-4xl font-black">
+              $20/hr
+            </p>
+
+            <a
+              href="#contact"
+              className="mt-8 inline-flex rounded-full bg-black px-6 py-4 text-sm uppercase tracking-[0.16em] text-white transition hover:bg-black/80"
+            >
+              Book Audio
+            </a>
+          </div>
+
+          <div className="rounded-[2rem] border border-white/10 bg-white/[0.06] p-7">
+            <Headphones className="mb-8 h-8 w-8" />
+
+            <h3 className="text-3xl font-black uppercase">
+              DJ Space
+            </h3>
+
+            <p className="mt-4 text-white/60">
+              Practice, film DJ sets, and create content in a creative environment.
+            </p>
+
+            <p className="mt-8 border-t border-white/10 pt-6 text-4xl font-black">
+              DJs
+            </p>
+
+            <a
+              href="#contact"
+              className="mt-8 inline-flex rounded-full bg-white px-6 py-4 text-sm uppercase tracking-[0.16em] text-black transition hover:bg-white/85"
+            >
+              Book DJ Space
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* EVENTS */}
       <section id="events" className="mx-auto max-w-7xl px-5 py-24 md:px-8">
         <p className="mb-3 text-xs uppercase tracking-[0.32em] text-white/45">
@@ -304,60 +415,68 @@ export default function WarhaulHomepage() {
         </div>
       </section>
 
-      {/* AUDIO PLACEMENTS */}
+      {/* CREDITS */}
       <section className="bg-white px-5 py-24 text-black md:px-8">
         <div className="mx-auto max-w-7xl">
           <p className="mb-3 text-xs uppercase tracking-[0.32em] text-black/45">
-            Audio Placements
+            Credits + Placements
           </p>
 
           <h2 className="text-5xl font-black uppercase leading-none tracking-[-0.06em] md:text-7xl">
             Trusted By
           </h2>
 
-          <p className="mt-6 max-w-3xl text-lg leading-8 text-black/60">
-            Selected audio placements, collaborations, and commercial work.
+          <p className="mt-6 max-w-4xl text-lg leading-8 text-black/60">
+            Selected audio, visual, photography, cinematography,
+            and styling placements across artists, brands,
+            festivals, and commercial campaigns.
           </p>
 
-          <div className="mt-14 grid gap-5 md:grid-cols-3 lg:grid-cols-6">
+          <div className="mt-16 grid gap-5 md:grid-cols-3 lg:grid-cols-6">
             {[
               [
                 "Concrete Boys",
                 "/images/concrete boys.jpeg",
+                "Audio Placement",
                 "#",
               ],
               [
                 "Nike Toronto",
                 "/images/nike toronto.png",
+                "Audio Placement",
                 "https://www.instagram.com/p/CUNgT8fgPAo/",
               ],
               [
                 "Nike ACG",
                 "/images/nike acg.svg",
+                "Audio Placement",
                 "https://www.instagram.com/p/CTxIpz7gkHN/",
               ],
               [
                 "MLSE",
                 "/images/mlse.jpg",
+                "Audio Placement",
                 "https://www.instagram.com/tv/COjFjZJNML2/",
               ],
               [
                 "Toronto Raptors",
                 "/images/raptors.png",
+                "Audio Placement",
                 "https://www.instagram.com/tv/CWObkA9t3Wo/",
               ],
               [
                 "Warner Music Canada",
-                "/images/warner music canada.png",
-                "#",
+                "/images/warner-music-canada.webp",
+                "Visual + Audio Placement",
+                "https://open.spotify.com/album/2LkrL0QDmh272zbVFCvHNh?si=EgWHQIVeS66v-HP3ee_hog",
               ],
-            ].map(([name, image, link]) => (
+            ].map(([name, image, type, link]) => (
               <a
                 key={name}
                 href={link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group rounded-[2rem] border border-black/10 bg-black/[0.03] p-6 transition hover:bg-black hover:text-white"
+                className="group rounded-[2rem] border border-black/10 bg-black/[0.03] p-6 transition hover:-translate-y-1 hover:bg-black hover:text-white"
               >
                 <div className="flex h-40 items-center justify-center overflow-hidden rounded-2xl bg-black p-5">
                   <img
@@ -372,7 +491,7 @@ export default function WarhaulHomepage() {
                 </h3>
 
                 <p className="mt-2 text-xs uppercase tracking-[0.18em] opacity-60">
-                  Audio Placement
+                  {type}
                 </p>
               </a>
             ))}
