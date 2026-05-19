@@ -33,12 +33,17 @@ const studioImages = [
 
 const eventSections = [
   "GRIM II FESTIVAL",
+  "ARTSCAPE 001",
+  "ARTSCAPE 002",
   "LOOK MA, I'M FAMOUS!",
-  "CLOUD 54 REDEPLOYMENT LISTENING PARTY",
-  "GRIM MANIFEST",
-  "ARTSCAPE",
-  "MAISON 001",
-  "MAISON 002",
+];
+
+const audioCredits = [
+  "Concrete Boys",
+  "Nike ACG",
+  "Nike Toronto",
+  "Warner Music",
+  "MLSE / Toronto Raptors",
 ];
 
 export default function WarhaulHomepage() {
@@ -81,12 +86,10 @@ export default function WarhaulHomepage() {
           </nav>
 
           <a
-            href="YOUR_CALENDLY_LINK"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#contact"
             className="rounded-full bg-white px-5 py-3 text-sm font-medium text-black transition hover:bg-white/85"
           >
-            Book Now
+            Contact
           </a>
         </div>
       </header>
@@ -102,25 +105,16 @@ export default function WarhaulHomepage() {
           </h1>
 
           <p className="mt-7 max-w-2xl text-lg leading-8 text-white/68 md:text-xl">
-            PHOTO STUDIO • AUDIO STUDIO • EVENTS • WORK • STUDIO UPDATE
+            PHOTO STUDIO • AUDIO STUDIO • EVENTS • CREATIVE SERVICES
           </p>
 
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
             <a
-              href="YOUR_CALENDLY_LINK"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#contact"
               className="flex items-center justify-center rounded-full bg-white px-7 py-4 text-black transition hover:bg-white/85"
             >
-              Book Warhaul
+              Contact Warhaul
               <ArrowUpRight className="ml-2 h-4 w-4" />
-            </a>
-
-            <a
-              href="#events"
-              className="flex items-center justify-center rounded-full border border-white/25 px-7 py-4 text-white transition hover:bg-white hover:text-black"
-            >
-              View Events
             </a>
           </div>
         </div>
@@ -207,11 +201,11 @@ export default function WarhaulHomepage() {
             {[
               [
                 "Photography",
-                "Portraits, campaigns, product shoots, events, editorials, content days, and creative direction.",
+                "Portraits, campaigns, product shoots, editorials, studio shoots, event coverage, and creative direction.",
               ],
               [
                 "Videography",
-                "Music videos, recap videos, promo content, interviews, social clips, and branded visuals.",
+                "Music videos, social media content, recap videos, commercials, interviews, and branded visuals.",
               ],
               [
                 "Audio Production",
@@ -219,15 +213,19 @@ export default function WarhaulHomepage() {
               ],
               [
                 "DJing",
-                "DJ sets, event DJs, live mixes, radio-style sets, and filmed performance content.",
+                "Live DJ sets, private events, filmed mixes, curated music experiences, and radio-style performances.",
               ],
               [
                 "Events",
-                "Event promotion, planning, creative direction, rollouts, launch parties, listening sessions, and activations.",
+                "Event promotion, planning, launch parties, listening sessions, creative activations, and cultural experiences.",
               ],
               [
                 "Brand + Social",
-                "Social media strategy, content planning, brand consulting, rollout ideas, and creative campaign support.",
+                "Social media strategy, content planning, rollout ideas, audience growth, and creative campaign support.",
+              ],
+              [
+                "Marketing Consulting",
+                "Creative strategy, rollout planning, campaign direction, brand positioning, audience growth, and promotional strategy.",
               ],
             ].map(([title, text]) => (
               <div
@@ -239,6 +237,15 @@ export default function WarhaulHomepage() {
               </div>
             ))}
           </div>
+
+          <div className="mt-12">
+            <a
+              href="#contact"
+              className="inline-flex rounded-full bg-black px-7 py-4 text-sm uppercase tracking-[0.16em] text-white transition hover:bg-black/80"
+            >
+              Contact Us
+            </a>
+          </div>
         </div>
       </section>
 
@@ -248,6 +255,7 @@ export default function WarhaulHomepage() {
             <p className="mb-3 text-xs uppercase tracking-[0.32em] text-white/45">
               Studio Gallery
             </p>
+
             <h2 className="text-5xl font-black uppercase leading-none tracking-[-0.06em] md:text-7xl">
               Inside Warhaul
             </h2>
@@ -319,10 +327,12 @@ export default function WarhaulHomepage() {
             <p className="mb-3 text-xs uppercase tracking-[0.32em] text-white/45">
               Book Warhaul
             </p>
+
             <h2 className="text-5xl font-black uppercase leading-none tracking-[-0.06em] md:text-7xl">
               Studio Rentals
             </h2>
           </div>
+
           <p className="max-w-lg text-white/60">
             PHOTO STUDIO • AUDIO STUDIO • SERVICES • EVENTS • WORK
           </p>
@@ -371,6 +381,7 @@ export default function WarhaulHomepage() {
           <p className="mb-3 text-xs uppercase tracking-[0.32em] text-white/45">
             Equipment
           </p>
+
           <h2 className="text-5xl font-black uppercase leading-none tracking-[-0.06em] md:text-7xl">
             Amenities & Gear
           </h2>
@@ -390,56 +401,27 @@ export default function WarhaulHomepage() {
           </div>
 
           <div className="rounded-[2rem] border border-white/10 bg-white/[0.05] p-8">
-            <h3 className="text-3xl font-black uppercase">Photo Equipment</h3>
+            <h3 className="text-3xl font-black uppercase">
+              Photo Equipment
+            </h3>
             <div className="mt-8 grid gap-5 text-lg text-white/65">
-              <p>
-                <span className="font-black text-white">2x</span> Godox SL60W
-              </p>
-              <p>
-                <span className="font-black text-white">2x</span> 33inch Octagon Softbox
-              </p>
-              <p>
-                <span className="font-black text-white">1x</span> 33inch Lantern Softbox
-              </p>
-              <p>
-                <span className="font-black text-white">1x</span> Snoot Kit with Gels
-              </p>
+              <p>2x Godox SL60W</p>
+              <p>2x 33inch Octagon Softbox</p>
+              <p>1x Lantern Softbox</p>
+              <p>1x Snoot Kit with Gels</p>
               <p>Various Light Stands</p>
             </div>
-            <a
-              href="YOUR_CALENDLY_LINK"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-10 inline-flex rounded-full bg-white px-6 py-4 text-sm uppercase tracking-[0.16em] text-black transition hover:bg-white/85"
-            >
-              Book Warhaul
-            </a>
           </div>
 
           <div className="rounded-[2rem] border border-white/10 bg-white/[0.05] p-8">
-            <h3 className="text-3xl font-black uppercase">Audio Equipment</h3>
+            <h3 className="text-3xl font-black uppercase">
+              Audio Equipment
+            </h3>
             <div className="mt-8 grid gap-5 text-lg text-white/65">
-              <p>
-                <span className="font-black text-white">2x</span> KRKs
-              </p>
-              <p>
-                <span className="font-black text-white">1x</span> Apollo Twin Interface (Mac)
-              </p>
-              <p>
-                <span className="font-black text-white">1x</span> Apollo Twin Interface (Windows)
-              </p>
-              <p>
-                <span className="font-black text-white">1x</span> TLM-103 Mic
-              </p>
+              <p>2x KRKs</p>
+              <p>Apollo Twin Interface</p>
+              <p>TLM-103 Mic</p>
             </div>
-            <a
-              href="YOUR_CALENDLY_LINK"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-10 inline-flex rounded-full bg-white px-6 py-4 text-sm uppercase tracking-[0.16em] text-black transition hover:bg-white/85"
-            >
-              Book Audio
-            </a>
           </div>
         </div>
       </section>
@@ -460,6 +442,7 @@ export default function WarhaulHomepage() {
                 <h3 className="text-3xl font-black uppercase tracking-[-0.04em] md:text-5xl">
                   {event}
                 </h3>
+
                 <span className="text-3xl transition group-open:rotate-45">
                   +
                 </span>
@@ -480,14 +463,39 @@ export default function WarhaulHomepage() {
         </div>
       </section>
 
-      <section id="work" className="mx-auto max-w-7xl px-5 py-24 md:px-8">
+      <section className="bg-white px-5 py-24 text-black md:px-8">
+        <div className="mx-auto max-w-7xl">
+          <p className="mb-3 text-xs uppercase tracking-[0.32em] text-black/45">
+            Audio Credits
+          </p>
+
+          <h2 className="text-5xl font-black uppercase leading-none tracking-[-0.06em] md:text-7xl">
+            Trusted By
+          </h2>
+
+          <div className="mt-14 grid gap-5 md:grid-cols-3">
+            {audioCredits.map((credit) => (
+              <div
+                key={credit}
+                className="rounded-[2rem] border border-black/10 bg-black/[0.03] p-8"
+              >
+                <h3 className="text-3xl font-black uppercase">{credit}</h3>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-5 py-24 md:px-8">
         <div className="rounded-[2rem] border border-white/10 bg-white/[0.05] p-8 md:p-12">
           <p className="mb-3 text-xs uppercase tracking-[0.32em] text-white/45">
             Warhaul Radio
           </p>
+
           <h2 className="text-5xl font-black uppercase leading-none tracking-[-0.06em] md:text-7xl">
             WARHAUL RADIO
           </h2>
+
           <a
             href="https://www.youtube.com/@WarhaulStudio"
             target="_blank"
@@ -504,6 +512,7 @@ export default function WarhaulHomepage() {
           <p className="mb-3 text-xs uppercase tracking-[0.32em] text-white/45">
             Contact
           </p>
+
           <h2 className="text-5xl font-black uppercase leading-none tracking-[-0.06em] md:text-7xl">
             Let’s Work
           </h2>
@@ -513,15 +522,21 @@ export default function WarhaulHomepage() {
               href="mailto:contactwarhaul@gmail.com"
               className="rounded-[2rem] border border-white/10 bg-white/[0.05] p-8 transition hover:bg-white hover:text-black"
             >
-              <p className="text-xs uppercase tracking-[0.22em] opacity-60">Email</p>
-              <h3 className="mt-5 text-2xl font-black">contactwarhaul@gmail.com</h3>
+              <p className="text-xs uppercase tracking-[0.22em] opacity-60">
+                Email
+              </p>
+              <h3 className="mt-5 text-2xl font-black">
+                contactwarhaul@gmail.com
+              </h3>
             </a>
 
             <a
               href="tel:6477948882"
               className="rounded-[2rem] border border-white/10 bg-white/[0.05] p-8 transition hover:bg-white hover:text-black"
             >
-              <p className="text-xs uppercase tracking-[0.22em] opacity-60">Phone</p>
+              <p className="text-xs uppercase tracking-[0.22em] opacity-60">
+                Phone
+              </p>
               <h3 className="mt-5 text-2xl font-black">647-794-8882</h3>
             </a>
 
@@ -531,7 +546,9 @@ export default function WarhaulHomepage() {
               rel="noopener noreferrer"
               className="rounded-[2rem] border border-white/10 bg-white/[0.05] p-8 transition hover:bg-white hover:text-black"
             >
-              <p className="text-xs uppercase tracking-[0.22em] opacity-60">Instagram</p>
+              <p className="text-xs uppercase tracking-[0.22em] opacity-60">
+                Instagram
+              </p>
               <h3 className="mt-5 text-2xl font-black">@WarhaulStudio</h3>
             </a>
           </div>
