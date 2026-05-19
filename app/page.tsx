@@ -48,7 +48,7 @@ const placements = [
   ["Universal Music Canada", "/images/universal-music.png", "Visual Placement", "#"],
   ["Empire", "/images/empire.png", "Visual Placement", "#"],
   ["Motown Records", "/images/motown.svg", "Photography Placement", "#"],
-  ["Def Jam Recordings", "/images/defjam.svg", "Photography Placement", "#"],
+  ["Def Jam Recordings", "/images/defjam.png", "Photography Placement", "#"],
   ["Rolling Stone", "/images/rollingstone.png", "Photography Placement", "#"],
   ["Nuit Blanche Toronto", "/images/nuitblanche.png", "Visual Placement", "#"],
   ["NXNE", "/images/nxne.png", "Photography Placement", "#"],
