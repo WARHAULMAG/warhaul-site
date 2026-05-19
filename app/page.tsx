@@ -38,14 +38,6 @@ const eventSections = [
   "LOOK MA, I'M FAMOUS!",
 ];
 
-const audioCredits = [
-  "Concrete Boys",
-  "Nike ACG",
-  "Nike Toronto",
-  "Warner Music",
-  "MLSE / Toronto Raptors",
-];
-
 export default function WarhaulHomepage() {
   const [activeImage, setActiveImage] = useState(0);
 
@@ -63,6 +55,7 @@ export default function WarhaulHomepage() {
 
   return (
     <main className="min-h-screen bg-black text-white">
+      {/* NAV */}
       <header className="sticky top-0 z-50 border-b border-white/10 bg-black/70 backdrop-blur-xl">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 md:px-8">
           <img
@@ -89,11 +82,12 @@ export default function WarhaulHomepage() {
             href="#contact"
             className="rounded-full bg-white px-5 py-3 text-sm font-medium text-black transition hover:bg-white/85"
           >
-            Contact
+            Book Now
           </a>
         </div>
       </header>
 
+      {/* HERO */}
       <section className="mx-auto grid min-h-[88vh] max-w-7xl items-end gap-10 px-5 pb-12 pt-20 md:grid-cols-[1.1fr_.9fr] md:px-8 md:pb-20">
         <div>
           <p className="mb-5 text-xs uppercase tracking-[0.35em] text-white/55">
@@ -113,7 +107,7 @@ export default function WarhaulHomepage() {
               href="#contact"
               className="flex items-center justify-center rounded-full bg-white px-7 py-4 text-black transition hover:bg-white/85"
             >
-              Contact Warhaul
+              Book Warhaul
               <ArrowUpRight className="ml-2 h-4 w-4" />
             </a>
           </div>
@@ -121,11 +115,12 @@ export default function WarhaulHomepage() {
 
         <img
           src="/images/DSCF8075.JPEG"
-          alt="Warhaul group"
+          alt="Warhaul"
           className="aspect-[4/5] rounded-[2rem] object-cover"
         />
       </section>
 
+      {/* STATS */}
       <section className="border-y border-white/10 bg-white text-black">
         <div className="mx-auto grid max-w-7xl grid-cols-2 gap-px px-5 py-5 text-center md:grid-cols-4 md:px-8">
           {[
@@ -138,6 +133,7 @@ export default function WarhaulHomepage() {
               <p className="text-2xl font-black uppercase tracking-[-0.04em] md:text-4xl">
                 {big}
               </p>
+
               <p className="mt-1 text-xs uppercase tracking-[0.22em] text-black/55">
                 {small}
               </p>
@@ -146,6 +142,7 @@ export default function WarhaulHomepage() {
         </div>
       </section>
 
+      {/* ABOUT */}
       <section id="about" className="mx-auto max-w-7xl px-5 py-24 md:px-8">
         <div className="mb-14">
           <p className="mb-3 text-xs uppercase tracking-[0.32em] text-white/45">
@@ -161,11 +158,11 @@ export default function WarhaulHomepage() {
           {[
             [
               "24/7 Access",
-              "Create on your schedule. Late night sessions, overnight builds, early morning shoots — the space is available 24/7 for serious creatives.",
+              "Late night sessions, overnight builds, and early morning shoots. Built for creatives that move differently.",
             ],
             [
               "Flexible Space",
-              "Photo shoots, music videos, DJ sets, interviews, workshops, rehearsals, and events — the space adapts to your vision.",
+              "Photo shoots, music videos, DJ sets, rehearsals, interviews, podcasts, workshops, and events.",
             ],
             [
               "Cost Comparable",
@@ -173,7 +170,7 @@ export default function WarhaulHomepage() {
             ],
             [
               "Creative Community",
-              "Warhaul connects photographers, artists, DJs, videographers, designers, and brands through events, radio, collaborations, and culture.",
+              "Warhaul connects artists, DJs, photographers, videographers, brands, and creatives through events and collaborations.",
             ],
           ].map(([title, text]) => (
             <div
@@ -181,12 +178,16 @@ export default function WarhaulHomepage() {
               className="rounded-[2rem] border border-white/10 bg-white/[0.05] p-8 md:p-10"
             >
               <h3 className="text-3xl font-black uppercase">{title}</h3>
-              <p className="mt-5 text-lg leading-8 text-white/60">{text}</p>
+
+              <p className="mt-5 text-lg leading-8 text-white/60">
+                {text}
+              </p>
             </div>
           ))}
         </div>
       </section>
 
+      {/* SERVICES */}
       <section id="services" className="bg-white px-5 py-24 text-black md:px-8">
         <div className="mx-auto max-w-7xl">
           <p className="mb-3 text-xs uppercase tracking-[0.32em] text-black/45">
@@ -201,31 +202,27 @@ export default function WarhaulHomepage() {
             {[
               [
                 "Photography",
-                "Portraits, campaigns, product shoots, editorials, studio shoots, event coverage, and creative direction.",
+                "Portraits, campaigns, product shoots, editorials, studio shoots, and event coverage.",
               ],
               [
                 "Videography",
-                "Music videos, social media content, recap videos, commercials, interviews, and branded visuals.",
+                "Music videos, social content, recap videos, interviews, commercials, and branded visuals.",
               ],
               [
                 "Audio Production",
-                "Recording, producing, vocal production, mixing, mastering, and engineer-supported sessions.",
+                "Recording, vocal production, mixing, mastering, and engineer-supported sessions.",
               ],
               [
                 "DJing",
-                "Live DJ sets, private events, filmed mixes, curated music experiences, and radio-style performances.",
+                "Live DJ sets, radio-style performances, private events, and filmed mixes.",
               ],
               [
                 "Events",
-                "Event promotion, planning, launch parties, listening sessions, creative activations, and cultural experiences.",
+                "Event planning, launch parties, activations, listening sessions, and creative experiences.",
               ],
               [
-                "Brand + Social",
-                "Social media strategy, content planning, rollout ideas, audience growth, and creative campaign support.",
-              ],
-              [
-                "Marketing Consulting",
-                "Creative strategy, rollout planning, campaign direction, brand positioning, audience growth, and promotional strategy.",
+                "Branding + Marketing Consulting",
+                "Brand strategy, rollout planning, audience growth, social media, campaign direction, and promotional strategy.",
               ],
             ].map(([title, text]) => (
               <div
@@ -233,7 +230,10 @@ export default function WarhaulHomepage() {
                 className="rounded-[2rem] border border-black/10 bg-black/[0.03] p-8"
               >
                 <h3 className="text-3xl font-black uppercase">{title}</h3>
-                <p className="mt-5 text-lg leading-8 text-black/60">{text}</p>
+
+                <p className="mt-5 text-lg leading-8 text-black/60">
+                  {text}
+                </p>
               </div>
             ))}
           </div>
@@ -249,6 +249,7 @@ export default function WarhaulHomepage() {
         </div>
       </section>
 
+      {/* INSIDE WARHAUL */}
       <section className="mx-auto max-w-7xl px-5 py-24 md:px-8">
         <div className="mb-10 flex items-end justify-between gap-5">
           <div>
@@ -299,28 +300,9 @@ export default function WarhaulHomepage() {
             <ChevronRight className="h-6 w-6" />
           </button>
         </div>
-
-        <div className="mt-5 flex gap-3 overflow-x-auto pb-2">
-          {studioImages.map((src, index) => (
-            <button
-              key={src}
-              onClick={() => setActiveImage(index)}
-              className={`overflow-hidden rounded-2xl border transition ${
-                activeImage === index
-                  ? "border-white opacity-100"
-                  : "border-white/10 opacity-45 hover:opacity-100"
-              }`}
-            >
-              <img
-                src={src}
-                alt="Warhaul studio thumbnail"
-                className="h-24 w-36 object-cover"
-              />
-            </button>
-          ))}
-        </div>
       </section>
 
+      {/* STUDIO */}
       <section id="studio" className="mx-auto max-w-7xl px-5 py-24 md:px-8">
         <div className="mb-12 flex flex-col justify-between gap-5 md:flex-row md:items-end">
           <div>
@@ -332,100 +314,82 @@ export default function WarhaulHomepage() {
               Studio Rentals
             </h2>
           </div>
-
-          <p className="max-w-lg text-white/60">
-            PHOTO STUDIO • AUDIO STUDIO • SERVICES • EVENTS • WORK
-          </p>
         </div>
 
         <div className="grid gap-5 md:grid-cols-3">
           <div className="rounded-[2rem] border border-white/10 bg-white/[0.06] p-7">
             <Camera className="mb-8 h-8 w-8" />
-            <h3 className="text-3xl font-black uppercase">Photo Studio</h3>
+
+            <h3 className="text-3xl font-black uppercase">
+              Photo Studio
+            </h3>
+
             <p className="mt-4 text-white/60">
-              Cyclorama wall, open layout, lighting gear, dressing area, parking,
-              and room to build the set.
+              Cyclorama wall, open layout, lighting gear,
+              dressing area, parking, and room to build the set.
             </p>
+
             <p className="mt-8 border-t border-white/10 pt-6 text-4xl font-black">
               $90 / 2hr
             </p>
+
+            <a
+              href="#contact"
+              className="mt-8 inline-flex rounded-full bg-white px-6 py-4 text-sm uppercase tracking-[0.16em] text-black transition hover:bg-white/85"
+            >
+              Book Studio
+            </a>
           </div>
 
           <div className="rounded-[2rem] bg-white p-7 text-black">
             <Mic2 className="mb-8 h-8 w-8" />
-            <h3 className="text-3xl font-black uppercase">Audio Studio</h3>
+
+            <h3 className="text-3xl font-black uppercase">
+              Audio Studio
+            </h3>
+
             <p className="mt-4 text-black/60">
               $20/hr minimum. Add an engineer for $60/hr.
             </p>
+
             <p className="mt-8 border-t border-black/10 pt-6 text-4xl font-black">
               $20/hr
             </p>
+
+            <a
+              href="#contact"
+              className="mt-8 inline-flex rounded-full bg-black px-6 py-4 text-sm uppercase tracking-[0.16em] text-white transition hover:bg-black/80"
+            >
+              Book Audio
+            </a>
           </div>
 
           <div className="rounded-[2rem] border border-white/10 bg-white/[0.06] p-7">
             <Headphones className="mb-8 h-8 w-8" />
-            <h3 className="text-3xl font-black uppercase">DJ Space</h3>
+
+            <h3 className="text-3xl font-black uppercase">
+              DJ Space
+            </h3>
+
             <p className="mt-4 text-white/60">
-              A home base for East End DJs to practice, film sets, build
-              community, and create content.
+              A home base for East End DJs to practice, film sets, and create content.
             </p>
+
             <p className="mt-8 border-t border-white/10 pt-6 text-4xl font-black">
               DJs
             </p>
+
+            <a
+              href="#contact"
+              className="mt-8 inline-flex rounded-full bg-white px-6 py-4 text-sm uppercase tracking-[0.16em] text-black transition hover:bg-white/85"
+            >
+              Book DJ Space
+            </a>
           </div>
         </div>
       </section>
 
-      <section id="equipment" className="mx-auto max-w-7xl px-5 py-24 md:px-8">
-        <div className="mb-14">
-          <p className="mb-3 text-xs uppercase tracking-[0.32em] text-white/45">
-            Equipment
-          </p>
-
-          <h2 className="text-5xl font-black uppercase leading-none tracking-[-0.06em] md:text-7xl">
-            Amenities & Gear
-          </h2>
-        </div>
-
-        <div className="grid gap-5 md:grid-cols-3">
-          <div className="rounded-[2rem] border border-white/10 bg-white/[0.05] p-8">
-            <h3 className="text-3xl font-black uppercase">Amenities</h3>
-            <div className="mt-8 grid gap-5 text-lg text-white/65">
-              <p>Wifi</p>
-              <p>Dressing Room</p>
-              <p>Chairs</p>
-              <p>Tables</p>
-              <p>Parking Spaces</p>
-              <p>Washroom</p>
-            </div>
-          </div>
-
-          <div className="rounded-[2rem] border border-white/10 bg-white/[0.05] p-8">
-            <h3 className="text-3xl font-black uppercase">
-              Photo Equipment
-            </h3>
-            <div className="mt-8 grid gap-5 text-lg text-white/65">
-              <p>2x Godox SL60W</p>
-              <p>2x 33inch Octagon Softbox</p>
-              <p>1x Lantern Softbox</p>
-              <p>1x Snoot Kit with Gels</p>
-              <p>Various Light Stands</p>
-            </div>
-          </div>
-
-          <div className="rounded-[2rem] border border-white/10 bg-white/[0.05] p-8">
-            <h3 className="text-3xl font-black uppercase">
-              Audio Equipment
-            </h3>
-            <div className="mt-8 grid gap-5 text-lg text-white/65">
-              <p>2x KRKs</p>
-              <p>Apollo Twin Interface</p>
-              <p>TLM-103 Mic</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
+      {/* EVENTS */}
       <section id="events" className="mx-auto max-w-7xl px-5 py-24 md:px-8">
         <p className="mb-3 text-xs uppercase tracking-[0.32em] text-white/45">
           Events
@@ -463,29 +427,79 @@ export default function WarhaulHomepage() {
         </div>
       </section>
 
+      {/* AUDIO PLACEMENTS */}
       <section className="bg-white px-5 py-24 text-black md:px-8">
         <div className="mx-auto max-w-7xl">
           <p className="mb-3 text-xs uppercase tracking-[0.32em] text-black/45">
-            Audio Credits
+            Audio Placements
           </p>
 
           <h2 className="text-5xl font-black uppercase leading-none tracking-[-0.06em] md:text-7xl">
             Trusted By
           </h2>
 
-          <div className="mt-14 grid gap-5 md:grid-cols-3">
-            {audioCredits.map((credit) => (
-              <div
-                key={credit}
-                className="rounded-[2rem] border border-black/10 bg-black/[0.03] p-8"
+          <p className="mt-6 max-w-3xl text-lg leading-8 text-black/60">
+            Selected audio placements, collaborations, and commercial work.
+            Visual placements and additional credits coming soon.
+          </p>
+
+          <div className="mt-14 grid gap-5 md:grid-cols-5">
+            {[
+              [
+                "Concrete Boys",
+                "/images/concrete boys.jpeg",
+                "#",
+              ],
+              [
+                "Nike Toronto",
+                "/images/nike toronto.png",
+                "https://www.instagram.com/p/CUNgT8fgPAo/",
+              ],
+              [
+                "Nike ACG",
+                "/images/nike acg.svg",
+                "https://www.instagram.com/p/CTxIpz7gkHN/",
+              ],
+              [
+                "MLSE",
+                "/images/mlse.jpg",
+                "https://www.instagram.com/tv/COjFjZJNML2/",
+              ],
+              [
+                "Toronto Raptors",
+                "/images/raptors.png",
+                "https://www.instagram.com/tv/CWObkA9t3Wo/",
+              ],
+            ].map(([name, image, link]) => (
+              <a
+                key={name}
+                href={link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group rounded-[2rem] border border-black/10 bg-black/[0.03] p-6 transition hover:bg-black hover:text-white"
               >
-                <h3 className="text-3xl font-black uppercase">{credit}</h3>
-              </div>
+                <div className="flex h-36 items-center justify-center overflow-hidden rounded-2xl bg-black p-5">
+                  <img
+                    src={image}
+                    alt={name}
+                    className="max-h-full max-w-full object-contain"
+                  />
+                </div>
+
+                <h3 className="mt-6 text-xl font-black uppercase">
+                  {name}
+                </h3>
+
+                <p className="mt-2 text-xs uppercase tracking-[0.18em] opacity-60">
+                  Audio Placement
+                </p>
+              </a>
             ))}
           </div>
         </div>
       </section>
 
+      {/* RADIO */}
       <section className="mx-auto max-w-7xl px-5 py-24 md:px-8">
         <div className="rounded-[2rem] border border-white/10 bg-white/[0.05] p-8 md:p-12">
           <p className="mb-3 text-xs uppercase tracking-[0.32em] text-white/45">
@@ -507,7 +521,11 @@ export default function WarhaulHomepage() {
         </div>
       </section>
 
-      <section id="contact" className="border-t border-white/10 px-5 py-24 md:px-8">
+      {/* CONTACT */}
+      <section
+        id="contact"
+        className="border-t border-white/10 px-5 py-24 md:px-8"
+      >
         <div className="mx-auto max-w-7xl">
           <p className="mb-3 text-xs uppercase tracking-[0.32em] text-white/45">
             Contact
@@ -525,6 +543,7 @@ export default function WarhaulHomepage() {
               <p className="text-xs uppercase tracking-[0.22em] opacity-60">
                 Email
               </p>
+
               <h3 className="mt-5 text-2xl font-black">
                 contactwarhaul@gmail.com
               </h3>
@@ -537,7 +556,10 @@ export default function WarhaulHomepage() {
               <p className="text-xs uppercase tracking-[0.22em] opacity-60">
                 Phone
               </p>
-              <h3 className="mt-5 text-2xl font-black">647-794-8882</h3>
+
+              <h3 className="mt-5 text-2xl font-black">
+                647-794-8882
+              </h3>
             </a>
 
             <a
@@ -549,7 +571,10 @@ export default function WarhaulHomepage() {
               <p className="text-xs uppercase tracking-[0.22em] opacity-60">
                 Instagram
               </p>
-              <h3 className="mt-5 text-2xl font-black">@WarhaulStudio</h3>
+
+              <h3 className="mt-5 text-2xl font-black">
+                @WarhaulStudio
+              </h3>
             </a>
           </div>
         </div>
