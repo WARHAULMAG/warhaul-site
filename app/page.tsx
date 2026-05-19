@@ -47,7 +47,7 @@ const placements = [
   ["Warner Music Canada", "/images/warner-new.png", "Visual + Sonic Placement", "https://open.spotify.com/album/2LkrL0QDmh272zbVFCvHNh?si=EgWHQIVeS66v-HP3ee_hog"],
   ["Universal Music Canada", "/images/universal-music.png", "Visual Placement", "#"],
   ["Empire", "/images/empire.png", "Visual Placement", "#"],
-  ["Motown Records", "/images/motown.svg", "Photography Placement", "#"],
+  ["Motown Records", "/images/motown.jpg", "Photography Placement", "#"],
   ["Def Jam Recordings", "/images/defjam.png", "Photography Placement", "#"],
   ["Rolling Stone", "/images/rollingstone.png", "Photography Placement", "#"],
   ["Nuit Blanche Toronto", "/images/nuitblanche.png", "Visual Placement", "#"],
