@@ -31,28 +31,10 @@ const studioImages = [
   "/images/DSCF1584-HDR.jpg",
 ];
 
-const eventImages = [
-  "/events/DSCF3624(1).jpg",
-  "/events/DSCF3645(1).jpg",
-  "/events/DSCF3646(1).jpg",
-  "/events/DSCF3649(1).jpg",
-  "/events/DSCF3694(1).jpg",
-  "/events/DSCF3754(1).jpg",
-  "/events/DSCF3791(1).jpg",
-  "/events/DSCF3828(1).jpg",
-  "/events/DSCF3836(1).jpg",
-  "/events/DSCF3843(1).jpg",
-  "/events/DSCF3859(1).jpg",
-  "/events/DSCF3889(1).jpg",
-  "/events/DSCF3904(1).jpg",
-  "/events/DSCF4086(1).jpg",
-  "/events/IMG_2908(1).JPG",
-  "/events/IMG_2909(1).JPG",
-  "/events/IMG_2911(1).JPG",
-  "/events/IMG_2913(1).JPG",
-  "/events/IMG_2914(1).JPG",
-  "/events/IMG_2915(1).JPG",
-];
+const eventImages = Array.from(
+  { length: 26 },
+  (_, index) => `/events/event-${index + 1}.jpg`
+);
 
 const placements = [
   ["Concrete Boys", "Audio Placement"],
