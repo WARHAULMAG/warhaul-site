@@ -31,10 +31,28 @@ const studioImages = [
   "/images/DSCF1584-HDR.jpg",
 ];
 
-const eventImages = Array.from(
-  { length: 20 },
-  (_, index) => `/events/event-${index + 1}.jpg`
-);
+const eventImages = [
+  "/events/event-1.jpg",
+  "/events/event-2.jpg",
+  "/events/event-3.jpg",
+  "/events/event-4.jpg",
+  "/events/event-5.jpg",
+  "/events/event-6.jpg",
+  "/events/event-7.jpg",
+  "/events/event-8.jpg",
+  "/events/event-9.jpg",
+  "/events/event-10.jpg",
+  "/events/event-11.jpg",
+  "/events/event-12.jpg",
+  "/events/event-13.jpg",
+  "/events/event-14.jpg",
+  "/events/event-17.jpg",
+  "/events/event-18.jpg",
+  "/events/event-19.jpg",
+  "/events/event-20.jpg",
+  "/events/event-21.jpg",
+  "/events/event-22.jpg",
+];
 
 const placements = [
   {
@@ -75,12 +93,12 @@ const placements = [
   {
     name: "Motown Records",
     type: "Photography Placement",
-    image: "/images/motown.svg",
+    image: "/images/motown.jpg",
   },
   {
     name: "Def Jam Recordings",
     type: "Photography Placement",
-    image: "/images/defjam.svg",
+    image: "/images/defjam.png",
   },
   {
     name: "Rolling Stone Canada",
