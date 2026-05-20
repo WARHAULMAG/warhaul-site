@@ -32,23 +32,71 @@ const studioImages = [
 ];
 
 const eventImages = Array.from(
-  { length: 26 },
+  { length: 20 },
   (_, index) => `/events/event-${index + 1}.jpg`
 );
 
 const placements = [
-  ["Concrete Boys", "Audio Placement"],
-  ["Nike Toronto", "Audio Placement"],
-  ["Nike ACG", "Audio Placement"],
-  ["MLSE / Toronto Raptors", "Audio Placement"],
-  ["Warner Music Canada", "Visual + Sonic Placement"],
-  ["Universal Music Canada", "Visual Placement"],
-  ["Empire", "Visual Placement"],
-  ["Motown Records", "Photography Placement"],
-  ["Def Jam Recordings", "Photography Placement"],
-  ["Rolling Stone Canada", "Photography Placement"],
-  ["Nuit Blanche Toronto", "Visual Placement"],
-  ["NXNE", "Photography Placement"],
+  {
+    name: "Concrete Boys",
+    type: "Audio Placement",
+    image: "/images/concrete boys.jpeg",
+  },
+  {
+    name: "Nike Toronto",
+    type: "Audio Placement",
+    image: "/images/nike toronto.png",
+  },
+  {
+    name: "Nike ACG",
+    type: "Audio Placement",
+    image: "/images/nike acg.svg",
+  },
+  {
+    name: "MLSE / Toronto Raptors",
+    type: "Audio Placement",
+    image: "/images/mlse.jpg",
+  },
+  {
+    name: "Warner Music Canada",
+    type: "Visual + Sonic Placement",
+    image: "/images/warner-new.png",
+  },
+  {
+    name: "Universal Music Canada",
+    type: "Visual Placement",
+    image: "/images/universal-music.png",
+  },
+  {
+    name: "Empire",
+    type: "Visual Placement",
+    image: "/images/empire.png",
+  },
+  {
+    name: "Motown Records",
+    type: "Photography Placement",
+    image: "/images/motown.svg",
+  },
+  {
+    name: "Def Jam Recordings",
+    type: "Photography Placement",
+    image: "/images/defjam.svg",
+  },
+  {
+    name: "Rolling Stone Canada",
+    type: "Photography Placement",
+    image: "/images/rollingstone.png",
+  },
+  {
+    name: "Nuit Blanche Toronto",
+    type: "Visual Placement",
+    image: "/images/nuitblanche.png",
+  },
+  {
+    name: "NXNE",
+    type: "Photography Placement",
+    image: "/images/nxne.png",
+  },
 ];
 
 const creditSections = [
@@ -509,18 +557,28 @@ export default function WarhaulHomepage() {
           </p>
 
           <div className="mt-14 grid gap-5 md:grid-cols-3 lg:grid-cols-4">
-            {placements.map(([name, type]) => (
+            {placements.map((item) => (
               <div
-                key={name}
-                className="rounded-[2rem] border border-black/10 bg-black p-7 text-white"
+                key={item.name}
+                className="overflow-hidden rounded-[2rem] border border-black/10 bg-black text-white"
               >
-                <h3 className="text-2xl font-black uppercase leading-tight">
-                  {name}
-                </h3>
+                <div className="flex aspect-[16/10] items-center justify-center bg-white p-8">
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                    className="max-h-24 w-full object-contain"
+                  />
+                </div>
 
-                <p className="mt-4 text-xs uppercase tracking-[0.18em] text-white/55">
-                  {type}
-                </p>
+                <div className="p-7">
+                  <h3 className="text-2xl font-black uppercase leading-tight">
+                    {item.name}
+                  </h3>
+
+                  <p className="mt-4 text-xs uppercase tracking-[0.18em] text-white/55">
+                    {item.type}
+                  </p>
+                </div>
               </div>
             ))}
           </div>
