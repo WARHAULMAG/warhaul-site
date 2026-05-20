@@ -466,31 +466,9 @@ export default function WarhaulHomepage() {
           </h2>
 
           <p className="mt-6 max-w-3xl text-lg leading-8 text-black/60">
-            From Artscape to Grim, Warhaul events bring together music, fashion,
-            DJs, cars, art, and Toronto’s creative community.
+            A combined look at Warhaul events — Artscape, Grim, Look Ma, I'm
+            Famous, DJ sets, showcases, activations, and community moments.
           </p>
-
-          <div className="mt-12 grid gap-4 md:grid-cols-3">
-            {[
-              [
-                "Artscape",
-                "Creative showcases, DJ sets, fashion, vendors, and community moments.",
-              ],
-              [
-                "Grim",
-                "High-energy nightlife, curated sound, and underground culture.",
-              ],
-              [
-                "Look Ma, I'm Famous",
-                "Artist moments, community experiences, and creative activations.",
-              ],
-            ].map(([title, text]) => (
-              <div key={title} className="rounded-[2rem] bg-black p-8 text-white">
-                <h3 className="text-3xl font-black uppercase">{title}</h3>
-                <p className="mt-4 text-white/60">{text}</p>
-              </div>
-            ))}
-          </div>
 
           <div className="mt-14 grid auto-rows-[260px] grid-cols-1 gap-4 md:grid-cols-4">
             {studioImages.map((src, index) => (
