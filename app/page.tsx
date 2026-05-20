@@ -160,7 +160,7 @@ export default function WarhaulHomepage() {
             href="mailto:contactwarhaul@gmail.com"
             className="rounded-full bg-white px-5 py-3 text-sm font-medium text-black transition hover:bg-white/85"
           >
-            Contact Us
+            Book Now
           </a>
         </div>
       </header>
