@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 
 const nav = [
+  ["#trusted", "trusted"],
   ["#about", "about"],
   ["#services", "services"],
   ["#studio", "studio"],
@@ -55,66 +56,18 @@ const eventImages = [
 ];
 
 const placements = [
-  {
-    name: "Concrete Boys",
-    type: "Audio Placement",
-    image: "/images/concrete boys.jpeg",
-  },
-  {
-    name: "Nike Toronto",
-    type: "Audio Placement",
-    image: "/images/nike toronto.png",
-  },
-  {
-    name: "Nike ACG",
-    type: "Audio Placement",
-    image: "/images/nike acg.svg",
-  },
-  {
-    name: "MLSE / Toronto Raptors",
-    type: "Audio Placement",
-    image: "/images/mlse.jpg",
-  },
-  {
-    name: "Warner Music Canada",
-    type: "Visual + Sonic Placement",
-    image: "/images/warner-new.png",
-  },
-  {
-    name: "Universal Music Canada",
-    type: "Visual Placement",
-    image: "/images/universal-music.png",
-  },
-  {
-    name: "Empire",
-    type: "Visual Placement",
-    image: "/images/empire.png",
-  },
-  {
-    name: "Motown Records",
-    type: "Photography Placement",
-    image: "/images/motown.jpg",
-  },
-  {
-    name: "Def Jam Recordings",
-    type: "Photography Placement",
-    image: "/images/defjam.png",
-  },
-  {
-    name: "Rolling Stone Canada",
-    type: "Photography Placement",
-    image: "/images/rollingstone.png",
-  },
-  {
-    name: "Nuit Blanche Toronto",
-    type: "Visual Placement",
-    image: "/images/nuitblanche.png",
-  },
-  {
-    name: "NXNE",
-    type: "Photography Placement",
-    image: "/images/nxne.png",
-  },
+  { name: "Concrete Boys", type: "Audio Placement", image: "/images/concrete boys.jpeg" },
+  { name: "Nike Toronto", type: "Audio Placement", image: "/images/nike toronto.png" },
+  { name: "Nike ACG", type: "Audio Placement", image: "/images/nike acg.svg" },
+  { name: "MLSE / Toronto Raptors", type: "Audio Placement", image: "/images/mlse.jpg" },
+  { name: "Warner Music Canada", type: "Visual + Sonic Placement", image: "/images/warner-new.png" },
+  { name: "Universal Music Canada", type: "Visual Placement", image: "/images/universal-music.png" },
+  { name: "Empire", type: "Visual Placement", image: "/images/empire.png" },
+  { name: "Motown Records", type: "Photography Placement", image: "/images/motown.jpg" },
+  { name: "Def Jam Recordings", type: "Photography Placement", image: "/images/defjam.png" },
+  { name: "Rolling Stone Canada", type: "Photography Placement", image: "/images/rollingstone.png" },
+  { name: "Nuit Blanche Toronto", type: "Visual Placement", image: "/images/nuitblanche.png" },
+  { name: "NXNE", type: "Photography Placement", image: "/images/nxne.png" },
 ];
 
 const creditSections = [
@@ -153,6 +106,7 @@ const creditSections = [
 
 export default function WarhaulHomepage() {
   const [activeImage, setActiveImage] = useState(0);
+  const [activeEventImage, setActiveEventImage] = useState(0);
 
   const nextImage = () => {
     setActiveImage((current) =>
@@ -163,6 +117,18 @@ export default function WarhaulHomepage() {
   const prevImage = () => {
     setActiveImage((current) =>
       current === 0 ? studioImages.length - 1 : current - 1
+    );
+  };
+
+  const nextEventImage = () => {
+    setActiveEventImage((current) =>
+      current === eventImages.length - 1 ? 0 : current + 1
+    );
+  };
+
+  const prevEventImage = () => {
+    setActiveEventImage((current) =>
+      current === 0 ? eventImages.length - 1 : current - 1
     );
   };
 
@@ -247,6 +213,68 @@ export default function WarhaulHomepage() {
               </p>
             </div>
           ))}
+        </div>
+      </section>
+
+      <section id="trusted" className="bg-white px-5 py-24 text-black md:px-8">
+        <div className="mx-auto max-w-7xl">
+          <p className="mb-3 text-xs uppercase tracking-[0.32em] text-black/45">
+            Placements & Credits
+          </p>
+
+          <h2 className="text-5xl font-black uppercase leading-none tracking-[-0.06em] md:text-7xl">
+            Trusted By
+          </h2>
+
+          <p className="mt-6 max-w-3xl text-lg leading-8 text-black/60">
+            Selected visual, sonic, photography, styling, cinematography, and audio placements.
+          </p>
+
+          <div className="mt-14 grid gap-5 md:grid-cols-3 lg:grid-cols-4">
+            {placements.map((item) => (
+              <div
+                key={item.name}
+                className="overflow-hidden rounded-[2rem] border border-black/10 bg-black text-white"
+              >
+                <div className="flex aspect-[16/10] items-center justify-center bg-white p-8">
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                    className="max-h-24 w-full object-contain"
+                  />
+                </div>
+
+                <div className="p-7">
+                  <h3 className="text-2xl font-black uppercase leading-tight">
+                    {item.name}
+                  </h3>
+
+                  <p className="mt-4 text-xs uppercase tracking-[0.18em] text-white/55">
+                    {item.type}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-16 grid gap-5 md:grid-cols-3">
+            {creditSections.map((section) => (
+              <div
+                key={section.title}
+                className="rounded-[2rem] border border-black/10 bg-black p-8 text-white"
+              >
+                <h3 className="text-3xl font-black uppercase text-white">
+                  {section.title}
+                </h3>
+
+                <div className="mt-8 space-y-4 text-base leading-7 text-white/70">
+                  {section.items.map((item) => (
+                    <p key={item}>{item}</p>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -404,11 +432,11 @@ export default function WarhaulHomepage() {
           </div>
         </div>
 
-        <div className="relative overflow-hidden rounded-[2rem] border border-white/10">
+        <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-black">
           <img
             src={studioImages[activeImage]}
             alt="Warhaul studio"
-            className="h-[520px] w-full object-cover"
+            className="h-[520px] w-full object-contain bg-black"
           />
 
           <button
@@ -542,82 +570,32 @@ export default function WarhaulHomepage() {
             forward through music, fashion, art, and real collaboration.
           </p>
 
-          <div className="mt-14 grid auto-rows-[260px] grid-cols-1 gap-4 md:grid-cols-4">
-            {eventImages.map((src, index) => (
+          <div className="mt-14">
+            <div className="relative overflow-hidden rounded-[2rem] border border-black/10 bg-black">
               <img
-                key={src}
-                src={src}
-                alt={`Warhaul event ${index + 1}`}
-                className={`h-full w-full rounded-[2rem] object-cover ${
-                  index === 0 || index === 5 || index === 12
-                    ? "md:col-span-2 md:row-span-2"
-                    : ""
-                }`}
+                src={eventImages[activeEventImage]}
+                alt={`Warhaul event ${activeEventImage + 1}`}
+                className="h-[620px] w-full object-contain bg-black"
               />
-            ))}
-          </div>
-        </div>
-      </section>
 
-      <section className="bg-white px-5 py-24 text-black md:px-8">
-        <div className="mx-auto max-w-7xl">
-          <p className="mb-3 text-xs uppercase tracking-[0.32em] text-black/45">
-            Placements & Credits
-          </p>
-
-          <h2 className="text-5xl font-black uppercase leading-none tracking-[-0.06em] md:text-7xl">
-            Trusted By
-          </h2>
-
-          <p className="mt-6 max-w-3xl text-lg leading-8 text-black/60">
-            Selected visual, sonic, photography, styling, cinematography, and
-            audio placements.
-          </p>
-
-          <div className="mt-14 grid gap-5 md:grid-cols-3 lg:grid-cols-4">
-            {placements.map((item) => (
-              <div
-                key={item.name}
-                className="overflow-hidden rounded-[2rem] border border-black/10 bg-black text-white"
+              <button
+                onClick={prevEventImage}
+                className="absolute left-5 top-1/2 flex h-14 w-14 -translate-y-1/2 items-center justify-center rounded-full bg-white/85 text-black backdrop-blur hover:bg-black hover:text-white"
               >
-                <div className="flex aspect-[16/10] items-center justify-center bg-white p-8">
-                  <img
-                    src={item.image}
-                    alt={item.name}
-                    className="max-h-24 w-full object-contain"
-                  />
-                </div>
+                <ChevronLeft className="h-6 w-6" />
+              </button>
 
-                <div className="p-7">
-                  <h3 className="text-2xl font-black uppercase leading-tight">
-                    {item.name}
-                  </h3>
-
-                  <p className="mt-4 text-xs uppercase tracking-[0.18em] text-white/55">
-                    {item.type}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-16 grid gap-5 md:grid-cols-3">
-            {creditSections.map((section) => (
-              <div
-                key={section.title}
-                className="rounded-[2rem] border border-black/10 bg-black p-8 text-white"
+              <button
+                onClick={nextEventImage}
+                className="absolute right-5 top-1/2 flex h-14 w-14 -translate-y-1/2 items-center justify-center rounded-full bg-white/85 text-black backdrop-blur hover:bg-black hover:text-white"
               >
-                <h3 className="text-3xl font-black uppercase text-white">
-                  {section.title}
-                </h3>
+                <ChevronRight className="h-6 w-6" />
+              </button>
+            </div>
 
-                <div className="mt-8 space-y-4 text-base leading-7 text-white/70">
-                  {section.items.map((item) => (
-                    <p key={item}>{item}</p>
-                  ))}
-                </div>
-              </div>
-            ))}
+            <p className="mt-4 text-center text-xs uppercase tracking-[0.22em] text-black/45">
+              {activeEventImage + 1} / {eventImages.length}
+            </p>
           </div>
         </div>
       </section>
