@@ -533,7 +533,7 @@ export default function WarhaulHomepage() {
           </p>
 
           <h2 className="text-5xl font-black uppercase leading-none tracking-[-0.06em] md:text-7xl">
-            Events With Purpose
+            Events
           </h2>
 
           <p className="mt-6 max-w-3xl text-lg leading-8 text-black/60">
