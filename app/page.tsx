@@ -31,6 +31,29 @@ const studioImages = [
   "/images/DSCF1584-HDR.jpg",
 ];
 
+const eventImages = [
+  "/events/DSCF3624(1).jpg",
+  "/events/DSCF3645(1).jpg",
+  "/events/DSCF3646(1).jpg",
+  "/events/DSCF3649(1).jpg",
+  "/events/DSCF3694(1).jpg",
+  "/events/DSCF3754(1).jpg",
+  "/events/DSCF3791(1).jpg",
+  "/events/DSCF3828(1).jpg",
+  "/events/DSCF3836(1).jpg",
+  "/events/DSCF3843(1).jpg",
+  "/events/DSCF3859(1).jpg",
+  "/events/DSCF3889(1).jpg",
+  "/events/DSCF3904(1).jpg",
+  "/events/DSCF4086(1).jpg",
+  "/events/IMG_2908(1).JPG",
+  "/events/IMG_2909(1).JPG",
+  "/events/IMG_2911(1).JPG",
+  "/events/IMG_2913(1).JPG",
+  "/events/IMG_2914(1).JPG",
+  "/events/IMG_2915(1).JPG",
+];
+
 const placements = [
   ["Concrete Boys", "Audio Placement"],
   ["Nike Toronto", "Audio Placement"],
@@ -462,22 +485,25 @@ export default function WarhaulHomepage() {
           </p>
 
           <h2 className="text-5xl font-black uppercase leading-none tracking-[-0.06em] md:text-7xl">
-            Warhaul Events
+            Events With Purpose
           </h2>
 
           <p className="mt-6 max-w-3xl text-lg leading-8 text-black/60">
-            A combined look at Warhaul events — Artscape, Grim, Look Ma, I'm
-            Famous, DJ sets, showcases, activations, and community moments.
+            Warhaul events are built to connect with the community, create
+            intentional cultural moments, and push Toronto’s creative scene
+            forward through music, fashion, art, and real collaboration.
           </p>
 
           <div className="mt-14 grid auto-rows-[260px] grid-cols-1 gap-4 md:grid-cols-4">
-            {studioImages.map((src, index) => (
+            {eventImages.map((src, index) => (
               <img
                 key={src}
                 src={src}
                 alt={`Warhaul event ${index + 1}`}
                 className={`h-full w-full rounded-[2rem] object-cover ${
-                  index === 0 || index === 4 ? "md:col-span-2 md:row-span-2" : ""
+                  index === 0 || index === 5 || index === 12
+                    ? "md:col-span-2 md:row-span-2"
+                    : ""
                 }`}
               />
             ))}
