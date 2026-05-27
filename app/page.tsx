@@ -201,7 +201,7 @@ export default function WarhaulHomepage() {
 
   return (
     <main className="min-h-screen bg-black text-white">
-      <header className="sticky top-0 z-50 border-b border-white/15 bg-black/85 backdrop-blur-xl">
+      <header className="sticky top-0 z-50 border-b border-white/15 bg-black/90 backdrop-blur-xl">
         <div className="mx-auto flex max-w-[1600px] items-center justify-between px-4 py-3 md:px-8">
           <a href="#" className="flex items-center">
             <img
@@ -234,25 +234,31 @@ export default function WarhaulHomepage() {
         </div>
       </header>
 
-      <section className="mx-auto max-w-[1600px] border-b border-white/15 px-4 pb-12 pt-16 md:px-8 md:pb-16 md:pt-20">
-        <div
-          id="placements"
-          className="mb-12 w-full border-y border-white/15 py-5"
-        >
-          <p className="mb-5 text-center text-[10px] uppercase tracking-[0.32em] text-white/45">
+      <section
+        id="placements"
+        className="border-b border-black bg-white text-black"
+      >
+        <div className="mx-auto grid max-w-[1600px] items-center gap-4 px-4 py-5 md:grid-cols-[0.2fr_1fr_0.25fr] md:px-8">
+          <p className="text-center text-[10px] font-black uppercase tracking-[0.32em] text-black/45 md:text-left">
             Trusted By
           </p>
 
-          <div className="mx-auto flex h-24 w-full max-w-5xl items-center justify-center bg-white px-8 md:h-28">
+          <div className="flex h-20 w-full items-center justify-center md:h-24">
             <img
               src={placementLogos[activeLogo]}
               alt="Warhaul placement logo"
               className="max-h-14 w-full object-contain grayscale md:max-h-16"
             />
           </div>
-        </div>
 
-        <div className="max-w-[1200px]">
+          <p className="hidden text-right text-[10px] uppercase tracking-[0.24em] text-black/40 md:block">
+            Selected Placements
+          </p>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-[1600px] border-b border-white/15 px-4 pb-12 pt-12 md:px-8 md:pb-16 md:pt-16">
+        <div className="max-w-[1280px]">
           <p className="mb-5 text-[11px] uppercase tracking-[0.38em] text-white/55">
             Toronto Multimedia Production House
           </p>
@@ -261,17 +267,19 @@ export default function WarhaulHomepage() {
             WARHAUL
           </h1>
 
-          <p className="mt-7 max-w-3xl border-t border-white/15 pt-5 text-base uppercase leading-7 tracking-[0.08em] text-white/70 md:text-xl md:leading-8">
-            Multimedia Production House • Studios • Events • Culture
-          </p>
+          <div className="mt-7 grid border-y border-white/15 md:grid-cols-[1fr_auto]">
+            <p className="py-5 text-base uppercase leading-7 tracking-[0.08em] text-white/70 md:text-xl md:leading-8">
+              Multimedia Production House • Studios • Events • Culture
+            </p>
 
-          <div className="mt-8">
-            <a
-              href="mailto:contactwarhaul@gmail.com"
-              className="inline-flex items-center border border-white bg-white px-6 py-4 text-xs font-black uppercase tracking-[0.18em] text-black transition hover:bg-black hover:text-white"
-            >
-              Work With Us <ArrowUpRight className="ml-2 h-4 w-4" />
-            </a>
+            <div className="border-t border-white/15 py-5 md:border-l md:border-t-0 md:px-8">
+              <a
+                href="mailto:contactwarhaul@gmail.com"
+                className="inline-flex items-center border border-white bg-white px-6 py-4 text-xs font-black uppercase tracking-[0.18em] text-black transition hover:bg-black hover:text-white"
+              >
+                Work With Us <ArrowUpRight className="ml-2 h-4 w-4" />
+              </a>
+            </div>
           </div>
         </div>
       </section>
@@ -410,7 +418,7 @@ export default function WarhaulHomepage() {
           Inside Warhaul
         </h2>
 
-        <div className="relative mt-10 border border-white/15 bg-black">
+        <div className="relative mt-10 border-y border-white/15 bg-black">
           <img
             src={studioImages[activeStudioImage]}
             alt="Warhaul studio"
@@ -548,7 +556,7 @@ export default function WarhaulHomepage() {
           <div className="mt-8">
             {currentAlbum.images.length > 0 ? (
               <>
-                <div className="relative border border-black bg-black">
+                <div className="relative border-y border-black bg-black">
                   <img
                     src={currentAlbum.images[activeEventImage]}
                     alt={`${currentAlbum.name} event ${
