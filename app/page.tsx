@@ -9,17 +9,16 @@ const nav = [
   ["#services", "services"],
   ["#studio", "studio"],
   ["#events", "events"],
-  ["#about", "about"],
   ["https://www.youtube.com/@WarhaulStudio", "youtube"],
   ["#contact", "contact"],
 ];
 
 const heroPhrases = [
-  "MULTIMEDIA PRODUCTION HOUSE",
-  "CREATIVE SPACES",
-  "AUDIO & VISUAL PRODUCTION SERVICES",
-  "COMMUNITY GEARED EVENTS",
-  "STUDIOS • EVENTS • CULTURE",
+  "multimedia production house",
+  "creative spaces",
+  "live events",
+  "audio + video production",
+  "brand + marketing consulting",
 ];
 
 const studioImages = [
@@ -170,7 +169,6 @@ export default function WarhaulHomepage() {
   const [activeHeroPhrase, setActiveHeroPhrase] = useState(0);
   const [showAmenities, setShowAmenities] = useState(false);
   const [openService, setOpenService] = useState<number | null>(null);
-  const [showHeroAbout, setShowHeroAbout] = useState(false);
 
   const currentEventCard = eventAlbums[activeEventCard];
   const marqueeLogos = [...placementLogos, ...placementLogos];
@@ -493,20 +491,11 @@ export default function WarhaulHomepage() {
         </div>
       </section>
 
-      <section
-        id="about"
-        className="mx-auto max-w-[1600px] border-b border-white/30 px-4 pb-12 pt-14 md:px-8 md:pb-16 md:pt-20"
-      >
+      <section className="mx-auto max-w-[1600px] border-b border-white/30 px-4 pb-12 pt-14 md:px-8 md:pb-16 md:pt-20">
         <div className="flex flex-col items-center text-center">
-          <button
-            onClick={() => setShowHeroAbout((current) => !current)}
-            className="group cursor-pointer"
-            aria-label="Open about Warhaul"
-          >
-            <h1 className="text-center text-[24vw] font-black uppercase leading-[0.78] tracking-[-0.12em] transition group-hover:opacity-80 md:text-[13vw]">
-              WARHAUL
-            </h1>
-          </button>
+          <h1 className="text-center text-[24vw] font-black uppercase leading-[0.78] tracking-[-0.12em] md:text-[13vw]">
+            WARHAUL
+          </h1>
 
           <div className="mt-7 flex min-h-[72px] w-full max-w-4xl items-center justify-center border-y border-white/30 px-4 py-5">
             <p
@@ -516,35 +505,6 @@ export default function WarhaulHomepage() {
               {heroPhrases[activeHeroPhrase]}
             </p>
           </div>
-
-          <p className="mt-4 text-center text-[10px] uppercase tracking-[0.28em] text-white/55">
-            Click Warhaul To Open About
-          </p>
-
-          {showHeroAbout && (
-            <div className="mt-10 grid w-full max-w-5xl border-y border-white/30 text-left md:grid-cols-[1.2fr_.8fr]">
-              <div className="border-b border-white/30 p-6 md:border-b-0 md:border-r md:p-8">
-                <p className="text-lg leading-8 text-white/85 md:text-2xl md:leading-10">
-                  Warhaul is a multimedia creative platform aimed to cultivate
-                  the underground by providing Toronto with community geared
-                  events, creative spaces and multimedia projects.
-                </p>
-              </div>
-
-              <div className="p-6 md:p-8">
-                <p className="text-[11px] uppercase tracking-[0.28em] text-white/70">
-                  What We Do
-                </p>
-
-                <div className="mt-8 divide-y divide-white/25 text-xl font-black uppercase leading-none tracking-[-0.04em] md:text-2xl">
-                  <p className="py-4">Events</p>
-                  <p className="py-4">Creative Spaces</p>
-                  <p className="py-4">Audio & Visual Production Services</p>
-                  <p className="py-4">Consulting</p>
-                </div>
-              </div>
-            </div>
-          )}
         </div>
       </section>
 
