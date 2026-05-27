@@ -1,15 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import {
-  ArrowUpRight,
-  Camera,
-  ChevronLeft,
-  ChevronRight,
-  Mic2,
-  Plus,
-  Minus,
-} from "lucide-react";
+import { ArrowUpRight, Camera, Mic2, Plus, Minus } from "lucide-react";
 
 const nav = [
   ["#about", "about"],
@@ -55,13 +47,17 @@ const artscape2Images = [
 ];
 
 const eventAlbums = [
-  { name: "Grim 2", images: [] as string[] },
-  { name: "Artscape 1", images: [] as string[] },
-  { name: "Artscape 2", images: artscape2Images },
-  { name: "Redeployment", images: [] as string[] },
-  { name: "Look Ma! I'm Famous", images: [] as string[] },
-  { name: "Rendezvous", images: [] as string[] },
-  { name: "Maison 2", images: [] as string[] },
+  { name: "Grim 2", slug: "grim-2", images: [] as string[] },
+  { name: "Artscape 1", slug: "artscape-1", images: [] as string[] },
+  { name: "Artscape 2", slug: "artscape-2", images: artscape2Images },
+  { name: "Redeployment", slug: "redeployment", images: [] as string[] },
+  {
+    name: "Look Ma! I'm Famous",
+    slug: "look-ma-im-famous",
+    images: [] as string[],
+  },
+  { name: "Rendezvous", slug: "rendezvous", images: [] as string[] },
+  { name: "Maison 2", slug: "maison-2", images: [] as string[] },
 ];
 
 const placementLogos = [
@@ -162,13 +158,10 @@ export default function WarhaulHomepage() {
   const [activeStudioImage, setActiveStudioImage] = useState(0);
   const [activeLogo, setActiveLogo] = useState(0);
   const [activeEventCard, setActiveEventCard] = useState(2);
-  const [activeAlbum, setActiveAlbum] = useState<number | null>(null);
-  const [activeEventImage, setActiveEventImage] = useState(0);
   const [showAmenities, setShowAmenities] = useState(false);
   const [openService, setOpenService] = useState<number | null>(null);
 
   const currentEventCard = eventAlbums[activeEventCard];
-  const currentAlbum = activeAlbum !== null ? eventAlbums[activeAlbum] : null;
 
   useEffect(() => {
     const timer = window.setInterval(() => {
@@ -202,25 +195,204 @@ export default function WarhaulHomepage() {
     );
   };
 
-  const openEventAlbum = (index: number) => {
-    setActiveAlbum(index);
-    setActiveEventImage(0);
-  };
+  const openEventAlbumPage = (album: (typeof eventAlbums)[number]) => {
+    const newPage = window.open("", "_blank");
 
-  const previousEventImage = () => {
-    if (!currentAlbum || currentAlbum.images.length === 0) return;
+    if (!newPage) return;
 
-    setActiveEventImage((current) =>
-      current === 0 ? currentAlbum.images.length - 1 : current - 1
-    );
-  };
+    const imageGrid =
+      album.images.length > 0
+        ? album.images
+            .map(
+              (image, index) => `
+                <div class="image-card">
+                  <img src="${image}" alt="${album.name} ${index + 1}" />
+                </div>
+              `
+            )
+            .join("")
+        : `
+          <div class="empty-state">
+            <p>PHOTOS COMING SOON</p>
+            <h2>${album.name}</h2>
+          </div>
+        `;
 
-  const nextEventImage = () => {
-    if (!currentAlbum || currentAlbum.images.length === 0) return;
+    newPage.document.write(`
+      <!DOCTYPE html>
+      <html lang="en">
+        <head>
+          <meta charset="UTF-8" />
+          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+          <title>${album.name} | Warhaul Events</title>
+          <style>
+            * {
+              box-sizing: border-box;
+              margin: 0;
+              padding: 0;
+            }
 
-    setActiveEventImage((current) =>
-      current === currentAlbum.images.length - 1 ? 0 : current + 1
-    );
+            body {
+              background: #000;
+              color: #fff;
+              font-family: Arial, Helvetica, sans-serif;
+            }
+
+            header {
+              position: sticky;
+              top: 0;
+              z-index: 20;
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+              background: rgba(0, 0, 0, 0.92);
+              padding: 18px 28px;
+            }
+
+            .brand {
+              font-size: 14px;
+              font-weight: 900;
+              letter-spacing: 0.28em;
+              text-transform: uppercase;
+            }
+
+            .back {
+              border: 1px solid #fff;
+              background: #fff;
+              color: #000;
+              padding: 12px 16px;
+              font-size: 11px;
+              font-weight: 900;
+              letter-spacing: 0.18em;
+              text-decoration: none;
+              text-transform: uppercase;
+            }
+
+            .back:hover {
+              background: #000;
+              color: #fff;
+            }
+
+            main {
+              max-width: 1600px;
+              margin: 0 auto;
+              padding: 48px 24px 72px;
+            }
+
+            .label {
+              margin-bottom: 24px;
+              color: rgba(255, 255, 255, 0.45);
+              font-size: 11px;
+              letter-spacing: 0.32em;
+              text-transform: uppercase;
+            }
+
+            h1 {
+              max-width: 1200px;
+              font-size: clamp(64px, 14vw, 190px);
+              font-weight: 900;
+              line-height: 0.78;
+              letter-spacing: -0.12em;
+              text-transform: uppercase;
+            }
+
+            .intro {
+              margin-top: 28px;
+              border-top: 1px solid rgba(255, 255, 255, 0.15);
+              border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+              padding: 22px 0;
+              color: rgba(255, 255, 255, 0.65);
+              font-size: 14px;
+              letter-spacing: 0.12em;
+              line-height: 1.8;
+              text-transform: uppercase;
+            }
+
+            .grid {
+              display: grid;
+              grid-template-columns: repeat(2, minmax(0, 1fr));
+              gap: 18px;
+              margin-top: 40px;
+            }
+
+            .image-card {
+              border: 1px solid rgba(255, 255, 255, 0.15);
+              background: #050505;
+            }
+
+            .image-card img {
+              display: block;
+              width: 100%;
+              height: 620px;
+              object-fit: contain;
+              background: #000;
+            }
+
+            .empty-state {
+              margin-top: 40px;
+              border: 1px solid rgba(255, 255, 255, 0.15);
+              padding: 60px 28px;
+            }
+
+            .empty-state p {
+              color: rgba(255, 255, 255, 0.45);
+              font-size: 11px;
+              letter-spacing: 0.32em;
+              text-transform: uppercase;
+            }
+
+            .empty-state h2 {
+              margin-top: 20px;
+              font-size: clamp(42px, 9vw, 120px);
+              font-weight: 900;
+              line-height: 0.85;
+              letter-spacing: -0.08em;
+              text-transform: uppercase;
+            }
+
+            @media (max-width: 800px) {
+              header {
+                padding: 14px 18px;
+              }
+
+              main {
+                padding: 36px 16px 56px;
+              }
+
+              .grid {
+                grid-template-columns: 1fr;
+              }
+
+              .image-card img {
+                height: 460px;
+              }
+            }
+          </style>
+        </head>
+
+        <body>
+          <header>
+            <div class="brand">Warhaul</div>
+            <a class="back" href="javascript:window.close()">Close</a>
+          </header>
+
+          <main>
+            <p class="label">Warhaul Events</p>
+            <h1>${album.name}</h1>
+            <p class="intro">
+              Event album — selected photos from ${album.name}.
+            </p>
+
+            <section class="grid">
+              ${imageGrid}
+            </section>
+          </main>
+        </body>
+      </html>
+    `);
+
+    newPage.document.close();
   };
 
   return (
@@ -566,14 +738,16 @@ export default function WarhaulHomepage() {
           <div className="mt-10 grid grid-cols-[auto_1fr_auto] items-center gap-3 border-y border-black py-6">
             <button
               onClick={previousEventCard}
-              className="flex h-12 w-12 items-center justify-center border border-black bg-white text-black transition hover:bg-black hover:text-white"
+              className="flex h-[420px] w-12 items-center justify-center border border-black bg-white text-black transition hover:bg-black hover:text-white md:h-[560px]"
               aria-label="Previous event"
             >
-              <ChevronLeft className="h-5 w-5" />
+              <span className="-rotate-90 text-[10px] font-black uppercase tracking-[0.22em]">
+                Previous
+              </span>
             </button>
 
             <button
-              onClick={() => openEventAlbum(activeEventCard)}
+              onClick={() => openEventAlbumPage(currentEventCard)}
               className="group relative h-[420px] overflow-hidden border border-black bg-black text-left text-white md:h-[560px]"
             >
               {currentEventCard.images.length > 0 ? (
@@ -603,77 +777,14 @@ export default function WarhaulHomepage() {
 
             <button
               onClick={nextEventCard}
-              className="flex h-12 w-12 items-center justify-center border border-black bg-white text-black transition hover:bg-black hover:text-white"
+              className="flex h-[420px] w-12 items-center justify-center border border-black bg-white text-black transition hover:bg-black hover:text-white md:h-[560px]"
               aria-label="Next event"
             >
-              <ChevronRight className="h-5 w-5" />
+              <span className="rotate-90 text-[10px] font-black uppercase tracking-[0.22em]">
+                Next
+              </span>
             </button>
           </div>
-
-          {currentAlbum && (
-            <div className="mt-10">
-              <div className="mb-5 flex items-center justify-between gap-5 border-b border-black pb-4">
-                <h3 className="text-3xl font-black uppercase tracking-[-0.05em] md:text-5xl">
-                  {currentAlbum.name}
-                </h3>
-
-                <p className="text-[10px] uppercase tracking-[0.24em] text-black/45">
-                  Album
-                </p>
-              </div>
-
-              {currentAlbum.images.length > 0 ? (
-                <>
-                  <div className="grid grid-cols-[auto_1fr_auto] items-center gap-3">
-                    <button
-                      onClick={previousEventImage}
-                      className="flex h-12 w-12 items-center justify-center border border-black bg-white text-black transition hover:bg-black hover:text-white"
-                      aria-label="Previous album image"
-                    >
-                      <ChevronLeft className="h-5 w-5" />
-                    </button>
-
-                    <div className="relative border-y border-black bg-black">
-                      <img
-                        src={currentAlbum.images[activeEventImage]}
-                        alt={`${currentAlbum.name} event ${
-                          activeEventImage + 1
-                        }`}
-                        className="h-[520px] w-full object-contain bg-black md:h-[650px]"
-                      />
-                    </div>
-
-                    <button
-                      onClick={nextEventImage}
-                      className="flex h-12 w-12 items-center justify-center border border-black bg-white text-black transition hover:bg-black hover:text-white"
-                      aria-label="Next album image"
-                    >
-                      <ChevronRight className="h-5 w-5" />
-                    </button>
-                  </div>
-
-                  <p className="mt-4 text-center text-[11px] uppercase tracking-[0.22em] text-black/45">
-                    {currentAlbum.name} — {activeEventImage + 1} /{" "}
-                    {currentAlbum.images.length}
-                  </p>
-                </>
-              ) : (
-                <div className="border border-black bg-black p-8 text-white md:p-12">
-                  <p className="text-[11px] uppercase tracking-[0.28em] text-white/45">
-                    {currentAlbum.name}
-                  </p>
-
-                  <h3 className="mt-4 text-4xl font-black uppercase tracking-[-0.06em] md:text-6xl">
-                    Album Coming Soon
-                  </h3>
-
-                  <p className="mt-5 max-w-2xl text-lg leading-8 text-white/60">
-                    Photos for this event album will be added here soon.
-                  </p>
-                </div>
-              )}
-            </div>
-          )}
         </div>
       </section>
 
