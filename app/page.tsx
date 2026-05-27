@@ -6,8 +6,9 @@ import {
   Camera,
   ChevronLeft,
   ChevronRight,
-  Headphones,
   Mic2,
+  Plus,
+  Minus,
 } from "lucide-react";
 
 const nav = [
@@ -83,26 +84,58 @@ const services = [
   {
     number: "01",
     title: "Photo + Video Production",
-    text:
-      "Photography, videography, music videos, campaign visuals, event recaps, product content, portraits, social clips, and filmed DJ sets.",
+    details: [
+      "Photography",
+      "Videography",
+      "Music Videos",
+      "Campaign Visuals",
+      "Event Recaps",
+      "Product Content",
+      "Portraits",
+      "Social Clips",
+      "Filmed DJ Sets",
+    ],
   },
   {
     number: "02",
     title: "Audio Production + DJ Services",
-    text:
-      "Recording, vocal production, mixing, mastering, DJ set recording, curated mixes, Warhaul Radio-style sets, and sound support.",
+    details: [
+      "Recording",
+      "Vocal Production",
+      "Mixing",
+      "Mastering",
+      "DJ Set Recording",
+      "Curated Mixes",
+      "Warhaul Radio-Style Sets",
+      "Sound Support",
+    ],
   },
   {
     number: "03",
     title: "Events + Culture",
-    text:
-      "Event planning, launch parties, activations, listening sessions, creative showcases, DJ bookings, artist moments, and community experiences.",
+    details: [
+      "Event Planning",
+      "Launch Parties",
+      "Activations",
+      "Listening Sessions",
+      "Creative Showcases",
+      "DJ Bookings",
+      "Artist Moments",
+      "Community Experiences",
+    ],
   },
   {
     number: "04",
     title: "Branding + Marketing Consulting",
-    text:
-      "Brand strategy, rollout planning, campaign direction, social media direction, audience growth, content planning, and promotional strategy.",
+    details: [
+      "Brand Strategy",
+      "Rollout Planning",
+      "Campaign Direction",
+      "Social Media Direction",
+      "Audience Growth",
+      "Content Planning",
+      "Promotional Strategy",
+    ],
   },
 ];
 
@@ -133,6 +166,7 @@ export default function WarhaulHomepage() {
   const [activeAlbum, setActiveAlbum] = useState(2);
   const [activeEventImage, setActiveEventImage] = useState(0);
   const [showAmenities, setShowAmenities] = useState(false);
+  const [openService, setOpenService] = useState<number | null>(null);
 
   const currentAlbum = eventAlbums[activeAlbum];
 
@@ -271,22 +305,15 @@ export default function WarhaulHomepage() {
         </p>
 
         <h2 className="max-w-5xl text-5xl font-black uppercase leading-none tracking-[-0.06em] md:text-7xl">
-          A Multimedia Production House Built For Culture
+          Multimedia Production House
         </h2>
 
         <div className="mt-10 grid gap-5 md:grid-cols-[1.2fr_.8fr]">
           <div className="rounded-[2rem] border border-white/10 bg-white/[0.05] p-8 md:p-10">
             <p className="text-lg leading-8 text-white/68 md:text-xl">
-              Warhaul is a Toronto-based multimedia production company creating
-              work across music, film, photography, audio, events, and cultural
-              programming. We build spaces, visuals, sounds, and experiences for
-              artists, brands, and communities that move culture forward.
-            </p>
-
-            <p className="mt-6 text-lg leading-8 text-white/60">
-              Our vision is to become a home for the next generation of creative
-              talent — a place where ideas are produced, documented, amplified,
-              and shared with purpose.
+              Warhaul is a multimedia creative platform aimed to cultivate the
+              underground by providing Toronto with community geared events,
+              creative spaces and multimedia projects.
             </p>
           </div>
 
@@ -296,12 +323,10 @@ export default function WarhaulHomepage() {
             </p>
 
             <div className="mt-8 space-y-5 text-2xl font-black uppercase leading-none tracking-[-0.04em]">
-              <p>Production</p>
-              <p>Creative Direction</p>
-              <p>Studio Rentals</p>
-              <p>Audio</p>
               <p>Events</p>
-              <p>Culture</p>
+              <p>Creative Spaces</p>
+              <p>Audio & Visual Production Services</p>
+              <p>Consulting</p>
             </div>
           </div>
         </div>
@@ -365,25 +390,18 @@ export default function WarhaulHomepage() {
 
       <section id="services" className="bg-white px-5 py-20 text-black md:px-8 md:py-24">
         <div className="mx-auto max-w-7xl">
-          <div className="mb-12 flex flex-col justify-between gap-6 md:flex-row md:items-end">
-            <div>
-              <p className="mb-3 text-xs uppercase tracking-[0.32em] text-black/45">
-                Services
-              </p>
-
-              <h2 className="text-5xl font-black uppercase leading-none tracking-[-0.06em] md:text-7xl">
-                Creative Services
-              </h2>
-            </div>
-
-            <p className="max-w-xl text-lg leading-8 text-black/55">
-              Full-service creative production for artists, brands, events, and
-              cultural projects.
+          <div className="mb-12">
+            <p className="mb-3 text-xs uppercase tracking-[0.32em] text-black/45">
+              Services
             </p>
+
+            <h2 className="text-5xl font-black uppercase leading-none tracking-[-0.06em] md:text-7xl">
+              Creative Services
+            </h2>
           </div>
 
           <div className="flex gap-4 overflow-x-auto pb-4 md:grid md:grid-cols-2 md:gap-5 md:overflow-visible md:pb-0 lg:grid-cols-4">
-            {services.map((service) => (
+            {services.map((service, index) => (
               <div
                 key={service.title}
                 className="group relative min-w-[82%] overflow-hidden rounded-[2rem] border border-black/10 bg-black p-7 text-white transition duration-300 hover:-translate-y-1 hover:bg-white hover:text-black md:min-w-0 md:p-8"
@@ -396,13 +414,33 @@ export default function WarhaulHomepage() {
                   Warhaul Service
                 </p>
 
-                <h3 className="relative text-3xl font-black uppercase leading-none tracking-[-0.04em]">
-                  {service.title}
-                </h3>
+                <div className="relative flex items-start justify-between gap-5">
+                  <h3 className="text-3xl font-black uppercase leading-none tracking-[-0.04em]">
+                    {service.title}
+                  </h3>
 
-                <p className="relative mt-6 text-lg leading-8 text-white/60 transition group-hover:text-black/60">
-                  {service.text}
-                </p>
+                  <button
+                    onClick={() =>
+                      setOpenService(openService === index ? null : index)
+                    }
+                    className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/20 text-white transition group-hover:border-black/20 group-hover:text-black"
+                    aria-label={`Open ${service.title} details`}
+                  >
+                    {openService === index ? (
+                      <Minus className="h-5 w-5" />
+                    ) : (
+                      <Plus className="h-5 w-5" />
+                    )}
+                  </button>
+                </div>
+
+                {openService === index && (
+                  <div className="relative mt-7 grid gap-3 text-base leading-7 text-white/65 transition group-hover:text-black/60">
+                    {service.details.map((detail) => (
+                      <p key={detail}>{detail}</p>
+                    ))}
+                  </div>
+                )}
               </div>
             ))}
           </div>
@@ -670,8 +708,8 @@ export default function WarhaulHomepage() {
                 Email
               </p>
 
-              <h3 className="mt-5 text-2xl font-black">
-                contactwarhaul@gmail.com
+              <h3 className="mt-5 text-2xl font-black uppercase">
+                CONTACTWARHAUL@GMAIL.COM
               </h3>
             </a>
 
@@ -696,7 +734,9 @@ export default function WarhaulHomepage() {
                 Instagram
               </p>
 
-              <h3 className="mt-5 text-2xl font-black">@WarhaulStudio</h3>
+              <h3 className="mt-5 text-2xl font-black uppercase">
+                @WARHAULSTUDIO
+              </h3>
             </a>
           </div>
         </div>
