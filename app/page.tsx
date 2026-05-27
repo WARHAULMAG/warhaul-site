@@ -161,6 +161,7 @@ export default function WarhaulHomepage() {
   const [activeEventCard, setActiveEventCard] = useState(2);
   const [showAmenities, setShowAmenities] = useState(false);
   const [openService, setOpenService] = useState<number | null>(null);
+  const [showHeroAbout, setShowHeroAbout] = useState(false);
 
   const currentEventCard = eventAlbums[activeEventCard];
   const marqueeLogos = [...placementLogos, ...placementLogos];
@@ -473,15 +474,60 @@ export default function WarhaulHomepage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-[1600px] border-b border-white/30 px-4 pb-12 pt-12 md:px-8 md:pb-16 md:pt-16">
-        <div className="max-w-[1280px]">
+      <section
+        id="about"
+        className="mx-auto max-w-[1600px] border-b border-white/30 px-4 pb-12 pt-12 md:px-8 md:pb-16 md:pt-16"
+      >
+        <div>
           <p className="mb-5 text-[11px] uppercase tracking-[0.38em] text-white/70">
             Toronto Multimedia Production House
           </p>
 
-          <h1 className="text-[24vw] font-black uppercase leading-[0.78] tracking-[-0.12em] md:text-[13vw]">
-            WARHAUL
-          </h1>
+          <div className="grid items-start gap-8 md:grid-cols-[1fr_420px] lg:grid-cols-[1fr_500px]">
+            <div>
+              <h1 className="text-[24vw] font-black uppercase leading-[0.78] tracking-[-0.12em] md:text-[13vw]">
+                WARHAUL
+              </h1>
+            </div>
+
+            <div className="border-y border-white/30 md:mt-2">
+              <button
+                onClick={() => setShowHeroAbout((current) => !current)}
+                className="flex w-full items-center justify-between gap-5 py-5 text-left transition hover:px-4 hover:bg-white hover:text-[#EF3340]"
+              >
+                <span className="text-[11px] font-black uppercase tracking-[0.32em]">
+                  About Warhaul
+                </span>
+
+                <span className="flex h-10 w-10 items-center justify-center border border-current">
+                  {showHeroAbout ? (
+                    <Minus className="h-5 w-5" />
+                  ) : (
+                    <Plus className="h-5 w-5" />
+                  )}
+                </span>
+              </button>
+
+              {showHeroAbout && (
+                <div className="border-t border-white/30 py-6">
+                  <p className="text-lg leading-8 text-white/80">
+                    Warhaul is a multimedia creative platform aimed to cultivate
+                    the underground by providing Toronto with community geared
+                    events, creative spaces and multimedia projects.
+                  </p>
+
+                  <div className="mt-8 divide-y divide-white/25 text-xl font-black uppercase leading-none tracking-[-0.04em]">
+                    <p className="py-4">Events</p>
+                    <p className="py-4">Creative Spaces</p>
+                    <p className="py-4">
+                      Audio & Visual Production Services
+                    </p>
+                    <p className="py-4">Consulting</p>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
 
           <div className="mt-7 grid border-y border-white/30 md:grid-cols-[1fr_auto]">
             <p className="py-5 text-base uppercase leading-7 tracking-[0.08em] text-white/80 md:text-xl md:leading-8">
@@ -767,44 +813,6 @@ export default function WarhaulHomepage() {
           >
             Watch Episodes
           </a>
-        </div>
-      </section>
-
-      <section
-        id="about"
-        className="border-b border-black/10 bg-white px-4 py-16 text-black md:px-8 md:py-20"
-      >
-        <div className="mx-auto max-w-[1600px]">
-          <p className="mb-8 text-[11px] uppercase tracking-[0.32em] text-black/45">
-            About Warhaul
-          </p>
-
-          <h2 className="max-w-6xl text-5xl font-black uppercase leading-[0.88] tracking-[-0.08em] md:text-8xl">
-            Multimedia Production House
-          </h2>
-
-          <div className="mt-10 grid border-y border-black/15 md:grid-cols-[1.2fr_.8fr]">
-            <div className="border-b border-black/15 p-6 md:border-b-0 md:border-r md:p-8">
-              <p className="text-lg leading-8 text-black/68 md:text-2xl md:leading-10">
-                Warhaul is a multimedia creative platform aimed to cultivate the
-                underground by providing Toronto with community geared events,
-                creative spaces and multimedia projects.
-              </p>
-            </div>
-
-            <div className="bg-[#EF3340] p-6 text-white md:p-8">
-              <p className="text-[11px] uppercase tracking-[0.28em] text-white/70">
-                What We Do
-              </p>
-
-              <div className="mt-8 divide-y divide-white/25 text-2xl font-black uppercase leading-none tracking-[-0.04em]">
-                <p className="py-4">Events</p>
-                <p className="py-4">Creative Spaces</p>
-                <p className="py-4">Audio & Visual Production Services</p>
-                <p className="py-4">Consulting</p>
-              </div>
-            </div>
-          </div>
         </div>
       </section>
 
