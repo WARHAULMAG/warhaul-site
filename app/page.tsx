@@ -757,24 +757,82 @@ export default function WarhaulHomepage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-[1600px] border-b border-white/30 bg-[#EF3340] px-4 py-16 text-white md:px-8 md:py-20">
+      <section
+        id="media"
+        className="mx-auto max-w-[1600px] border-b border-white/30 bg-[#EF3340] px-4 py-16 text-white md:px-8 md:py-20"
+      >
         <p className="mb-8 text-[11px] uppercase tracking-[0.32em] text-white/70">
-          Warhaul Radio
+          Warhaul Media
         </p>
 
-        <div className="border-y border-white/30 py-8">
-          <h2 className="text-5xl font-black uppercase leading-[0.88] tracking-[-0.08em] md:text-8xl">
-            Warhaul Radio
-          </h2>
+        <h2 className="text-5xl font-black uppercase leading-[0.88] tracking-[-0.08em] md:text-8xl">
+          Radio / Magazine
+        </h2>
 
-          <a
-            href="https://www.youtube.com/@WarhaulStudio"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-8 inline-flex border border-white bg-white px-7 py-4 text-xs font-black uppercase tracking-[0.18em] text-[#EF3340] transition hover:bg-[#EF3340] hover:text-white"
-          >
-            Watch Episodes
-          </a>
+        <div className="mt-10 border-y border-white/30">
+          <div className="grid md:grid-cols-2">
+            <div className="border-b border-white/30 p-6 md:border-b-0 md:border-r md:p-8">
+              <Mic2 className="mb-8 h-8 w-8" />
+
+              <h3 className="text-3xl font-black uppercase tracking-[-0.05em] md:text-5xl">
+                Warhaul Radio
+              </h3>
+
+              <p className="mt-5 text-lg leading-8 text-white/75">
+                DJ mixes, live event recordings, exclusive sets, interviews,
+                podcast clips, and sonic documentation from Toronto’s creative
+                underground.
+              </p>
+
+              <a
+                href="https://www.youtube.com/@WarhaulStudio"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-8 inline-flex border border-white bg-white px-6 py-4 text-xs font-black uppercase tracking-[0.16em] text-[#EF3340] hover:bg-[#EF3340] hover:text-white"
+              >
+                Watch Episodes
+              </a>
+            </div>
+
+            <div className="min-h-[360px] border-b border-white/30 bg-[#EF3340] md:border-b-0">
+              <div className="flex h-full min-h-[360px] items-center justify-center p-8 text-center">
+                <p className="text-[11px] uppercase tracking-[0.32em] text-white/45">
+                  Radio visuals coming soon
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="grid border-t border-white/30 md:grid-cols-2">
+            <div className="min-h-[360px] border-b border-white/30 bg-[#EF3340] md:border-b-0 md:border-r">
+              <div className="flex h-full min-h-[360px] items-center justify-center p-8 text-center">
+                <p className="text-[11px] uppercase tracking-[0.32em] text-white/45">
+                  Magazine visuals coming soon
+                </p>
+              </div>
+            </div>
+
+            <div className="bg-white p-6 text-black md:p-8">
+              <Camera className="mb-8 h-8 w-8" />
+
+              <h3 className="text-3xl font-black uppercase tracking-[-0.05em] md:text-5xl">
+                Warhaul Magazine
+              </h3>
+
+              <p className="mt-5 text-lg leading-8 text-black/60">
+                Editorials, creative spotlights, campaign stories, visual
+                projects, interviews, event coverage, and cultural documentation
+                from the Warhaul community.
+              </p>
+
+              <a
+                href="mailto:contactwarhaul@gmail.com"
+                className="mt-8 inline-flex border border-[#EF3340] bg-[#EF3340] px-6 py-4 text-xs font-black uppercase tracking-[0.16em] text-white hover:bg-white hover:text-[#EF3340]"
+              >
+                Submit / Collaborate
+              </a>
+            </div>
+          </div>
         </div>
       </section>
 
