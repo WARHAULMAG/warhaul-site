@@ -4,12 +4,16 @@ import React, { useEffect, useState } from "react";
 import { Camera, Mic2, Plus, Minus } from "lucide-react";
 
 const RED = "#EF3340";
+const EMAIL = "contactwarhaul@gmail.com";
+
+const mailTo = (subject: string) =>
+  `mailto:${EMAIL}?subject=${encodeURIComponent(subject)}`;
 
 const nav = [
   ["#services", "services"],
   ["#studio", "studio"],
   ["#events", "events"],
-  ["https://www.youtube.com/@WarhaulStudio", "youtube"],
+  ["#media", "radio/mag"],
   ["#contact", "contact"],
 ];
 
@@ -451,7 +455,7 @@ export default function WarhaulHomepage() {
           </nav>
 
           <a
-            href="mailto:contactwarhaul@gmail.com"
+            href={mailTo("General Booking Inquiry")}
             className="border border-white bg-white px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-[#EF3340] transition hover:bg-[#EF3340] hover:text-white md:px-5 md:py-3"
           >
             Book Now
@@ -565,7 +569,7 @@ export default function WarhaulHomepage() {
 
           <div className="mt-10">
             <a
-              href="mailto:contactwarhaul@gmail.com"
+              href={mailTo("Creative Services Inquiry")}
               className="inline-flex border border-[#EF3340] bg-[#EF3340] px-8 py-4 text-xs font-black uppercase tracking-[0.18em] text-white transition hover:bg-white hover:text-[#EF3340]"
             >
               Contact Us
@@ -601,7 +605,7 @@ export default function WarhaulHomepage() {
               </p>
 
               <a
-                href="mailto:contactwarhaul@gmail.com"
+                href={mailTo("Photo Studio Booking Inquiry")}
                 className="mt-8 inline-flex border border-white bg-white px-6 py-4 text-xs font-black uppercase tracking-[0.16em] text-[#EF3340] hover:bg-[#EF3340] hover:text-white"
               >
                 Book Studio
@@ -639,7 +643,7 @@ export default function WarhaulHomepage() {
               </p>
 
               <a
-                href="mailto:contactwarhaul@gmail.com"
+                href={mailTo("Audio + DJ Studio Booking Inquiry")}
                 className="mt-8 inline-flex border border-[#EF3340] bg-[#EF3340] px-6 py-4 text-xs font-black uppercase tracking-[0.16em] text-white hover:bg-white hover:text-[#EF3340]"
               >
                 Book Audio / DJ
@@ -785,20 +789,22 @@ export default function WarhaulHomepage() {
               </p>
 
               <a
-                href="https://www.youtube.com/@WarhaulStudio"
-                target="_blank"
-                rel="noopener noreferrer"
+                href={mailTo("Warhaul Radio Inquiry")}
                 className="mt-8 inline-flex border border-white bg-white px-6 py-4 text-xs font-black uppercase tracking-[0.16em] text-[#EF3340] hover:bg-[#EF3340] hover:text-white"
               >
-                Watch Episodes
+                Radio Inquiries
               </a>
             </div>
 
             <div className="min-h-[360px] border-b border-white/30 bg-[#EF3340] md:border-b-0">
-              <div className="flex h-full min-h-[360px] items-center justify-center p-8 text-center">
-                <p className="text-[11px] uppercase tracking-[0.32em] text-white/45">
-                  Radio visuals coming soon
-                </p>
+              <div className="aspect-video h-full min-h-[360px] w-full overflow-hidden border-l-0 border-white/30 md:border-l">
+                <iframe
+                  className="h-full w-full"
+                  src="https://www.youtube.com/embed/PcCkx5QIt6U?autoplay=1&mute=1&loop=1&playlist=PcCkx5QIt6U&controls=1&playsinline=1&rel=0"
+                  title="Warhaul Radio"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                />
               </div>
             </div>
           </div>
@@ -819,18 +825,9 @@ export default function WarhaulHomepage() {
                 Warhaul Magazine
               </h3>
 
-              <p className="mt-5 text-lg leading-8 text-black/60">
-                Editorials, creative spotlights, campaign stories, visual
-                projects, interviews, event coverage, and cultural documentation
-                from the Warhaul community.
+              <p className="mt-5 text-4xl font-black uppercase leading-none tracking-[-0.06em] md:text-6xl">
+                Coming Soon
               </p>
-
-              <a
-                href="mailto:contactwarhaul@gmail.com"
-                className="mt-8 inline-flex border border-[#EF3340] bg-[#EF3340] px-6 py-4 text-xs font-black uppercase tracking-[0.16em] text-white hover:bg-white hover:text-[#EF3340]"
-              >
-                Submit / Collaborate
-              </a>
             </div>
           </div>
         </div>
@@ -844,7 +841,14 @@ export default function WarhaulHomepage() {
 
           <div className="flex flex-col gap-3 md:flex-row md:items-center md:gap-8">
             <a
-              href="mailto:contactwarhaul@gmail.com"
+              href={mailTo("General Questions")}
+              className="whitespace-nowrap border border-white bg-white px-4 py-3 text-[clamp(11px,2.6vw,15px)] font-black uppercase tracking-[0.02em] text-[#EF3340] hover:bg-[#EF3340] hover:text-white"
+            >
+              General Questions
+            </a>
+
+            <a
+              href={`mailto:${EMAIL}`}
               className="whitespace-nowrap text-[clamp(11px,2.6vw,15px)] font-black uppercase tracking-[0.02em] hover:opacity-70"
             >
               CONTACTWARHAUL@GMAIL.COM
