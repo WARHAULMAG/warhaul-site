@@ -3,11 +3,13 @@
 import React, { useEffect, useState } from "react";
 import { ArrowUpRight, Camera, Mic2, Plus, Minus } from "lucide-react";
 
+const RED = "#EF3340";
+
 const nav = [
-  ["#about", "about"],
   ["#services", "services"],
   ["#studio", "studio"],
   ["#events", "events"],
+  ["#about", "about"],
   ["https://www.youtube.com/@WarhaulStudio", "youtube"],
   ["#contact", "contact"],
 ];
@@ -156,22 +158,12 @@ const amenities = [
 
 export default function WarhaulHomepage() {
   const [activeStudioImage, setActiveStudioImage] = useState(0);
-  const [activeLogo, setActiveLogo] = useState(0);
   const [activeEventCard, setActiveEventCard] = useState(2);
   const [showAmenities, setShowAmenities] = useState(false);
   const [openService, setOpenService] = useState<number | null>(null);
 
   const currentEventCard = eventAlbums[activeEventCard];
-
-  useEffect(() => {
-    const timer = window.setInterval(() => {
-      setActiveLogo((current) =>
-        current === placementLogos.length - 1 ? 0 : current + 1
-      );
-    }, 2200);
-
-    return () => window.clearInterval(timer);
-  }, []);
+  const marqueeLogos = [...placementLogos, ...placementLogos];
 
   useEffect(() => {
     const timer = window.setInterval(() => {
@@ -233,7 +225,7 @@ export default function WarhaulHomepage() {
             }
 
             body {
-              background: #000;
+              background: ${RED};
               color: #fff;
               font-family: Arial, Helvetica, sans-serif;
             }
@@ -245,8 +237,8 @@ export default function WarhaulHomepage() {
               display: flex;
               align-items: center;
               justify-content: space-between;
-              border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-              background: rgba(0, 0, 0, 0.92);
+              border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+              background: ${RED};
               padding: 18px 28px;
             }
 
@@ -260,7 +252,7 @@ export default function WarhaulHomepage() {
             .back {
               border: 1px solid #fff;
               background: #fff;
-              color: #000;
+              color: ${RED};
               padding: 12px 16px;
               font-size: 11px;
               font-weight: 900;
@@ -270,7 +262,7 @@ export default function WarhaulHomepage() {
             }
 
             .back:hover {
-              background: #000;
+              background: ${RED};
               color: #fff;
             }
 
@@ -282,7 +274,7 @@ export default function WarhaulHomepage() {
 
             .label {
               margin-bottom: 24px;
-              color: rgba(255, 255, 255, 0.45);
+              color: rgba(255, 255, 255, 0.72);
               font-size: 11px;
               letter-spacing: 0.32em;
               text-transform: uppercase;
@@ -299,10 +291,10 @@ export default function WarhaulHomepage() {
 
             .intro {
               margin-top: 28px;
-              border-top: 1px solid rgba(255, 255, 255, 0.15);
-              border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+              border-top: 1px solid rgba(255, 255, 255, 0.35);
+              border-bottom: 1px solid rgba(255, 255, 255, 0.35);
               padding: 22px 0;
-              color: rgba(255, 255, 255, 0.65);
+              color: rgba(255, 255, 255, 0.78);
               font-size: 14px;
               letter-spacing: 0.12em;
               line-height: 1.8;
@@ -317,8 +309,8 @@ export default function WarhaulHomepage() {
             }
 
             .image-card {
-              border: 1px solid rgba(255, 255, 255, 0.15);
-              background: #050505;
+              border: 1px solid rgba(255, 255, 255, 0.35);
+              background: ${RED};
             }
 
             .image-card img {
@@ -326,17 +318,17 @@ export default function WarhaulHomepage() {
               width: 100%;
               height: 620px;
               object-fit: contain;
-              background: #000;
+              background: ${RED};
             }
 
             .empty-state {
               margin-top: 40px;
-              border: 1px solid rgba(255, 255, 255, 0.15);
+              border: 1px solid rgba(255, 255, 255, 0.35);
               padding: 60px 28px;
             }
 
             .empty-state p {
-              color: rgba(255, 255, 255, 0.45);
+              color: rgba(255, 255, 255, 0.72);
               font-size: 11px;
               letter-spacing: 0.32em;
               text-transform: uppercase;
@@ -396,8 +388,27 @@ export default function WarhaulHomepage() {
   };
 
   return (
-    <main className="min-h-screen bg-black text-white">
-      <header className="sticky top-0 z-50 border-b border-white/15 bg-black/90 backdrop-blur-xl">
+    <main className="min-h-screen bg-[#EF3340] text-white">
+      <style jsx global>{`
+        @keyframes logo-marquee {
+          from {
+            transform: translateX(0);
+          }
+          to {
+            transform: translateX(-50%);
+          }
+        }
+
+        .logo-marquee {
+          animation: logo-marquee 26s linear infinite;
+        }
+
+        .logo-marquee:hover {
+          animation-play-state: paused;
+        }
+      `}</style>
+
+      <header className="sticky top-0 z-50 border-b border-white/30 bg-[#EF3340]/95 backdrop-blur-xl">
         <div className="mx-auto flex max-w-[1600px] items-center justify-between px-4 py-3 md:px-8">
           <a href="#" className="flex items-center">
             <img
@@ -414,7 +425,7 @@ export default function WarhaulHomepage() {
                 href={link}
                 target={link.startsWith("http") ? "_blank" : "_self"}
                 rel="noopener noreferrer"
-                className="text-[11px] uppercase tracking-[0.24em] text-white/60 transition hover:text-white"
+                className="text-[11px] uppercase tracking-[0.24em] text-white/70 transition hover:text-white"
               >
                 {label}
               </a>
@@ -423,7 +434,7 @@ export default function WarhaulHomepage() {
 
           <a
             href="mailto:contactwarhaul@gmail.com"
-            className="border border-white bg-white px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-black transition hover:bg-black hover:text-white md:px-5 md:py-3"
+            className="border border-white bg-white px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-[#EF3340] transition hover:bg-[#EF3340] hover:text-white md:px-5 md:py-3"
           >
             Book Now
           </a>
@@ -432,30 +443,39 @@ export default function WarhaulHomepage() {
 
       <section
         id="placements"
-        className="border-b border-black bg-white text-black"
+        className="overflow-hidden border-b border-white/30 bg-[#EF3340] text-white"
       >
-        <div className="mx-auto grid max-w-[1600px] items-center gap-4 px-4 py-5 md:grid-cols-[0.2fr_1fr_0.25fr] md:px-8">
-          <p className="text-center text-[10px] font-black uppercase tracking-[0.32em] text-black/45 md:text-left">
+        <div className="mx-auto flex max-w-[1600px] items-center gap-8 px-4 py-5 md:px-8">
+          <p className="shrink-0 text-[10px] font-black uppercase tracking-[0.32em] text-white/70">
             Trusted By
           </p>
 
-          <div className="flex h-20 w-full items-center justify-center md:h-24">
-            <img
-              src={placementLogos[activeLogo]}
-              alt="Warhaul placement logo"
-              className="max-h-14 w-full object-contain grayscale md:max-h-16"
-            />
+          <div className="relative flex-1 overflow-hidden">
+            <div className="logo-marquee flex w-max items-center gap-16">
+              {marqueeLogos.map((logo, index) => (
+                <div
+                  key={`${logo}-${index}`}
+                  className="flex h-20 w-44 shrink-0 items-center justify-center"
+                >
+                  <img
+                    src={logo}
+                    alt="Warhaul placement logo"
+                    className="max-h-14 w-full object-contain grayscale contrast-125 mix-blend-multiply"
+                  />
+                </div>
+              ))}
+            </div>
           </div>
 
-          <p className="hidden text-right text-[10px] uppercase tracking-[0.24em] text-black/40 md:block">
+          <p className="hidden shrink-0 text-right text-[10px] uppercase tracking-[0.24em] text-white/65 md:block">
             Selected Placements
           </p>
         </div>
       </section>
 
-      <section className="mx-auto max-w-[1600px] border-b border-white/15 px-4 pb-12 pt-12 md:px-8 md:pb-16 md:pt-16">
+      <section className="mx-auto max-w-[1600px] border-b border-white/30 px-4 pb-12 pt-12 md:px-8 md:pb-16 md:pt-16">
         <div className="max-w-[1280px]">
-          <p className="mb-5 text-[11px] uppercase tracking-[0.38em] text-white/55">
+          <p className="mb-5 text-[11px] uppercase tracking-[0.38em] text-white/70">
             Toronto Multimedia Production House
           </p>
 
@@ -463,77 +483,18 @@ export default function WarhaulHomepage() {
             WARHAUL
           </h1>
 
-          <div className="mt-7 grid border-y border-white/15 md:grid-cols-[1fr_auto]">
-            <p className="py-5 text-base uppercase leading-7 tracking-[0.08em] text-white/70 md:text-xl md:leading-8">
+          <div className="mt-7 grid border-y border-white/30 md:grid-cols-[1fr_auto]">
+            <p className="py-5 text-base uppercase leading-7 tracking-[0.08em] text-white/80 md:text-xl md:leading-8">
               Multimedia Production House • Studios • Events • Culture
             </p>
 
-            <div className="border-t border-white/15 py-5 md:border-l md:border-t-0 md:px-8">
+            <div className="border-t border-white/30 py-5 md:border-l md:border-t-0 md:px-8">
               <a
                 href="mailto:contactwarhaul@gmail.com"
-                className="inline-flex items-center border border-white bg-white px-6 py-4 text-xs font-black uppercase tracking-[0.18em] text-black transition hover:bg-black hover:text-white"
+                className="inline-flex items-center border border-white bg-white px-6 py-4 text-xs font-black uppercase tracking-[0.18em] text-[#EF3340] transition hover:bg-[#EF3340] hover:text-white"
               >
                 Work With Us <ArrowUpRight className="ml-2 h-4 w-4" />
               </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="border-b border-white/15 bg-white text-black">
-        <div className="mx-auto grid max-w-[1600px] grid-cols-2 border-x border-black/10 text-center md:grid-cols-4">
-          {[
-            ["Multimedia", "Production House"],
-            ["Photo + Video", "Creative Production"],
-            ["Audio + DJ", "Studio Services"],
-            ["Events", "Culture Platform"],
-          ].map(([big, small]) => (
-            <div
-              key={big}
-              className="border-b border-r border-black/10 px-4 py-6 md:border-b-0"
-            >
-              <p className="text-xl font-black uppercase tracking-[-0.05em] md:text-4xl">
-                {big}
-              </p>
-              <p className="mt-2 text-[10px] uppercase tracking-[0.24em] text-black/55">
-                {small}
-              </p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section
-        id="about"
-        className="mx-auto max-w-[1600px] border-b border-white/15 px-4 py-16 md:px-8 md:py-20"
-      >
-        <p className="mb-8 text-[11px] uppercase tracking-[0.32em] text-white/45">
-          About Warhaul
-        </p>
-
-        <h2 className="max-w-6xl text-5xl font-black uppercase leading-[0.88] tracking-[-0.08em] md:text-8xl">
-          Multimedia Production House
-        </h2>
-
-        <div className="mt-10 grid border-y border-white/15 md:grid-cols-[1.2fr_.8fr]">
-          <div className="border-b border-white/15 p-6 md:border-b-0 md:border-r md:p-8">
-            <p className="text-lg leading-8 text-white/68 md:text-2xl md:leading-10">
-              Warhaul is a multimedia creative platform aimed to cultivate the
-              underground by providing Toronto with community geared events,
-              creative spaces and multimedia projects.
-            </p>
-          </div>
-
-          <div className="bg-white p-6 text-black md:p-8">
-            <p className="text-[11px] uppercase tracking-[0.28em] text-black/45">
-              What We Do
-            </p>
-
-            <div className="mt-8 divide-y divide-black/15 text-2xl font-black uppercase leading-none tracking-[-0.04em]">
-              <p className="py-4">Events</p>
-              <p className="py-4">Creative Spaces</p>
-              <p className="py-4">Audio & Visual Production Services</p>
-              <p className="py-4">Consulting</p>
             </div>
           </div>
         </div>
@@ -559,7 +520,7 @@ export default function WarhaulHomepage() {
                   onClick={() =>
                     setOpenService(openService === index ? null : index)
                   }
-                  className="grid w-full grid-cols-[0.15fr_1fr_auto] items-center gap-4 py-6 text-left transition hover:bg-black hover:px-4 hover:text-white md:py-8"
+                  className="grid w-full grid-cols-[0.15fr_1fr_auto] items-center gap-4 py-6 text-left transition hover:bg-[#EF3340] hover:px-4 hover:text-white md:py-8"
                 >
                   <span className="text-xs font-black uppercase tracking-[0.24em]">
                     {service.number}
@@ -579,11 +540,11 @@ export default function WarhaulHomepage() {
                 </button>
 
                 {openService === index && (
-                  <div className="grid gap-3 border-t border-black/10 bg-black px-5 py-6 text-white md:grid-cols-3 md:px-8">
+                  <div className="grid gap-3 border-t border-black/10 bg-[#EF3340] px-5 py-6 text-white md:grid-cols-3 md:px-8">
                     {service.details.map((detail) => (
                       <p
                         key={detail}
-                        className="border-b border-white/10 py-3 text-sm uppercase tracking-[0.12em] text-white/70"
+                        className="border-b border-white/20 py-3 text-sm uppercase tracking-[0.12em] text-white/80"
                       >
                         {detail}
                       </p>
@@ -597,7 +558,7 @@ export default function WarhaulHomepage() {
           <div className="mt-10">
             <a
               href="mailto:contactwarhaul@gmail.com"
-              className="inline-flex border border-black bg-black px-8 py-4 text-xs font-black uppercase tracking-[0.18em] text-white transition hover:bg-white hover:text-black"
+              className="inline-flex border border-[#EF3340] bg-[#EF3340] px-8 py-4 text-xs font-black uppercase tracking-[0.18em] text-white transition hover:bg-white hover:text-[#EF3340]"
             >
               Contact Us
             </a>
@@ -607,9 +568,9 @@ export default function WarhaulHomepage() {
 
       <section
         id="studio"
-        className="mx-auto max-w-[1600px] border-b border-white/15 px-4 py-16 md:px-8 md:py-20"
+        className="mx-auto max-w-[1600px] border-b border-white/30 bg-[#EF3340] px-4 py-16 text-white md:px-8 md:py-20"
       >
-        <p className="mb-8 text-[11px] uppercase tracking-[0.32em] text-white/45">
+        <p className="mb-8 text-[11px] uppercase tracking-[0.32em] text-white/70">
           Book Warhaul
         </p>
 
@@ -617,41 +578,41 @@ export default function WarhaulHomepage() {
           Studio Rentals
         </h2>
 
-        <div className="mt-10 border-y border-white/15">
+        <div className="mt-10 border-y border-white/30">
           <div className="grid md:grid-cols-2">
-            <div className="border-b border-white/15 p-6 md:border-b-0 md:border-r md:p-8">
+            <div className="border-b border-white/30 p-6 md:border-b-0 md:border-r md:p-8">
               <Camera className="mb-8 h-8 w-8" />
 
               <h3 className="text-3xl font-black uppercase tracking-[-0.05em] md:text-5xl">
                 Photo Studio
               </h3>
 
-              <p className="mt-5 text-lg leading-8 text-white/60">
+              <p className="mt-5 text-lg leading-8 text-white/75">
                 Cyclorama wall, open layout, lighting gear, dressing area,
                 parking, and room to build the set.
               </p>
 
               <a
                 href="mailto:contactwarhaul@gmail.com"
-                className="mt-8 inline-flex border border-white bg-white px-6 py-4 text-xs font-black uppercase tracking-[0.16em] text-black hover:bg-black hover:text-white"
+                className="mt-8 inline-flex border border-white bg-white px-6 py-4 text-xs font-black uppercase tracking-[0.16em] text-[#EF3340] hover:bg-[#EF3340] hover:text-white"
               >
                 Book Studio
               </a>
             </div>
 
-            <div className="bg-black">
+            <div className="bg-[#EF3340]">
               <img
                 src={studioImages[activeStudioImage]}
                 alt="Warhaul photo studio"
-                className="h-[420px] w-full object-contain bg-black md:h-full"
+                className="h-[420px] w-full object-contain bg-[#EF3340] md:h-full"
               />
             </div>
           </div>
 
-          <div className="grid border-t border-white/15 md:grid-cols-2">
-            <div className="min-h-[360px] border-b border-white/15 bg-black md:border-b-0 md:border-r">
+          <div className="grid border-t border-white/30 md:grid-cols-2">
+            <div className="min-h-[360px] border-b border-white/30 bg-[#EF3340] md:border-b-0 md:border-r">
               <div className="flex h-full min-h-[360px] items-center justify-center p-8 text-center">
-                <p className="text-[11px] uppercase tracking-[0.32em] text-white/25">
+                <p className="text-[11px] uppercase tracking-[0.32em] text-white/45">
                   Audio / DJ visuals coming soon
                 </p>
               </div>
@@ -671,7 +632,7 @@ export default function WarhaulHomepage() {
 
               <a
                 href="mailto:contactwarhaul@gmail.com"
-                className="mt-8 inline-flex border border-black bg-black px-6 py-4 text-xs font-black uppercase tracking-[0.16em] text-white hover:bg-white hover:text-black"
+                className="mt-8 inline-flex border border-[#EF3340] bg-[#EF3340] px-6 py-4 text-xs font-black uppercase tracking-[0.16em] text-white hover:bg-white hover:text-[#EF3340]"
               >
                 Book Audio / DJ
               </a>
@@ -681,29 +642,29 @@ export default function WarhaulHomepage() {
 
         <button
           onClick={() => setShowAmenities((current) => !current)}
-          className="mt-8 flex w-full items-center justify-between border border-white/15 px-6 py-6 text-left transition hover:bg-white hover:text-black"
+          className="mt-8 flex w-full items-center justify-between border border-white/30 px-6 py-6 text-left transition hover:bg-white hover:text-[#EF3340]"
         >
           <span className="text-2xl font-black uppercase tracking-[-0.04em]">
             Amenities & Gear
           </span>
 
-          <span className="text-xs uppercase tracking-[0.22em] opacity-60">
+          <span className="text-xs uppercase tracking-[0.22em] opacity-70">
             {showAmenities ? "Hide" : "View"}
           </span>
         </button>
 
         {showAmenities && (
-          <div className="mt-5 grid border border-white/15 md:grid-cols-3">
+          <div className="mt-5 grid border border-white/30 md:grid-cols-3">
             {amenities.map((group) => (
               <div
                 key={group.title}
-                className="border-b border-white/15 p-6 md:border-b-0 md:border-r md:p-8"
+                className="border-b border-white/30 p-6 md:border-b-0 md:border-r md:p-8"
               >
                 <h3 className="text-3xl font-black uppercase tracking-[-0.05em]">
                   {group.title}
                 </h3>
 
-                <div className="mt-8 divide-y divide-white/10 text-lg text-white/65">
+                <div className="mt-8 divide-y divide-white/20 text-lg text-white/75">
                   {group.items.map((item) => (
                     <p key={item} className="py-3">
                       {item}
@@ -735,10 +696,10 @@ export default function WarhaulHomepage() {
             forward.
           </p>
 
-          <div className="mt-10 grid grid-cols-[auto_1fr_auto] items-center gap-3 border-y border-black py-6">
+          <div className="mt-10 grid grid-cols-[auto_1fr_auto] items-center gap-3 border-y border-[#EF3340] py-6">
             <button
               onClick={previousEventCard}
-              className="flex h-[420px] w-12 items-center justify-center border border-black bg-white text-black transition hover:bg-black hover:text-white md:h-[560px]"
+              className="flex h-[420px] w-12 items-center justify-center border border-[#EF3340] bg-white text-[#EF3340] transition hover:bg-[#EF3340] hover:text-white md:h-[560px]"
               aria-label="Previous event"
             >
               <span className="-rotate-90 text-[10px] font-black uppercase tracking-[0.22em]">
@@ -748,36 +709,36 @@ export default function WarhaulHomepage() {
 
             <button
               onClick={() => openEventAlbumPage(currentEventCard)}
-              className="group relative h-[420px] overflow-hidden border border-black bg-black text-left text-white md:h-[560px]"
+              className="group relative h-[420px] overflow-hidden border border-[#EF3340] bg-[#EF3340] text-left text-white md:h-[560px]"
             >
               {currentEventCard.images.length > 0 ? (
                 <img
                   src={currentEventCard.images[0]}
                   alt={currentEventCard.name}
-                  className="h-full w-full object-cover opacity-75 transition duration-500 group-hover:scale-105 group-hover:opacity-55"
+                  className="h-full w-full object-cover opacity-80 transition duration-500 group-hover:scale-105 group-hover:opacity-55"
                 />
               ) : (
-                <div className="flex h-full w-full items-center justify-center bg-black">
-                  <p className="text-[11px] uppercase tracking-[0.32em] text-white/30">
+                <div className="flex h-full w-full items-center justify-center bg-[#EF3340]">
+                  <p className="text-[11px] uppercase tracking-[0.32em] text-white/55">
                     Images Coming Soon
                   </p>
                 </div>
               )}
 
-              <div className="absolute inset-0 flex items-center justify-center bg-black/25 p-6">
+              <div className="absolute inset-0 flex items-center justify-center bg-[#EF3340]/25 p-6">
                 <h3 className="text-center text-5xl font-black uppercase leading-[0.85] tracking-[-0.08em] md:text-8xl">
                   {currentEventCard.name}
                 </h3>
               </div>
 
-              <div className="absolute bottom-5 left-5 border border-white bg-white px-4 py-3 text-[10px] font-black uppercase tracking-[0.18em] text-black">
+              <div className="absolute bottom-5 left-5 border border-white bg-white px-4 py-3 text-[10px] font-black uppercase tracking-[0.18em] text-[#EF3340]">
                 Open Album
               </div>
             </button>
 
             <button
               onClick={nextEventCard}
-              className="flex h-[420px] w-12 items-center justify-center border border-black bg-white text-black transition hover:bg-black hover:text-white md:h-[560px]"
+              className="flex h-[420px] w-12 items-center justify-center border border-[#EF3340] bg-white text-[#EF3340] transition hover:bg-[#EF3340] hover:text-white md:h-[560px]"
               aria-label="Next event"
             >
               <span className="rotate-90 text-[10px] font-black uppercase tracking-[0.22em]">
@@ -788,12 +749,12 @@ export default function WarhaulHomepage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-[1600px] border-b border-white/15 px-4 py-16 md:px-8 md:py-20">
-        <p className="mb-8 text-[11px] uppercase tracking-[0.32em] text-white/45">
+      <section className="mx-auto max-w-[1600px] border-b border-white/30 bg-[#EF3340] px-4 py-16 text-white md:px-8 md:py-20">
+        <p className="mb-8 text-[11px] uppercase tracking-[0.32em] text-white/70">
           Warhaul Radio
         </p>
 
-        <div className="border-y border-white/15 py-8">
+        <div className="border-y border-white/30 py-8">
           <h2 className="text-5xl font-black uppercase leading-[0.88] tracking-[-0.08em] md:text-8xl">
             Warhaul Radio
           </h2>
@@ -802,30 +763,68 @@ export default function WarhaulHomepage() {
             href="https://www.youtube.com/@WarhaulStudio"
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-8 inline-flex border border-white bg-white px-7 py-4 text-xs font-black uppercase tracking-[0.18em] text-black transition hover:bg-black hover:text-white"
+            className="mt-8 inline-flex border border-white bg-white px-7 py-4 text-xs font-black uppercase tracking-[0.18em] text-[#EF3340] transition hover:bg-[#EF3340] hover:text-white"
           >
             Watch Episodes
           </a>
         </div>
       </section>
 
-      <section id="contact" className="border-t border-white/15 bg-white text-black">
+      <section
+        id="about"
+        className="border-b border-black/10 bg-white px-4 py-16 text-black md:px-8 md:py-20"
+      >
+        <div className="mx-auto max-w-[1600px]">
+          <p className="mb-8 text-[11px] uppercase tracking-[0.32em] text-black/45">
+            About Warhaul
+          </p>
+
+          <h2 className="max-w-6xl text-5xl font-black uppercase leading-[0.88] tracking-[-0.08em] md:text-8xl">
+            Multimedia Production House
+          </h2>
+
+          <div className="mt-10 grid border-y border-black/15 md:grid-cols-[1.2fr_.8fr]">
+            <div className="border-b border-black/15 p-6 md:border-b-0 md:border-r md:p-8">
+              <p className="text-lg leading-8 text-black/68 md:text-2xl md:leading-10">
+                Warhaul is a multimedia creative platform aimed to cultivate the
+                underground by providing Toronto with community geared events,
+                creative spaces and multimedia projects.
+              </p>
+            </div>
+
+            <div className="bg-[#EF3340] p-6 text-white md:p-8">
+              <p className="text-[11px] uppercase tracking-[0.28em] text-white/70">
+                What We Do
+              </p>
+
+              <div className="mt-8 divide-y divide-white/25 text-2xl font-black uppercase leading-none tracking-[-0.04em]">
+                <p className="py-4">Events</p>
+                <p className="py-4">Creative Spaces</p>
+                <p className="py-4">Audio & Visual Production Services</p>
+                <p className="py-4">Consulting</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" className="border-t border-white/30 bg-[#EF3340] text-white">
         <div className="mx-auto flex max-w-[1600px] flex-col gap-4 px-4 py-6 md:flex-row md:items-center md:justify-between md:px-8">
-          <p className="text-[11px] uppercase tracking-[0.32em] text-black/45">
+          <p className="text-[11px] uppercase tracking-[0.32em] text-white/70">
             Contact
           </p>
 
           <div className="flex flex-col gap-3 md:flex-row md:items-center md:gap-8">
             <a
               href="mailto:contactwarhaul@gmail.com"
-              className="whitespace-nowrap text-[clamp(11px,2.6vw,15px)] font-black uppercase tracking-[0.02em] hover:opacity-60"
+              className="whitespace-nowrap text-[clamp(11px,2.6vw,15px)] font-black uppercase tracking-[0.02em] hover:opacity-70"
             >
               CONTACTWARHAUL@GMAIL.COM
             </a>
 
             <a
               href="tel:6477948882"
-              className="whitespace-nowrap text-[clamp(11px,2.6vw,15px)] font-black uppercase tracking-[0.02em] hover:opacity-60"
+              className="whitespace-nowrap text-[clamp(11px,2.6vw,15px)] font-black uppercase tracking-[0.02em] hover:opacity-70"
             >
               647-794-8882
             </a>
@@ -834,7 +833,7 @@ export default function WarhaulHomepage() {
               href="https://www.instagram.com/warhaulstudio"
               target="_blank"
               rel="noopener noreferrer"
-              className="whitespace-nowrap text-[clamp(11px,2.6vw,15px)] font-black uppercase tracking-[0.02em] hover:opacity-60"
+              className="whitespace-nowrap text-[clamp(11px,2.6vw,15px)] font-black uppercase tracking-[0.02em] hover:opacity-70"
             >
               @WARHAULSTUDIO
             </a>
