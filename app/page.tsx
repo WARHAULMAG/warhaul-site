@@ -409,24 +409,6 @@ export default function WarhaulHomepage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-[1600px] border-b border-white/15 px-4 py-16 md:px-8 md:py-20">
-        <p className="mb-8 text-[11px] uppercase tracking-[0.32em] text-white/45">
-          Studio Gallery
-        </p>
-
-        <h2 className="text-5xl font-black uppercase leading-[0.88] tracking-[-0.08em] md:text-8xl">
-          Inside Warhaul
-        </h2>
-
-        <div className="relative mt-10 border-y border-white/15 bg-black">
-          <img
-            src={studioImages[activeStudioImage]}
-            alt="Warhaul studio"
-            className="h-[420px] w-full object-contain bg-black md:h-[620px]"
-          />
-        </div>
-      </section>
-
       <section
         id="studio"
         className="mx-auto max-w-[1600px] border-b border-white/15 px-4 py-16 md:px-8 md:py-20"
@@ -439,45 +421,65 @@ export default function WarhaulHomepage() {
           Studio Rentals
         </h2>
 
-        <div className="mt-10 grid border-y border-white/15 md:grid-cols-2">
-          <div className="border-b border-white/15 p-6 md:border-b-0 md:border-r md:p-8">
-            <Camera className="mb-8 h-8 w-8" />
+        <div className="mt-10 border-y border-white/15">
+          <div className="grid md:grid-cols-2">
+            <div className="border-b border-white/15 p-6 md:border-b-0 md:border-r md:p-8">
+              <Camera className="mb-8 h-8 w-8" />
 
-            <h3 className="text-3xl font-black uppercase tracking-[-0.05em] md:text-5xl">
-              Photo Studio
-            </h3>
+              <h3 className="text-3xl font-black uppercase tracking-[-0.05em] md:text-5xl">
+                Photo Studio
+              </h3>
 
-            <p className="mt-5 text-lg leading-8 text-white/60">
-              Cyclorama wall, open layout, lighting gear, dressing area,
-              parking, and room to build the set.
-            </p>
+              <p className="mt-5 text-lg leading-8 text-white/60">
+                Cyclorama wall, open layout, lighting gear, dressing area,
+                parking, and room to build the set.
+              </p>
 
-            <a
-              href="mailto:contactwarhaul@gmail.com"
-              className="mt-8 inline-flex border border-white bg-white px-6 py-4 text-xs font-black uppercase tracking-[0.16em] text-black hover:bg-black hover:text-white"
-            >
-              Book Studio
-            </a>
+              <a
+                href="mailto:contactwarhaul@gmail.com"
+                className="mt-8 inline-flex border border-white bg-white px-6 py-4 text-xs font-black uppercase tracking-[0.16em] text-black hover:bg-black hover:text-white"
+              >
+                Book Studio
+              </a>
+            </div>
+
+            <div className="bg-black">
+              <img
+                src={studioImages[activeStudioImage]}
+                alt="Warhaul photo studio"
+                className="h-[420px] w-full object-contain bg-black md:h-full"
+              />
+            </div>
           </div>
 
-          <div className="bg-white p-6 text-black md:p-8">
-            <Mic2 className="mb-8 h-8 w-8" />
+          <div className="grid border-t border-white/15 md:grid-cols-2">
+            <div className="min-h-[360px] border-b border-white/15 bg-black md:border-b-0 md:border-r">
+              <div className="flex h-full min-h-[360px] items-center justify-center p-8 text-center">
+                <p className="text-[11px] uppercase tracking-[0.32em] text-white/25">
+                  Audio / DJ visuals coming soon
+                </p>
+              </div>
+            </div>
 
-            <h3 className="text-3xl font-black uppercase tracking-[-0.05em] md:text-5xl">
-              Audio + DJ Studio
-            </h3>
+            <div className="bg-white p-6 text-black md:p-8">
+              <Mic2 className="mb-8 h-8 w-8" />
 
-            <p className="mt-5 text-lg leading-8 text-black/60">
-              Recording, vocal production, mixing, mastering, DJ practice,
-              filmed DJ sets, and content creation.
-            </p>
+              <h3 className="text-3xl font-black uppercase tracking-[-0.05em] md:text-5xl">
+                Audio + DJ Studio
+              </h3>
 
-            <a
-              href="mailto:contactwarhaul@gmail.com"
-              className="mt-8 inline-flex border border-black bg-black px-6 py-4 text-xs font-black uppercase tracking-[0.16em] text-white hover:bg-white hover:text-black"
-            >
-              Book Audio / DJ
-            </a>
+              <p className="mt-5 text-lg leading-8 text-black/60">
+                Recording, vocal production, mixing, mastering, DJ practice,
+                filmed DJ sets, and content creation.
+              </p>
+
+              <a
+                href="mailto:contactwarhaul@gmail.com"
+                className="mt-8 inline-flex border border-black bg-black px-6 py-4 text-xs font-black uppercase tracking-[0.16em] text-white hover:bg-white hover:text-black"
+              >
+                Book Audio / DJ
+              </a>
+            </div>
           </div>
         </div>
 
