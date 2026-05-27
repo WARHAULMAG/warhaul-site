@@ -10,9 +10,9 @@ const mailTo = (subject: string) =>
   `mailto:${EMAIL}?subject=${encodeURIComponent(subject)}`;
 
 const nav = [
-  ["#media", "RADIO + MAG"],
-  ["#studio", "STUDIO"],
+  ["#media", "PRESS"],
   ["#services", "SERVICE"],
+  ["#studio", "STUDIO"],
   ["#events", "EVENT"],
   ["#contact", "CONTACT"],
 ];
@@ -250,17 +250,10 @@ export default function WarhaulHomepage() {
             }
 
             body {
+              background: ${RED};
               color: #fff;
               font-family: Arial, Helvetica, sans-serif;
               text-transform: uppercase;
-              background-color: ${RED};
-              background-image:
-                radial-gradient(circle at 20% 20%, rgba(90, 0, 0, 0.35) 0 10%, transparent 11% 100%),
-                radial-gradient(circle at 80% 35%, rgba(255, 255, 255, 0.13) 0 8%, transparent 9% 100%),
-                radial-gradient(circle at 45% 75%, rgba(110, 0, 0, 0.45) 0 13%, transparent 14% 100%),
-                linear-gradient(135deg, rgba(80, 0, 0, 0.22) 0 18%, transparent 19% 100%),
-                linear-gradient(45deg, transparent 0 55%, rgba(255, 255, 255, 0.08) 56% 65%, transparent 66% 100%);
-              background-size: 260px 190px, 310px 240px, 220px 180px, 300px 300px, 240px 240px;
             }
 
             header {
@@ -271,8 +264,7 @@ export default function WarhaulHomepage() {
               align-items: center;
               justify-content: space-between;
               border-bottom: 1px solid rgba(255, 255, 255, 0.35);
-              background: rgba(239, 51, 64, 0.88);
-              backdrop-filter: blur(12px);
+              background: ${RED};
               padding: 18px 28px;
             }
 
@@ -313,10 +305,10 @@ export default function WarhaulHomepage() {
 
             h1 {
               max-width: 1200px;
-              font-size: clamp(48px, 12vw, 190px);
+              font-size: clamp(42px, 10vw, 190px);
               font-weight: 900;
               line-height: 0.78;
-              letter-spacing: -0.12em;
+              letter-spacing: -0.1em;
             }
 
             .intro {
@@ -346,7 +338,7 @@ export default function WarhaulHomepage() {
               width: 100%;
               height: 620px;
               object-fit: contain;
-              background: rgba(0, 0, 0, 0.12);
+              background: rgba(255, 255, 255, 0.1);
             }
 
             .empty-state {
@@ -363,10 +355,10 @@ export default function WarhaulHomepage() {
 
             .empty-state h2 {
               margin-top: 20px;
-              font-size: clamp(38px, 8vw, 120px);
+              font-size: clamp(32px, 7vw, 120px);
               font-weight: 900;
               line-height: 0.85;
-              letter-spacing: -0.08em;
+              letter-spacing: -0.06em;
             }
 
             @media (max-width: 800px) {
@@ -414,7 +406,7 @@ export default function WarhaulHomepage() {
   };
 
   return (
-    <main className="min-h-screen camo-bg text-white uppercase">
+    <main className="min-h-screen bg-[#EF3340] text-white uppercase">
       <style jsx global>{`
         @keyframes logo-marquee {
           from {
@@ -432,20 +424,9 @@ export default function WarhaulHomepage() {
         .logo-marquee:hover {
           animation-play-state: paused;
         }
-
-        .camo-bg {
-          background-color: #ef3340;
-          background-image:
-            radial-gradient(circle at 20% 20%, rgba(90, 0, 0, 0.35) 0 10%, transparent 11% 100%),
-            radial-gradient(circle at 80% 35%, rgba(255, 255, 255, 0.13) 0 8%, transparent 9% 100%),
-            radial-gradient(circle at 45% 75%, rgba(110, 0, 0, 0.45) 0 13%, transparent 14% 100%),
-            linear-gradient(135deg, rgba(80, 0, 0, 0.22) 0 18%, transparent 19% 100%),
-            linear-gradient(45deg, transparent 0 55%, rgba(255, 255, 255, 0.08) 56% 65%, transparent 66% 100%);
-          background-size: 260px 190px, 310px 240px, 220px 180px, 300px 300px, 240px 240px;
-        }
       `}</style>
 
-      <header className="sticky top-0 z-50 border-b border-white/30 bg-[#EF3340]/85 backdrop-blur-xl">
+      <header className="sticky top-0 z-50 border-b border-white/30 bg-[#EF3340]/95 backdrop-blur-xl">
         <div className="mx-auto flex max-w-[1600px] items-center justify-between px-4 py-3 md:px-8">
           <a href="#" className="flex items-center">
             <img
@@ -514,7 +495,7 @@ export default function WarhaulHomepage() {
 
       <section
         id="placements"
-        className="overflow-hidden border-b border-white/30 text-white"
+        className="overflow-hidden border-b border-white/30 bg-[#EF3340] text-white"
       >
         <div className="mx-auto flex max-w-[1600px] items-center gap-8 px-4 py-5 md:px-8">
           <p className="shrink-0 text-[10px] font-black uppercase tracking-[0.32em] text-white/70">
@@ -531,7 +512,7 @@ export default function WarhaulHomepage() {
                   <img
                     src={logo}
                     alt="WARHAUL PLACEMENT LOGO"
-                    className="max-h-14 w-full object-contain brightness-0 invert opacity-55"
+                    className="max-h-14 w-full object-contain grayscale contrast-125 opacity-75"
                   />
                 </div>
               ))}
@@ -540,7 +521,7 @@ export default function WarhaulHomepage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-[1600px] border-b border-white/30 px-4 pb-12 pt-14 md:px-8 md:pb-16 md:pt-20">
+      <section className="mx-auto max-w-[1600px] border-b border-white/30 bg-[#EF3340] px-4 pb-12 pt-14 md:px-8 md:pb-16 md:pt-20">
         <div className="flex flex-col items-center text-center">
           <h1 className="text-center text-[20vw] font-black uppercase leading-[0.78] tracking-[-0.12em] md:text-[13vw]">
             WARHAUL
@@ -559,14 +540,14 @@ export default function WarhaulHomepage() {
 
       <section
         id="media"
-        className="mx-auto max-w-[1600px] border-b border-white/30 px-4 py-16 text-white md:px-8 md:py-20"
+        className="mx-auto max-w-[1600px] border-b border-white/30 bg-[#EF3340] px-4 py-16 text-white md:px-8 md:py-20"
       >
         <p className="mb-8 text-[11px] uppercase tracking-[0.32em] text-white/70">
-          WARHAUL MEDIA
+          PRESS
         </p>
 
         <h2 className="text-5xl font-black uppercase leading-[0.88] tracking-[-0.08em] md:text-8xl">
-          RADIO / MAGAZINE
+          RADIO + MAGAZINE
         </h2>
 
         <div className="mt-10 border-y border-white/30">
@@ -592,7 +573,7 @@ export default function WarhaulHomepage() {
               </a>
             </div>
 
-            <div className="border-b border-white/30 p-4 md:min-h-[360px] md:border-b-0 md:p-0">
+            <div className="border-b border-white/30 bg-[#EF3340] p-4 md:min-h-[360px] md:border-b-0 md:p-0">
               <div className="mx-auto aspect-video w-full max-w-[420px] overflow-hidden border border-white/30 md:h-full md:min-h-[360px] md:max-w-none md:border-l md:border-y-0 md:border-r-0">
                 <iframe
                   className="h-full w-full"
@@ -618,14 +599,14 @@ export default function WarhaulHomepage() {
               </div>
             </div>
 
-            <div className="bg-white p-6 text-black md:p-8">
+            <div className="bg-[#EF3340] p-6 text-white md:p-8">
               <Camera className="mb-8 h-8 w-8" />
 
               <h3 className="text-3xl font-black uppercase tracking-[-0.05em] md:text-5xl">
                 WARHAUL MAGAZINE
               </h3>
 
-              <p className="mt-5 text-4xl font-black uppercase leading-none tracking-[-0.06em] md:text-6xl">
+              <p className="mt-5 text-lg font-black uppercase leading-8 tracking-normal text-white/75">
                 COMING SOON
               </p>
             </div>
@@ -634,15 +615,81 @@ export default function WarhaulHomepage() {
       </section>
 
       <section
+        id="services"
+        className="border-b border-black/10 bg-white px-4 py-16 text-black md:px-8 md:py-20"
+      >
+        <div className="mx-auto max-w-[1600px]">
+          <p className="mb-8 text-[11px] uppercase tracking-[0.32em] text-black/45">
+            SERVICE
+          </p>
+
+          <h2 className="text-5xl font-black uppercase leading-[0.88] tracking-[-0.08em] md:text-8xl">
+            CREATIVE
+          </h2>
+
+          <div className="mt-10 border-t border-black">
+            {services.map((service, index) => (
+              <div key={service.title} className="border-b border-black">
+                <button
+                  onClick={() =>
+                    setOpenService(openService === index ? null : index)
+                  }
+                  className="grid w-full grid-cols-[0.15fr_1fr_auto] items-center gap-4 py-6 text-left uppercase transition hover:bg-[#EF3340] hover:px-4 hover:text-white md:py-8"
+                >
+                  <span className="text-xs font-black uppercase tracking-[0.24em]">
+                    {service.number}
+                  </span>
+
+                  <span className="text-3xl font-black uppercase leading-none tracking-[-0.06em] md:text-6xl">
+                    {service.title}
+                  </span>
+
+                  <span className="flex h-10 w-10 items-center justify-center border border-current">
+                    {openService === index ? (
+                      <Minus className="h-5 w-5" />
+                    ) : (
+                      <Plus className="h-5 w-5" />
+                    )}
+                  </span>
+                </button>
+
+                {openService === index && (
+                  <div className="grid gap-3 border-t border-black/10 bg-[#EF3340] px-5 py-6 text-white md:grid-cols-3 md:px-8">
+                    {service.details.map((detail) => (
+                      <p
+                        key={detail}
+                        className="border-b border-white/20 py-3 text-sm uppercase tracking-[0.12em] text-white/80"
+                      >
+                        {detail}
+                      </p>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-10">
+            <a
+              href={mailTo("CREATIVE SERVICES INQUIRY")}
+              className="inline-flex border border-[#EF3340] bg-[#EF3340] px-8 py-4 text-xs font-black uppercase tracking-[0.18em] text-white transition hover:bg-white hover:text-[#EF3340]"
+            >
+              CONTACT US
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section
         id="studio"
-        className="mx-auto max-w-[1600px] border-b border-white/30 px-4 py-16 text-white md:px-8 md:py-20"
+        className="mx-auto max-w-[1600px] border-b border-white/30 bg-[#EF3340] px-4 py-16 text-white md:px-8 md:py-20"
       >
         <p className="mb-8 text-[11px] uppercase tracking-[0.32em] text-white/70">
           BOOK WARHAUL
         </p>
 
         <h2 className="text-5xl font-black uppercase leading-[0.88] tracking-[-0.08em] md:text-8xl">
-          STUDIO RENTALS
+          STUDIO
         </h2>
 
         <div className="mt-10 border-y border-white/30">
@@ -745,72 +792,6 @@ export default function WarhaulHomepage() {
       </section>
 
       <section
-        id="services"
-        className="border-b border-black/10 bg-white px-4 py-16 text-black md:px-8 md:py-20"
-      >
-        <div className="mx-auto max-w-[1600px]">
-          <p className="mb-8 text-[11px] uppercase tracking-[0.32em] text-black/45">
-            SERVICE
-          </p>
-
-          <h2 className="text-5xl font-black uppercase leading-[0.88] tracking-[-0.08em] md:text-8xl">
-            CREATIVE
-          </h2>
-
-          <div className="mt-10 border-t border-black">
-            {services.map((service, index) => (
-              <div key={service.title} className="border-b border-black">
-                <button
-                  onClick={() =>
-                    setOpenService(openService === index ? null : index)
-                  }
-                  className="grid w-full grid-cols-[0.15fr_1fr_auto] items-center gap-4 py-6 text-left uppercase transition hover:bg-[#EF3340] hover:px-4 hover:text-white md:py-8"
-                >
-                  <span className="text-xs font-black uppercase tracking-[0.24em]">
-                    {service.number}
-                  </span>
-
-                  <span className="text-3xl font-black uppercase leading-none tracking-[-0.06em] md:text-6xl">
-                    {service.title}
-                  </span>
-
-                  <span className="flex h-10 w-10 items-center justify-center border border-current">
-                    {openService === index ? (
-                      <Minus className="h-5 w-5" />
-                    ) : (
-                      <Plus className="h-5 w-5" />
-                    )}
-                  </span>
-                </button>
-
-                {openService === index && (
-                  <div className="grid gap-3 border-t border-black/10 bg-[#EF3340] px-5 py-6 text-white md:grid-cols-3 md:px-8">
-                    {service.details.map((detail) => (
-                      <p
-                        key={detail}
-                        className="border-b border-white/20 py-3 text-sm uppercase tracking-[0.12em] text-white/80"
-                      >
-                        {detail}
-                      </p>
-                    ))}
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-10">
-            <a
-              href={mailTo("CREATIVE SERVICES INQUIRY")}
-              className="inline-flex border border-[#EF3340] bg-[#EF3340] px-8 py-4 text-xs font-black uppercase tracking-[0.18em] text-white transition hover:bg-white hover:text-[#EF3340]"
-            >
-              CONTACT US
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <section
         id="events"
         className="relative min-h-[760px] overflow-hidden border-b border-black/10 bg-black px-4 py-16 text-white md:px-8 md:py-20"
       >
@@ -821,7 +802,7 @@ export default function WarhaulHomepage() {
             className="absolute inset-0 h-full w-full object-cover opacity-80 transition duration-500"
           />
         ) : (
-          <div className="absolute inset-0 camo-bg" />
+          <div className="absolute inset-0 bg-[#EF3340]" />
         )}
 
         <div className="absolute inset-0 bg-black/35" />
@@ -858,8 +839,8 @@ export default function WarhaulHomepage() {
               onClick={() => openEventAlbumPage(currentEventCard)}
               className="group relative min-h-[420px] overflow-hidden border border-white/60 text-left text-white md:min-h-[560px]"
             >
-              <div className="absolute inset-0 flex items-center justify-center p-4 md:p-6">
-                <h3 className="max-w-full text-center text-[clamp(1.4rem,9vw,3.2rem)] font-black uppercase leading-[0.9] tracking-[-0.06em] md:text-8xl md:tracking-[-0.08em]">
+              <div className="absolute inset-0 flex items-center justify-center p-3 md:p-6">
+                <h3 className="max-w-full text-center text-[clamp(0.95rem,6vw,2rem)] font-black uppercase leading-[0.95] tracking-[-0.04em] md:text-8xl md:tracking-[-0.08em]">
                   {currentEventCard.name}
                 </h3>
               </div>
@@ -882,7 +863,7 @@ export default function WarhaulHomepage() {
         </div>
       </section>
 
-      <section id="contact" className="border-t border-white/30 text-white">
+      <section id="contact" className="border-t border-white/30 bg-[#EF3340] text-white">
         <div className="mx-auto flex max-w-[1600px] flex-col items-center justify-center gap-3 px-4 py-6 text-center md:px-8">
           <p className="text-[9px] uppercase tracking-[0.32em] text-white/70">
             CONTACT
