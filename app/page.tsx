@@ -1,7 +1,15 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { ArrowUpRight, Camera, Mic2, Plus, Minus } from "lucide-react";
+import {
+  ArrowUpRight,
+  Camera,
+  ChevronLeft,
+  ChevronRight,
+  Mic2,
+  Plus,
+  Minus,
+} from "lucide-react";
 
 const nav = [
   ["#about", "about"],
@@ -153,12 +161,14 @@ const amenities = [
 export default function WarhaulHomepage() {
   const [activeStudioImage, setActiveStudioImage] = useState(0);
   const [activeLogo, setActiveLogo] = useState(0);
-  const [activeAlbum, setActiveAlbum] = useState(2);
+  const [activeEventCard, setActiveEventCard] = useState(2);
+  const [activeAlbum, setActiveAlbum] = useState<number | null>(null);
   const [activeEventImage, setActiveEventImage] = useState(0);
   const [showAmenities, setShowAmenities] = useState(false);
   const [openService, setOpenService] = useState<number | null>(null);
 
-  const currentAlbum = eventAlbums[activeAlbum];
+  const currentEventCard = eventAlbums[activeEventCard];
+  const currentAlbum = activeAlbum !== null ? eventAlbums[activeAlbum] : null;
 
   useEffect(() => {
     const timer = window.setInterval(() => {
@@ -180,23 +190,37 @@ export default function WarhaulHomepage() {
     return () => window.clearInterval(timer);
   }, []);
 
-  useEffect(() => {
-    const imageCount = eventAlbums[activeAlbum].images.length;
+  const previousEventCard = () => {
+    setActiveEventCard((current) =>
+      current === 0 ? eventAlbums.length - 1 : current - 1
+    );
+  };
 
-    if (imageCount === 0) return;
+  const nextEventCard = () => {
+    setActiveEventCard((current) =>
+      current === eventAlbums.length - 1 ? 0 : current + 1
+    );
+  };
 
-    const timer = window.setInterval(() => {
-      setActiveEventImage((current) =>
-        current === imageCount - 1 ? 0 : current + 1
-      );
-    }, 3500);
-
-    return () => window.clearInterval(timer);
-  }, [activeAlbum]);
-
-  const selectAlbum = (index: number) => {
+  const openEventAlbum = (index: number) => {
     setActiveAlbum(index);
     setActiveEventImage(0);
+  };
+
+  const previousEventImage = () => {
+    if (!currentAlbum || currentAlbum.images.length === 0) return;
+
+    setActiveEventImage((current) =>
+      current === 0 ? currentAlbum.images.length - 1 : current - 1
+    );
+  };
+
+  const nextEventImage = () => {
+    if (!currentAlbum || currentAlbum.images.length === 0) return;
+
+    setActiveEventImage((current) =>
+      current === currentAlbum.images.length - 1 ? 0 : current + 1
+    );
   };
 
   return (
@@ -530,7 +554,7 @@ export default function WarhaulHomepage() {
           </p>
 
           <h2 className="text-5xl font-black uppercase leading-[0.88] tracking-[-0.08em] md:text-8xl">
-            Event Albums
+            Events
           </h2>
 
           <p className="mt-6 max-w-3xl text-lg leading-8 text-black/60">
@@ -539,56 +563,117 @@ export default function WarhaulHomepage() {
             forward.
           </p>
 
-          <div className="mt-10 flex gap-2 overflow-x-auto border-y border-black py-4">
-            {eventAlbums.map((album, index) => (
-              <button
-                key={album.name}
-                onClick={() => selectAlbum(index)}
-                className={`min-w-fit border border-black px-5 py-3 text-xs font-black uppercase tracking-[0.14em] transition ${
-                  activeAlbum === index
-                    ? "bg-black text-white"
-                    : "bg-white text-black hover:bg-black hover:text-white"
-                }`}
-              >
-                {album.name}
-              </button>
-            ))}
+          <div className="mt-10 grid grid-cols-[auto_1fr_auto] items-center gap-3 border-y border-black py-6">
+            <button
+              onClick={previousEventCard}
+              className="flex h-12 w-12 items-center justify-center border border-black bg-white text-black transition hover:bg-black hover:text-white"
+              aria-label="Previous event"
+            >
+              <ChevronLeft className="h-5 w-5" />
+            </button>
+
+            <button
+              onClick={() => openEventAlbum(activeEventCard)}
+              className="group relative h-[420px] overflow-hidden border border-black bg-black text-left text-white md:h-[560px]"
+            >
+              {currentEventCard.images.length > 0 ? (
+                <img
+                  src={currentEventCard.images[0]}
+                  alt={currentEventCard.name}
+                  className="h-full w-full object-cover opacity-75 transition duration-500 group-hover:scale-105 group-hover:opacity-55"
+                />
+              ) : (
+                <div className="flex h-full w-full items-center justify-center bg-black">
+                  <p className="text-[11px] uppercase tracking-[0.32em] text-white/30">
+                    Images Coming Soon
+                  </p>
+                </div>
+              )}
+
+              <div className="absolute inset-0 flex items-center justify-center bg-black/25 p-6">
+                <h3 className="text-center text-5xl font-black uppercase leading-[0.85] tracking-[-0.08em] md:text-8xl">
+                  {currentEventCard.name}
+                </h3>
+              </div>
+
+              <div className="absolute bottom-5 left-5 border border-white bg-white px-4 py-3 text-[10px] font-black uppercase tracking-[0.18em] text-black">
+                Open Album
+              </div>
+            </button>
+
+            <button
+              onClick={nextEventCard}
+              className="flex h-12 w-12 items-center justify-center border border-black bg-white text-black transition hover:bg-black hover:text-white"
+              aria-label="Next event"
+            >
+              <ChevronRight className="h-5 w-5" />
+            </button>
           </div>
 
-          <div className="mt-8">
-            {currentAlbum.images.length > 0 ? (
-              <>
-                <div className="relative border-y border-black bg-black">
-                  <img
-                    src={currentAlbum.images[activeEventImage]}
-                    alt={`${currentAlbum.name} event ${
-                      activeEventImage + 1
-                    }`}
-                    className="h-[520px] w-full object-contain bg-black md:h-[650px]"
-                  />
-                </div>
-
-                <p className="mt-4 text-center text-[11px] uppercase tracking-[0.22em] text-black/45">
-                  {currentAlbum.name} — {activeEventImage + 1} /{" "}
-                  {currentAlbum.images.length}
-                </p>
-              </>
-            ) : (
-              <div className="border border-black bg-black p-8 text-white md:p-12">
-                <p className="text-[11px] uppercase tracking-[0.28em] text-white/45">
+          {currentAlbum && (
+            <div className="mt-10">
+              <div className="mb-5 flex items-center justify-between gap-5 border-b border-black pb-4">
+                <h3 className="text-3xl font-black uppercase tracking-[-0.05em] md:text-5xl">
                   {currentAlbum.name}
-                </p>
-
-                <h3 className="mt-4 text-4xl font-black uppercase tracking-[-0.06em] md:text-6xl">
-                  Album Coming Soon
                 </h3>
 
-                <p className="mt-5 max-w-2xl text-lg leading-8 text-white/60">
-                  Photos for this event album will be added here soon.
+                <p className="text-[10px] uppercase tracking-[0.24em] text-black/45">
+                  Album
                 </p>
               </div>
-            )}
-          </div>
+
+              {currentAlbum.images.length > 0 ? (
+                <>
+                  <div className="grid grid-cols-[auto_1fr_auto] items-center gap-3">
+                    <button
+                      onClick={previousEventImage}
+                      className="flex h-12 w-12 items-center justify-center border border-black bg-white text-black transition hover:bg-black hover:text-white"
+                      aria-label="Previous album image"
+                    >
+                      <ChevronLeft className="h-5 w-5" />
+                    </button>
+
+                    <div className="relative border-y border-black bg-black">
+                      <img
+                        src={currentAlbum.images[activeEventImage]}
+                        alt={`${currentAlbum.name} event ${
+                          activeEventImage + 1
+                        }`}
+                        className="h-[520px] w-full object-contain bg-black md:h-[650px]"
+                      />
+                    </div>
+
+                    <button
+                      onClick={nextEventImage}
+                      className="flex h-12 w-12 items-center justify-center border border-black bg-white text-black transition hover:bg-black hover:text-white"
+                      aria-label="Next album image"
+                    >
+                      <ChevronRight className="h-5 w-5" />
+                    </button>
+                  </div>
+
+                  <p className="mt-4 text-center text-[11px] uppercase tracking-[0.22em] text-black/45">
+                    {currentAlbum.name} — {activeEventImage + 1} /{" "}
+                    {currentAlbum.images.length}
+                  </p>
+                </>
+              ) : (
+                <div className="border border-black bg-black p-8 text-white md:p-12">
+                  <p className="text-[11px] uppercase tracking-[0.28em] text-white/45">
+                    {currentAlbum.name}
+                  </p>
+
+                  <h3 className="mt-4 text-4xl font-black uppercase tracking-[-0.06em] md:text-6xl">
+                    Album Coming Soon
+                  </h3>
+
+                  <p className="mt-5 max-w-2xl text-lg leading-8 text-white/60">
+                    Photos for this event album will be added here soon.
+                  </p>
+                </div>
+              )}
+            </div>
+          )}
         </div>
       </section>
 
