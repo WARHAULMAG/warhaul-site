@@ -5,6 +5,7 @@ import { Camera, Mic2, Plus, Minus, Menu, X } from "lucide-react";
 
 const RED = "#EF3340";
 const EMAIL = "contactwarhaul@gmail.com";
+const BOOKING_LINK = "https://warhaulnjfs.setmore.com";
 
 const mailTo = (subject: string) =>
   `mailto:${EMAIL}?subject=${encodeURIComponent(subject)}`;
@@ -452,7 +453,9 @@ export default function WarhaulHomepage() {
 
           <div className="hidden md:block">
             <a
-              href={mailTo("Studio Booking")}
+              href={BOOKING_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
               className="border border-white bg-white px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-[#EF3340] transition hover:bg-[#EF3340] hover:text-white md:px-5 md:py-3"
             >
               BOOK STUDIO
@@ -483,7 +486,9 @@ export default function WarhaulHomepage() {
               ))}
 
               <a
-                href={mailTo("Studio Booking")}
+                href={BOOKING_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="border border-white bg-white px-4 py-3 text-center text-xs font-black uppercase tracking-[0.18em] text-[#EF3340]"
               >
                 BOOK STUDIO
@@ -707,7 +712,9 @@ export default function WarhaulHomepage() {
               </p>
 
               <a
-                href={mailTo("FILM STUDIO BOOKING INQUIRY")}
+                href={BOOKING_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="mt-8 inline-flex border border-white bg-white px-6 py-4 text-xs font-black uppercase tracking-[0.16em] text-[#EF3340] hover:bg-[#EF3340] hover:text-white"
               >
                 BOOK STUDIO
@@ -745,7 +752,9 @@ export default function WarhaulHomepage() {
               </p>
 
               <a
-                href={mailTo("AUDIO + DJ STUDIO BOOKING INQUIRY")}
+                href={BOOKING_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="mt-8 inline-flex border border-[#EF3340] bg-[#EF3340] px-6 py-4 text-xs font-black uppercase tracking-[0.16em] text-white hover:bg-white hover:text-[#EF3340]"
               >
                 BOOK AUDIO / DJ
