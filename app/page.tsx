@@ -5,7 +5,7 @@ import { Camera, Mic2, Plus, Minus, Menu, X } from "lucide-react";
 
 const RED = "#EF3340";
 const EMAIL = "contactwarhaul@gmail.com";
-const BOOKING_LINK = "https://warhaulnjfs.setmore.com";
+const BOOKING_LINK = "https://warhaulstudio.wixsite.com/mysite-2/book-online";
 
 const mailTo = (subject: string) =>
   `mailto:${EMAIL}?subject=${encodeURIComponent(subject)}`;
