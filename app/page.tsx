@@ -5,7 +5,7 @@ import { Camera, Mic2, Plus, Minus, Menu, X } from "lucide-react";
 
 const RED = "#EF3340";
 const EMAIL = "contactwarhaul@gmail.com";
-const BOOKING_LINK = "https://warhaulstudio.wixsite.com/mysite-2/book-online";
+const BOOKING_LINK = "https://warhaul.booqableshop.com/";
 
 const mailTo = (subject: string) =>
   `mailto:${EMAIL}?subject=${encodeURIComponent(subject)}`;
@@ -63,17 +63,41 @@ const artscape2Images = [
 ];
 
 const eventAlbums = [
-  { name: "GRIM 2", slug: "grim-2", images: [] as string[] },
-  { name: "ARTSCAPE 1", slug: "artscape-1", images: [] as string[] },
-  { name: "ARTSCAPE 2", slug: "artscape-2", images: artscape2Images },
-  { name: "REDEPLOYMENT", slug: "redeployment", images: [] as string[] },
+  {
+    name: "GRIM 2",
+    slug: "grim-2",
+    images: [] as string[],
+  },
+  {
+    name: "ARTSCAPE 1",
+    slug: "artscape-1",
+    images: [] as string[],
+  },
+  {
+    name: "ARTSCAPE 2",
+    slug: "artscape-2",
+    images: artscape2Images,
+  },
+  {
+    name: "REDEPLOYMENT",
+    slug: "redeployment",
+    images: [] as string[],
+  },
   {
     name: "LOOK MA! I'M FAMOUS",
     slug: "look-ma-im-famous",
     images: [] as string[],
   },
-  { name: "RENDEZVOUS", slug: "rendezvous", images: [] as string[] },
-  { name: "MAISON 2", slug: "maison-2", images: [] as string[] },
+  {
+    name: "RENDEZVOUS",
+    slug: "rendezvous",
+    images: [] as string[],
+  },
+  {
+    name: "MAISON 2",
+    slug: "maison-2",
+    images: [] as string[],
+  },
 ];
 
 const placementLogos = [
@@ -243,159 +267,21 @@ export default function WarhaulHomepage() {
           <meta charset="UTF-8" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0" />
           <title>${album.name} | WARHAUL EVENTS</title>
-          <style>
-            * {
-              box-sizing: border-box;
-              margin: 0;
-              padding: 0;
-            }
-
-            body {
-              background: ${RED};
-              color: #fff;
-              font-family: Arial, Helvetica, sans-serif;
-              text-transform: uppercase;
-            }
-
-            header {
-              position: sticky;
-              top: 0;
-              z-index: 20;
-              display: flex;
-              align-items: center;
-              justify-content: space-between;
-              border-bottom: 1px solid rgba(255, 255, 255, 0.35);
-              background: ${RED};
-              padding: 18px 28px;
-            }
-
-            .brand {
-              font-size: 14px;
-              font-weight: 900;
-              letter-spacing: 0.28em;
-            }
-
-            .back {
-              border: 1px solid #fff;
-              background: #fff;
-              color: ${RED};
-              padding: 12px 16px;
-              font-size: 11px;
-              font-weight: 900;
-              letter-spacing: 0.18em;
-              text-decoration: none;
-            }
-
-            .back:hover {
-              background: ${RED};
-              color: #fff;
-            }
-
-            main {
-              max-width: 1600px;
-              margin: 0 auto;
-              padding: 48px 24px 72px;
-            }
-
-            .label {
-              margin-bottom: 24px;
-              color: rgba(255, 255, 255, 0.72);
-              font-size: 11px;
-              letter-spacing: 0.32em;
-            }
-
-            h1 {
-              max-width: 1200px;
-              font-size: clamp(42px, 10vw, 190px);
-              font-weight: 900;
-              line-height: 0.78;
-              letter-spacing: -0.1em;
-            }
-
-            .intro {
-              margin-top: 28px;
-              border-top: 1px solid rgba(255, 255, 255, 0.35);
-              border-bottom: 1px solid rgba(255, 255, 255, 0.35);
-              padding: 22px 0;
-              color: rgba(255, 255, 255, 0.78);
-              font-size: 14px;
-              letter-spacing: 0.12em;
-              line-height: 1.8;
-            }
-
-            .grid {
-              display: grid;
-              grid-template-columns: repeat(2, minmax(0, 1fr));
-              gap: 18px;
-              margin-top: 40px;
-            }
-
-            .image-card {
-              border: 1px solid rgba(255, 255, 255, 0.35);
-            }
-
-            .image-card img {
-              display: block;
-              width: 100%;
-              height: 620px;
-              object-fit: contain;
-              background: rgba(255, 255, 255, 0.1);
-            }
-
-            .empty-state {
-              margin-top: 40px;
-              border: 1px solid rgba(255, 255, 255, 0.35);
-              padding: 60px 28px;
-            }
-
-            .empty-state p {
-              color: rgba(255, 255, 255, 0.72);
-              font-size: 11px;
-              letter-spacing: 0.32em;
-            }
-
-            .empty-state h2 {
-              margin-top: 20px;
-              font-size: clamp(32px, 7vw, 120px);
-              font-weight: 900;
-              line-height: 0.85;
-              letter-spacing: -0.06em;
-            }
-
-            @media (max-width: 800px) {
-              header {
-                padding: 14px 18px;
-              }
-
-              main {
-                padding: 36px 16px 56px;
-              }
-
-              .grid {
-                grid-template-columns: 1fr;
-              }
-
-              .image-card img {
-                height: 460px;
-              }
-            }
-          </style>
         </head>
-
-        <body>
-          <header>
-            <div class="brand">WARHAUL</div>
-            <a class="back" href="javascript:window.close()">CLOSE</a>
+        <body style="background:${RED};color:white;font-family:Arial;text-transform:uppercase;">
+          <header style="display:flex;justify-content:space-between;align-items:center;padding:18px 28px;border-bottom:1px solid rgba(255,255,255,.35);">
+            <div style="font-size:14px;font-weight:900;letter-spacing:.28em;">WARHAUL</div>
+            <a href="javascript:window.close()" style="background:white;color:${RED};padding:12px 16px;text-decoration:none;font-size:11px;font-weight:900;letter-spacing:.18em;">CLOSE</a>
           </header>
 
-          <main>
-            <p class="label">WARHAUL EVENTS</p>
-            <h1>${album.name}</h1>
-            <p class="intro">
+          <main style="max-width:1600px;margin:0 auto;padding:48px 24px 72px;">
+            <p style="margin-bottom:24px;color:rgba(255,255,255,.72);font-size:11px;letter-spacing:.32em;">WARHAUL EVENTS</p>
+            <h1 style="max-width:1200px;font-size:clamp(42px,10vw,190px);font-weight:900;line-height:.78;letter-spacing:-.1em;">${album.name}</h1>
+            <p style="margin-top:28px;border-top:1px solid rgba(255,255,255,.35);border-bottom:1px solid rgba(255,255,255,.35);padding:22px 0;color:rgba(255,255,255,.78);font-size:14px;letter-spacing:.12em;line-height:1.8;">
               EVENT ALBUM — SELECTED PHOTOS FROM ${album.name}.
             </p>
 
-            <section class="grid">
+            <section style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:40px;">
               ${imageGrid}
             </section>
           </main>
@@ -413,6 +299,7 @@ export default function WarhaulHomepage() {
           from {
             transform: translateX(0);
           }
+
           to {
             transform: translateX(-50%);
           }
@@ -467,7 +354,11 @@ export default function WarhaulHomepage() {
             className="flex h-11 w-11 items-center justify-center border border-white text-white md:hidden"
             aria-label="Toggle mobile menu"
           >
-            {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            {mobileMenuOpen ? (
+              <X className="h-5 w-5" />
+            ) : (
+              <Menu className="h-5 w-5" />
+            )}
           </button>
         </div>
 
@@ -588,32 +479,6 @@ export default function WarhaulHomepage() {
                   allowFullScreen
                 />
               </div>
-            </div>
-          </div>
-
-          <div className="grid border-t border-white/30 md:grid-cols-2">
-            <div
-              className="relative min-h-[360px] border-b border-white/30 bg-cover bg-center md:min-h-[520px] md:border-b-0 md:border-r"
-              style={{ backgroundImage: `url("${magazineImage}")` }}
-            >
-              <div className="absolute inset-0 bg-[#EF3340]/35 mix-blend-multiply" />
-              <div className="absolute inset-0 flex items-center justify-center p-8 text-center">
-                <p className="text-[11px] uppercase tracking-[0.32em] text-white/75">
-                  MAGAZINE VISUALS COMING SOON
-                </p>
-              </div>
-            </div>
-
-            <div className="bg-[#EF3340] p-6 text-white md:p-8">
-              <Camera className="mb-8 h-8 w-8" />
-
-              <h3 className="text-3xl font-black uppercase tracking-[-0.05em] md:text-5xl">
-                WARHAUL MAGAZINE
-              </h3>
-
-              <p className="mt-5 text-lg font-black uppercase leading-8 tracking-normal text-white/75">
-                COMING SOON
-              </p>
             </div>
           </div>
         </div>
@@ -801,78 +666,9 @@ export default function WarhaulHomepage() {
       </section>
 
       <section
-        id="events"
-        className="relative min-h-[760px] overflow-hidden border-b border-black/10 bg-black px-4 py-16 text-white md:px-8 md:py-20"
+        id="contact"
+        className="border-t border-white/30 bg-[#EF3340] text-white"
       >
-        {currentEventCard.images.length > 0 ? (
-          <img
-            src={currentEventCard.images[0]}
-            alt={currentEventCard.name}
-            className="absolute inset-0 h-full w-full object-cover opacity-80 transition duration-500"
-          />
-        ) : (
-          <div className="absolute inset-0 bg-[#EF3340]" />
-        )}
-
-        <div className="absolute inset-0 bg-black/35" />
-
-        <div className="relative z-10 mx-auto flex min-h-[640px] max-w-[1600px] flex-col justify-between">
-          <div>
-            <p className="mb-8 text-[11px] uppercase tracking-[0.32em] text-white/70">
-              EVENT
-            </p>
-
-            <h2 className="text-5xl font-black uppercase leading-[0.88] tracking-[-0.08em] md:text-8xl">
-              EVENT
-            </h2>
-
-            <p className="mt-6 max-w-3xl text-lg uppercase leading-8 text-white/75">
-              WARHAUL EVENTS ARE BUILT TO CONNECT WITH THE COMMUNITY, CREATE
-              INTENTIONAL CULTURAL MOMENTS, AND PUSH TORONTO’S CREATIVE SCENE
-              FORWARD.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-[auto_1fr_auto] items-stretch gap-3 border-y border-white/50 py-6">
-            <button
-              onClick={previousEventCard}
-              className="flex min-h-[420px] w-12 items-center justify-center border border-white bg-white/90 text-[#EF3340] transition hover:bg-[#EF3340] hover:text-white md:min-h-[560px]"
-              aria-label="PREVIOUS EVENT"
-            >
-              <span className="-rotate-90 text-[10px] font-black uppercase tracking-[0.22em]">
-                PREVIOUS
-              </span>
-            </button>
-
-            <button
-              onClick={() => openEventAlbumPage(currentEventCard)}
-              className="group relative min-h-[420px] overflow-hidden border border-white/60 text-left text-white md:min-h-[560px]"
-            >
-              <div className="absolute inset-0 flex items-center justify-center p-3 md:p-6">
-                <h3 className="max-w-full text-center text-[clamp(0.95rem,6vw,2rem)] font-black uppercase leading-[0.95] tracking-[-0.04em] md:text-8xl md:tracking-[-0.08em]">
-                  {currentEventCard.name}
-                </h3>
-              </div>
-
-              <div className="absolute bottom-5 left-5 border border-white bg-white px-4 py-3 text-[10px] font-black uppercase tracking-[0.18em] text-[#EF3340]">
-                OPEN ALBUM
-              </div>
-            </button>
-
-            <button
-              onClick={nextEventCard}
-              className="flex min-h-[420px] w-12 items-center justify-center border border-white bg-white/90 text-[#EF3340] transition hover:bg-[#EF3340] hover:text-white md:min-h-[560px]"
-              aria-label="NEXT EVENT"
-            >
-              <span className="rotate-90 text-[10px] font-black uppercase tracking-[0.22em]">
-                NEXT
-              </span>
-            </button>
-          </div>
-        </div>
-      </section>
-
-      <section id="contact" className="border-t border-white/30 bg-[#EF3340] text-white">
         <div className="mx-auto flex max-w-[1600px] flex-col items-center justify-center gap-3 px-4 py-6 text-center md:px-8">
           <p className="text-[9px] uppercase tracking-[0.32em] text-white/70">
             CONTACT
