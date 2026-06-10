@@ -115,6 +115,12 @@ const eventAlbums = [
   },
 ];
 
+const upcomingEvents: Array<{
+  title: string;
+  date: string;
+  location: string;
+}> = [];
+
 const placementLogos = [
   "/images/nike toronto.png",
   "/images/nike acg.svg",
@@ -205,7 +211,12 @@ const amenities = [
   },
   {
     title: "AUDIO EQUIPMENT",
-    items: ["2X KRKS", "APOLLO TWIN INTERFACE", "TLM-103 MIC"],
+    items: [
+      "2X KRKS",
+      "APOLLO TWIN INTERFACE",
+      "TLM-103 MIC",
+      "PIONEER DJ XDJ-RX3 ALL-IN-ONE DJ SYSTEM",
+    ],
   },
 ];
 
@@ -218,6 +229,7 @@ export default function WarhaulHomepage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const currentEventCard = eventAlbums[activeEventCard];
+  const currentEventImage = currentEventCard.images[0];
   const marqueeLogos = [...placementLogos, ...placementLogos];
 
   useEffect(() => {
@@ -282,21 +294,142 @@ export default function WarhaulHomepage() {
           <meta charset="UTF-8" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0" />
           <title>${album.name} | WARHAUL EVENTS</title>
+          <style>
+            * {
+              box-sizing: border-box;
+            }
+
+            body {
+              margin: 0;
+              background: ${RED};
+              color: white;
+              font-family: Arial, Helvetica, sans-serif;
+              text-transform: uppercase;
+            }
+
+            header {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              padding: 18px 28px;
+              border-bottom: 1px solid rgba(255,255,255,.35);
+            }
+
+            header div {
+              font-size: 14px;
+              font-weight: 900;
+              letter-spacing: .28em;
+            }
+
+            header a {
+              background: white;
+              color: ${RED};
+              padding: 12px 16px;
+              text-decoration: none;
+              font-size: 11px;
+              font-weight: 900;
+              letter-spacing: .18em;
+            }
+
+            main {
+              max-width: 1600px;
+              margin: 0 auto;
+              padding: 48px 24px 72px;
+            }
+
+            h1 {
+              max-width: 1200px;
+              font-size: clamp(42px, 10vw, 190px);
+              font-weight: 900;
+              line-height: .78;
+              letter-spacing: -.1em;
+              margin: 0;
+            }
+
+            .subhead {
+              margin-bottom: 24px;
+              color: rgba(255,255,255,.72);
+              font-size: 11px;
+              letter-spacing: .32em;
+            }
+
+            .desc {
+              margin-top: 28px;
+              border-top: 1px solid rgba(255,255,255,.35);
+              border-bottom: 1px solid rgba(255,255,255,.35);
+              padding: 22px 0;
+              color: rgba(255,255,255,.78);
+              font-size: 14px;
+              letter-spacing: .12em;
+              line-height: 1.8;
+            }
+
+            section {
+              display: grid;
+              grid-template-columns: repeat(2, minmax(0, 1fr));
+              gap: 18px;
+              margin-top: 40px;
+            }
+
+            .image-card {
+              background: black;
+              border: 1px solid rgba(255,255,255,.35);
+              overflow: hidden;
+            }
+
+            .image-card img {
+              display: block;
+              width: 100%;
+              height: 540px;
+              object-fit: contain;
+              background: black;
+            }
+
+            .empty-state {
+              grid-column: 1 / -1;
+              border: 1px solid rgba(255,255,255,.35);
+              padding: 56px;
+            }
+
+            .empty-state p {
+              color: rgba(255,255,255,.65);
+              font-size: 11px;
+              letter-spacing: .28em;
+            }
+
+            .empty-state h2 {
+              font-size: clamp(38px, 8vw, 120px);
+              line-height: .85;
+              letter-spacing: -.08em;
+              margin: 16px 0 0;
+            }
+
+            @media (max-width: 800px) {
+              section {
+                grid-template-columns: 1fr;
+              }
+
+              .image-card img {
+                height: auto;
+              }
+            }
+          </style>
         </head>
-        <body style="background:${RED};color:white;font-family:Arial;text-transform:uppercase;">
-          <header style="display:flex;justify-content:space-between;align-items:center;padding:18px 28px;border-bottom:1px solid rgba(255,255,255,.35);">
-            <div style="font-size:14px;font-weight:900;letter-spacing:.28em;">WARHAUL</div>
-            <a href="javascript:window.close()" style="background:white;color:${RED};padding:12px 16px;text-decoration:none;font-size:11px;font-weight:900;letter-spacing:.18em;">CLOSE</a>
+
+        <body>
+          <header>
+            <div>WARHAUL</div>
+            <a href="javascript:window.close()">CLOSE</a>
           </header>
 
-          <main style="max-width:1600px;margin:0 auto;padding:48px 24px 72px;">
-            <p style="margin-bottom:24px;color:rgba(255,255,255,.72);font-size:11px;letter-spacing:.32em;">WARHAUL EVENTS</p>
-            <h1 style="max-width:1200px;font-size:clamp(42px,10vw,190px);font-weight:900;line-height:.78;letter-spacing:-.1em;">${album.name}</h1>
-            <p style="margin-top:28px;border-top:1px solid rgba(255,255,255,.35);border-bottom:1px solid rgba(255,255,255,.35);padding:22px 0;color:rgba(255,255,255,.78);font-size:14px;letter-spacing:.12em;line-height:1.8;">
+          <main>
+            <p class="subhead">WARHAUL EVENTS</p>
+            <h1>${album.name}</h1>
+            <p class="desc">
               EVENT ALBUM — SELECTED PHOTOS FROM ${album.name}.
             </p>
 
-            <section style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:40px;">
+            <section>
               ${imageGrid}
             </section>
           </main>
@@ -496,6 +629,39 @@ export default function WarhaulHomepage() {
               </div>
             </div>
           </div>
+
+          <div className="grid border-t border-white/30 md:grid-cols-2">
+            <div className="bg-black">
+              <img
+                src={magazineImage}
+                alt="WARHAUL MAGAZINE"
+                className="h-[420px] w-full object-cover md:h-[520px]"
+              />
+            </div>
+
+            <div className="bg-white p-6 text-black md:p-8">
+              <p className="mb-8 text-[11px] uppercase tracking-[0.32em] text-black/45">
+                MAGAZINE
+              </p>
+
+              <h3 className="text-3xl font-black uppercase tracking-[-0.05em] md:text-5xl">
+                WARHAUL MAGAZINE
+              </h3>
+
+              <p className="mt-5 text-lg uppercase leading-8 text-black/60">
+                CREATIVE EDITORIALS, ARTIST STORIES, BTS DOCUMENTATION,
+                CULTURAL COVERAGE, EVENT RECAPS, AND PROJECT FEATURES FROM THE
+                WARHAUL WORLD.
+              </p>
+
+              <a
+                href={mailTo("WARHAUL MAGAZINE INQUIRY")}
+                className="mt-8 inline-flex border border-[#EF3340] bg-[#EF3340] px-6 py-4 text-xs font-black uppercase tracking-[0.16em] text-white hover:bg-white hover:text-[#EF3340]"
+              >
+                MAGAZINE INQUIRIES
+              </a>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -681,6 +847,148 @@ export default function WarhaulHomepage() {
       </section>
 
       <section
+        id="events"
+        className="border-b border-white/30 bg-[#EF3340] px-4 py-16 text-white md:px-8 md:py-20"
+      >
+        <div className="mx-auto max-w-[1600px]">
+          <p className="mb-8 text-[11px] uppercase tracking-[0.32em] text-white/70">
+            EVENT
+          </p>
+
+          <div className="grid gap-8 md:grid-cols-[0.8fr_1.2fr] md:items-end">
+            <h2 className="text-5xl font-black uppercase leading-[0.88] tracking-[-0.08em] md:text-8xl">
+              EVENT ARCHIVE
+            </h2>
+
+            <p className="max-w-3xl text-lg uppercase leading-8 text-white/75">
+              WARHAUL EVENTS ARE BUILT TO CONNECT COMMUNITY, DOCUMENT CULTURE,
+              AND CREATE CREATIVE MOMENTS ACROSS TORONTO.
+            </p>
+          </div>
+
+          <div
+            onClick={() => openEventAlbumPage(currentEventCard)}
+            onKeyDown={(event) => {
+              if (event.key === "Enter") openEventAlbumPage(currentEventCard);
+            }}
+            role="button"
+            tabIndex={0}
+            className="relative mt-10 cursor-pointer overflow-hidden border border-white/30 bg-black"
+          >
+            {currentEventImage ? (
+              <img
+                src={currentEventImage}
+                alt={currentEventCard.name}
+                className="h-[560px] w-full object-cover md:h-[720px]"
+              />
+            ) : (
+              <div className="h-[560px] w-full bg-black md:h-[720px]" />
+            )}
+
+            <div className="absolute inset-0 bg-black/35" />
+
+            <div className="absolute inset-0 flex items-center justify-center px-16 text-center">
+              <div>
+                <p className="mb-5 text-[11px] font-black uppercase tracking-[0.32em] text-white/70">
+                  WARHAUL EVENT GALLERY
+                </p>
+
+                <h3 className="text-6xl font-black uppercase leading-[0.78] tracking-[-0.1em] text-white md:text-9xl">
+                  {currentEventCard.name}
+                </h3>
+
+                <p className="mx-auto mt-6 max-w-xl text-sm font-black uppercase tracking-[0.18em] text-white/70">
+                  {activeEventCard + 1} / {eventAlbums.length}
+                </p>
+
+                <p className="mx-auto mt-6 max-w-2xl text-sm font-black uppercase leading-7 tracking-[0.14em] text-white/70">
+                  CLICK TO OPEN FULL GALLERY
+                </p>
+              </div>
+            </div>
+
+            <button
+              onClick={(event) => {
+                event.stopPropagation();
+                previousEventCard();
+              }}
+              className="absolute left-0 top-0 flex h-full w-12 items-center justify-center border-r border-white/30 bg-[#EF3340]/80 text-white transition hover:bg-white hover:text-[#EF3340] md:w-16"
+              aria-label="Previous event"
+            >
+              <span className="-rotate-90 text-[10px] font-black uppercase tracking-[0.24em] md:text-xs">
+                PREVIOUS
+              </span>
+            </button>
+
+            <button
+              onClick={(event) => {
+                event.stopPropagation();
+                nextEventCard();
+              }}
+              className="absolute right-0 top-0 flex h-full w-12 items-center justify-center border-l border-white/30 bg-[#EF3340]/80 text-white transition hover:bg-white hover:text-[#EF3340] md:w-16"
+              aria-label="Next event"
+            >
+              <span className="rotate-90 text-[10px] font-black uppercase tracking-[0.24em] md:text-xs">
+                NEXT
+              </span>
+            </button>
+          </div>
+
+          <div className="mt-12 grid border border-white/30 md:grid-cols-[0.75fr_1.25fr]">
+            <div className="border-b border-white/30 p-6 md:border-b-0 md:border-r md:p-8">
+              <p className="mb-5 text-[11px] uppercase tracking-[0.32em] text-white/70">
+                UPCOMING EVENTS
+              </p>
+
+              <h3 className="text-4xl font-black uppercase leading-[0.88] tracking-[-0.06em] md:text-6xl">
+                NEXT DEPLOYMENT
+              </h3>
+            </div>
+
+            <div className="p-6 md:p-8">
+              {upcomingEvents.length > 0 ? (
+                <div className="grid gap-4">
+                  {upcomingEvents.map((event) => (
+                    <div
+                      key={event.title}
+                      className="border border-white/30 p-5"
+                    >
+                      <p className="text-xs uppercase tracking-[0.24em] text-white/60">
+                        {event.date}
+                      </p>
+
+                      <h4 className="mt-3 text-3xl font-black uppercase tracking-[-0.05em]">
+                        {event.title}
+                      </h4>
+
+                      <p className="mt-3 text-sm uppercase tracking-[0.12em] text-white/70">
+                        {event.location}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="border border-white/30 p-6">
+                  <p className="text-lg uppercase leading-8 text-white/75">
+                    NO UPCOMING EVENTS ANNOUNCED RIGHT NOW. NEW WARHAUL EVENTS,
+                    LISTENING SESSIONS, SHOWCASES, AND COMMUNITY EXPERIENCES
+                    WILL BE POSTED HERE WHEN CONFIRMED.
+                  </p>
+
+                  <a
+                    href={mailTo("UPCOMING WARHAUL EVENTS")}
+                    className="mt-6 inline-flex border border-white bg-white px-6 py-4 text-xs font-black uppercase tracking-[0.16em] text-[#EF3340] hover:bg-[#EF3340] hover:text-white"
+                  >
+                    EVENT INQUIRIES
+                  </a>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
         id="contact"
         className="border-t border-white/30 bg-[#EF3340] text-white"
       >
@@ -691,7 +999,9 @@ export default function WarhaulHomepage() {
 
           <div className="flex flex-col items-center justify-center gap-2 md:flex-row md:gap-6">
             <a
-              href={mailTo("GENERAL QUESTIONS")}
+              href={CHATBOT_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
               className="whitespace-nowrap border border-white bg-white px-3 py-2.5 text-[clamp(9px,2vw,12px)] font-black uppercase tracking-[0.02em] text-[#EF3340] hover:bg-[#EF3340] hover:text-white"
             >
               QUESTIONS?
