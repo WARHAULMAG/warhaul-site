@@ -1,8 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { Camera, Mic2, Plus, Minus, Menu, X } from "lucide-react";
-import ZapierChatbot from "@/components/ZapierChatbot";
+import { Camera, Mic2, Plus, Minus, Menu, X, MessageCircle } from "lucide-react";
 
 const RED = "#EF3340";
 const EMAIL = "contactwarhaul@gmail.com";
@@ -930,8 +929,6 @@ export default function WarhaulHomepage() {
           </a>
         </div>
       </section>
-
-      <ZapierChatbot />
     </main>
   );
 }
