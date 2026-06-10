@@ -1,16 +1,26 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { Camera, Mic2, Plus, Minus, Menu, X, MessageCircle } from "lucide-react";
+import {
+  Camera,
+  Mic2,
+  Plus,
+  Minus,
+  Menu,
+  X,
+  MessageCircle,
+} from "lucide-react";
 
 const RED = "#EF3340";
 const EMAIL = "contactwarhaul@gmail.com";
 const PHONE = "647-794-8882";
 const ADDRESS = "2220 Midland Avenue, Unit 87, Scarborough, ON, M1P3E6";
+const CHATBOT_LINK = "https://warhaul.zapier.app/";
+const BOOKING_LINK = "https://warhaul.booqableshop.com/";
+
 const MAPS_LINK = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
   ADDRESS
 )}`;
-const BOOKING_LINK = "https://warhaul.booqableshop.com/";
 
 const mailTo = (subject: string) =>
   `mailto:${EMAIL}?subject=${encodeURIComponent(subject)}`;
@@ -30,6 +40,8 @@ const heroPhrases = [
   "AUDIO + VIDEO PRODUCTION",
   "BRAND + MARKETING CONSULTING",
 ];
+
+const magazineImage = "/images/andy-warhol.jpg";
 
 const studioImages = [
   "/images/DSCF1559-HDR.jpg",
@@ -270,141 +282,21 @@ export default function WarhaulHomepage() {
           <meta charset="UTF-8" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0" />
           <title>${album.name} | WARHAUL EVENTS</title>
-          <style>
-            * {
-              box-sizing: border-box;
-            }
-
-            body {
-              margin: 0;
-              background: ${RED};
-              color: white;
-              font-family: Arial, Helvetica, sans-serif;
-              text-transform: uppercase;
-            }
-
-            header {
-              display: flex;
-              justify-content: space-between;
-              align-items: center;
-              padding: 18px 28px;
-              border-bottom: 1px solid rgba(255,255,255,.35);
-            }
-
-            header div {
-              font-size: 14px;
-              font-weight: 900;
-              letter-spacing: .28em;
-            }
-
-            header a {
-              background: white;
-              color: ${RED};
-              padding: 12px 16px;
-              text-decoration: none;
-              font-size: 11px;
-              font-weight: 900;
-              letter-spacing: .18em;
-            }
-
-            main {
-              max-width: 1600px;
-              margin: 0 auto;
-              padding: 48px 24px 72px;
-            }
-
-            h1 {
-              max-width: 1200px;
-              font-size: clamp(42px, 10vw, 190px);
-              font-weight: 900;
-              line-height: .78;
-              letter-spacing: -.1em;
-              margin: 0;
-            }
-
-            .subhead {
-              margin-bottom: 24px;
-              color: rgba(255,255,255,.72);
-              font-size: 11px;
-              letter-spacing: .32em;
-            }
-
-            .desc {
-              margin-top: 28px;
-              border-top: 1px solid rgba(255,255,255,.35);
-              border-bottom: 1px solid rgba(255,255,255,.35);
-              padding: 22px 0;
-              color: rgba(255,255,255,.78);
-              font-size: 14px;
-              letter-spacing: .12em;
-              line-height: 1.8;
-            }
-
-            section {
-              display: grid;
-              grid-template-columns: repeat(2, minmax(0, 1fr));
-              gap: 18px;
-              margin-top: 40px;
-            }
-
-            .image-card {
-              background: black;
-              border: 1px solid rgba(255,255,255,.35);
-              overflow: hidden;
-            }
-
-            .image-card img {
-              display: block;
-              width: 100%;
-              height: 540px;
-              object-fit: contain;
-              background: black;
-            }
-
-            .empty-state {
-              grid-column: 1 / -1;
-              border: 1px solid rgba(255,255,255,.35);
-              padding: 56px;
-            }
-
-            .empty-state p {
-              color: rgba(255,255,255,.65);
-              font-size: 11px;
-              letter-spacing: .28em;
-            }
-
-            .empty-state h2 {
-              font-size: clamp(38px, 8vw, 120px);
-              line-height: .85;
-              letter-spacing: -.08em;
-              margin: 16px 0 0;
-            }
-
-            @media (max-width: 800px) {
-              section {
-                grid-template-columns: 1fr;
-              }
-
-              .image-card img {
-                height: auto;
-              }
-            }
-          </style>
         </head>
-        <body>
-          <header>
-            <div>WARHAUL</div>
-            <a href="javascript:window.close()">CLOSE</a>
+        <body style="background:${RED};color:white;font-family:Arial;text-transform:uppercase;">
+          <header style="display:flex;justify-content:space-between;align-items:center;padding:18px 28px;border-bottom:1px solid rgba(255,255,255,.35);">
+            <div style="font-size:14px;font-weight:900;letter-spacing:.28em;">WARHAUL</div>
+            <a href="javascript:window.close()" style="background:white;color:${RED};padding:12px 16px;text-decoration:none;font-size:11px;font-weight:900;letter-spacing:.18em;">CLOSE</a>
           </header>
 
-          <main>
-            <p class="subhead">WARHAUL EVENTS</p>
-            <h1>${album.name}</h1>
-            <p class="desc">
+          <main style="max-width:1600px;margin:0 auto;padding:48px 24px 72px;">
+            <p style="margin-bottom:24px;color:rgba(255,255,255,.72);font-size:11px;letter-spacing:.32em;">WARHAUL EVENTS</p>
+            <h1 style="max-width:1200px;font-size:clamp(42px,10vw,190px);font-weight:900;line-height:.78;letter-spacing:-.1em;">${album.name}</h1>
+            <p style="margin-top:28px;border-top:1px solid rgba(255,255,255,.35);border-bottom:1px solid rgba(255,255,255,.35);padding:22px 0;color:rgba(255,255,255,.78);font-size:14px;letter-spacing:.12em;line-height:1.8;">
               EVENT ALBUM — SELECTED PHOTOS FROM ${album.name}.
             </p>
 
-            <section>
+            <section style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:40px;">
               ${imageGrid}
             </section>
           </main>
@@ -789,96 +681,6 @@ export default function WarhaulHomepage() {
       </section>
 
       <section
-        id="events"
-        className="border-b border-white/30 bg-[#EF3340] px-4 py-16 text-white md:px-8 md:py-20"
-      >
-        <div className="mx-auto max-w-[1600px]">
-          <p className="mb-8 text-[11px] uppercase tracking-[0.32em] text-white/70">
-            EVENT
-          </p>
-
-          <div className="grid gap-8 md:grid-cols-[0.8fr_1.2fr] md:items-end">
-            <h2 className="text-5xl font-black uppercase leading-[0.88] tracking-[-0.08em] md:text-8xl">
-              EVENT ARCHIVE
-            </h2>
-
-            <p className="max-w-3xl text-lg uppercase leading-8 text-white/75">
-              WARHAUL EVENTS ARE BUILT TO CONNECT COMMUNITY, DOCUMENT CULTURE,
-              AND CREATE CREATIVE MOMENTS ACROSS TORONTO.
-            </p>
-          </div>
-
-          <div className="mt-10 grid border border-white/30 md:grid-cols-[0.9fr_1.1fr]">
-            <div className="border-b border-white/30 p-6 md:border-b-0 md:border-r md:p-8">
-              <div className="flex items-center justify-between gap-4">
-                <button
-                  onClick={previousEventCard}
-                  className="border border-white px-4 py-3 text-xs font-black uppercase tracking-[0.18em] hover:bg-white hover:text-[#EF3340]"
-                >
-                  PREV
-                </button>
-
-                <button
-                  onClick={nextEventCard}
-                  className="border border-white px-4 py-3 text-xs font-black uppercase tracking-[0.18em] hover:bg-white hover:text-[#EF3340]"
-                >
-                  NEXT
-                </button>
-              </div>
-
-              <h3 className="mt-10 text-5xl font-black uppercase leading-[0.82] tracking-[-0.08em] md:text-7xl">
-                {currentEventCard.name}
-              </h3>
-
-              <p className="mt-6 text-lg uppercase leading-8 text-white/75">
-                SELECTED WARHAUL EVENT ALBUM. VIEW RECAP PHOTOS, CREATIVE
-                MOMENTS, AND DOCUMENTATION FROM THE COMMUNITY.
-              </p>
-
-              <button
-                onClick={() => openEventAlbumPage(currentEventCard)}
-                className="mt-8 border border-white bg-white px-6 py-4 text-xs font-black uppercase tracking-[0.16em] text-[#EF3340] hover:bg-[#EF3340] hover:text-white"
-              >
-                OPEN ALBUM
-              </button>
-
-              <div className="mt-10 grid gap-2">
-                {eventAlbums.map((album, index) => (
-                  <button
-                    key={album.slug}
-                    onClick={() => setActiveEventCard(index)}
-                    className={`border px-4 py-3 text-left text-xs font-black uppercase tracking-[0.16em] transition ${
-                      activeEventCard === index
-                        ? "border-white bg-white text-[#EF3340]"
-                        : "border-white/30 text-white/70 hover:border-white hover:text-white"
-                    }`}
-                  >
-                    {album.name}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            <div className="bg-black">
-              {currentEventCard.images.length > 0 ? (
-                <img
-                  src={currentEventCard.images[0]}
-                  alt={currentEventCard.name}
-                  className="h-[520px] w-full object-contain"
-                />
-              ) : (
-                <div className="flex h-[520px] items-center justify-center p-8 text-center">
-                  <p className="text-[11px] uppercase tracking-[0.32em] text-white/45">
-                    PHOTOS COMING SOON
-                  </p>
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section
         id="contact"
         className="border-t border-white/30 bg-[#EF3340] text-white"
       >
@@ -929,6 +731,16 @@ export default function WarhaulHomepage() {
           </a>
         </div>
       </section>
+
+      <a
+        href={CHATBOT_LINK}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed bottom-5 right-5 z-[9999] flex items-center gap-2 border border-white bg-white px-5 py-4 text-xs font-black uppercase tracking-[0.16em] text-[#EF3340] shadow-2xl transition hover:bg-[#EF3340] hover:text-white"
+      >
+        <MessageCircle className="h-5 w-5" />
+        Chat With Us
+      </a>
     </main>
   );
 }
