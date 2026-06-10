@@ -1,10 +1,16 @@
 "use client";
 
+import Script from "next/script";
 import React, { useEffect, useState } from "react";
 import { Camera, Mic2, Plus, Minus, Menu, X } from "lucide-react";
 
 const RED = "#EF3340";
 const EMAIL = "contactwarhaul@gmail.com";
+const PHONE = "647-794-8882";
+const ADDRESS = "2220 Midland Avenue, Unit 87, Scarborough, ON, M1P3E6";
+const MAPS_LINK = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+  ADDRESS
+)}`;
 const BOOKING_LINK = "https://warhaul.booqableshop.com/";
 
 const mailTo = (subject: string) =>
@@ -690,10 +696,10 @@ export default function WarhaulHomepage() {
             </a>
 
             <a
-              href="tel:6477948882"
+              href={`tel:${PHONE.replace(/-/g, "")}`}
               className="whitespace-nowrap text-[clamp(9px,2vw,12px)] font-black uppercase tracking-[0.02em] hover:opacity-70"
             >
-              647-794-8882
+              {PHONE}
             </a>
 
             <a
@@ -705,8 +711,35 @@ export default function WarhaulHomepage() {
               @WARHAULSTUDIO
             </a>
           </div>
+
+          <a
+            href={MAPS_LINK}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="max-w-full text-center text-[clamp(9px,2vw,12px)] font-black uppercase tracking-[0.02em] text-white/80 hover:text-white"
+          >
+            {ADDRESS}
+          </a>
         </div>
       </section>
+
+      <Script
+        id="zapier-chatbot-script"
+        type="module"
+        strategy="afterInteractive"
+        src="https://interfaces.zapier.com/assets/web-components/zapier-interfaces/zapier-interfaces.esm.js"
+      />
+
+      <div
+        dangerouslySetInnerHTML={{
+          __html: `
+            <zapier-interfaces-chatbot-embed
+              is-popup="true"
+              chatbot-id="cmq7rjuii0033b6kusic1lequ"
+            ></zapier-interfaces-chatbot-embed>
+          `,
+        }}
+      />
     </main>
   );
 }
