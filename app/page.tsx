@@ -17,6 +17,7 @@ const PHONE = "647-794-8882";
 const ADDRESS = "2220 Midland Avenue, Unit 87, Scarborough, ON, M1P3E6";
 const CHATBOT_LINK = "https://warhaul.zapier.app/";
 const BOOKING_LINK = "https://warhaul.booqableshop.com/";
+const YOUTUBE_LINK = "https://www.youtube.com/@WarhaulStudio";
 
 const MAPS_LINK = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
   ADDRESS
@@ -610,10 +611,12 @@ export default function WarhaulHomepage() {
               </p>
 
               <a
-                href={mailTo("WARHAUL RADIO INQUIRY")}
+                href={YOUTUBE_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="mt-8 inline-flex border border-white bg-white px-6 py-4 text-xs font-black uppercase tracking-[0.16em] text-[#EF3340] hover:bg-[#EF3340] hover:text-white"
               >
-                RADIO INQUIRIES
+                WARHAUL RADIO
               </a>
             </div>
 
