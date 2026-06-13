@@ -16,7 +16,7 @@ const EMAIL = "contactwarhaul@gmail.com";
 const PHONE = "647-794-8882";
 const ADDRESS = "2220 Midland Avenue, Unit 87, Scarborough, ON, M1P3E6";
 const CHATBOT_LINK = "https://warhaul.zapier.app/";
-const BOOKING_LINK = "https://warhaul.booqableshop.com/";
+const BOOKING_LINK = "https://warhaul.as.me/schedule/ac93ce44";
 const YOUTUBE_LINK = "https://www.youtube.com/@WarhaulStudio";
 
 const MAPS_LINK = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
@@ -1052,7 +1052,7 @@ export default function WarhaulHomepage() {
         className="fixed bottom-5 right-5 z-[9999] flex items-center gap-2 border border-white bg-white px-5 py-4 text-xs font-black uppercase tracking-[0.16em] text-[#EF3340] shadow-2xl transition hover:bg-[#EF3340] hover:text-white"
       >
         <MessageCircle className="h-5 w-5" />
-        Chat With Us
+        Chat With Ghillie
       </a>
     </main>
   );
