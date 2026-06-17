@@ -16,7 +16,12 @@ const EMAIL = "contactwarhaul@gmail.com";
 const PHONE = "647-794-8882";
 const ADDRESS = "2220 Midland Avenue, Unit 87, Scarborough, ON, M1P3E6";
 const CHATBOT_LINK = "https://warhaul.zapier.app/";
-const BOOKING_LINK = "https://warhaul.as.me/schedule/ac93ce44";
+const PHOTO_STUDIO_BOOKING_LINK =
+  "https://WARHAUL.as.me/?appointmentType=category:Cyclorama%2FPhoto%20Studio";
+const AUDIO_NO_ENGINEER_BOOKING_LINK =
+  "https://WARHAUL.as.me/?appointmentType=category:Audio%2FDJ%20Studio%20-%20No%20Engineer";
+const AUDIO_WITH_ENGINEER_BOOKING_LINK =
+  "https://WARHAUL.as.me/?appointmentType=category:Audio%2FDJ%20Studio%20-%20With%20Engineer";
 const YOUTUBE_LINK = "https://www.youtube.com/@WarhaulStudio";
 
 const MAPS_LINK = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
@@ -28,6 +33,7 @@ const mailTo = (subject: string) =>
 
 const nav = [
   ["#media", "PRESS"],
+  ["#credits", "CREDITS"],
   ["#services", "SERVICE"],
   ["#studio", "STUDIO"],
   ["#events", "EVENT"],
@@ -53,6 +59,28 @@ const studioImages = [
   "/images/DSCF1575-HDR.jpg",
   "/images/DSCF1581-HDR.jpg",
   "/images/DSCF1584-HDR.jpg",
+];
+
+const grim2Images = [
+  "/events/grim-2/2E5A8928.jpg",
+  "/events/grim-2/2E5A8777.jpg",
+  "/events/grim-2/2E5A8802.jpg",
+  "/events/grim-2/2E5A8860.jpg",
+  "/events/grim-2/2E5A8948.jpg",
+  "/events/grim-2/2E5A9025.jpg",
+  "/events/grim-2/2E5A9284.jpg",
+  "/events/grim-2/2E5A9112.jpg",
+  "/events/grim-2/2E5A9085.jpg",
+  "/events/grim-2/2E5A9082.jpg",
+  "/events/grim-2/2E5A9241.jpg",
+  "/events/grim-2/IMG_7716.JPG",
+  "/events/grim-2/IMG_7711.JPG",
+  "/events/grim-2/IMG_7649.JPG",
+  "/events/grim-2/P1140164.jpg",
+  "/events/grim-2/GRIM FEST DAY 1 - FAYELLA ALBUM57.jpg",
+  "/events/grim-2/GRIM FEST DAY 1 - FAYELLA ALBUM49.jpg",
+  "/events/grim-2/2E5A9436.jpg",
+  "/events/grim-2/2E5A9389.jpg",
 ];
 
 const artscape2Images = [
@@ -82,7 +110,7 @@ const eventAlbums = [
   {
     name: "GRIM 2",
     slug: "grim-2",
-    images: [] as string[],
+    images: grim2Images,
   },
   {
     name: "ARTSCAPE 1",
@@ -120,7 +148,13 @@ const upcomingEvents: Array<{
   title: string;
   date: string;
   location: string;
-}> = [];
+}> = [
+  {
+    title: "WARHAUL RADIO LIVE",
+    date: "JULY 2026",
+    location: "TORONTO",
+  },
+];
 
 const placementLogos = [
   "/images/nike toronto.png",
@@ -134,6 +168,45 @@ const placementLogos = [
   "/images/rollingstone.png",
   "/images/nuitblanche.png",
   "/images/nxne.png",
+];
+
+const placementCredits = [
+  {
+    label: "RAPTORS “TRACY”",
+    href: "https://www.instagram.com/tv/COjFjZJNML2/",
+  },
+  {
+    label: "NIKE TORONTO",
+    href: "https://www.instagram.com/p/CUNgT8fgPAo/",
+  },
+  {
+    label: "RAPTORS “FAMILY”",
+    href: "https://www.instagram.com/tv/CWObkA9t3Wo/",
+  },
+  {
+    label: "NIKE ACG",
+    href: "https://www.instagram.com/p/CTxIpz7gkHN/",
+  },
+  {
+    label: "NIKE PLAY NEW",
+    href: "https://www.instagram.com/tv/CUaUazxg81K/",
+  },
+  {
+    label: "RYAN YAPSAM",
+    href: "https://www.instagram.com/reel/DHOWgbAOWbi/?igsh=MWdmZ3VyMTBrYWVhcg==",
+  },
+  {
+    label: "JRDN",
+    href: "https://www.instagram.com/reel/DLsBHytM5Ay/?igsh=dnFqcHBwZGZqMWx2",
+  },
+  {
+    label: "ROLLING STONE",
+    href: "https://www.instagram.com/reel/DUOYgp7D77a/",
+  },
+  {
+    label: "BILLBOARD UK",
+    href: "https://www.instagram.com/p/DUi-UnikxgM/",
+  },
 ];
 
 const services = [
@@ -221,6 +294,37 @@ const amenities = [
   },
 ];
 
+const generalBookingOptions = [
+  {
+    label: "PHOTO STUDIO",
+    description: "CYCLORAMA / PHOTO STUDIO",
+    href: PHOTO_STUDIO_BOOKING_LINK,
+  },
+  {
+    label: "AUDIO / DJ - NO ENGINEER",
+    description: "BOOK AUDIO OR DJ STUDIO ONLY",
+    href: AUDIO_NO_ENGINEER_BOOKING_LINK,
+  },
+  {
+    label: "AUDIO / DJ - WITH ENGINEER",
+    description: "BOOK AUDIO STUDIO WITH AN ENGINEER",
+    href: AUDIO_WITH_ENGINEER_BOOKING_LINK,
+  },
+];
+
+const audioBookingOptions = [
+  {
+    label: "NO ENGINEER",
+    description: "BOOK AUDIO OR DJ STUDIO ONLY",
+    href: AUDIO_NO_ENGINEER_BOOKING_LINK,
+  },
+  {
+    label: "WITH ENGINEER",
+    description: "BOOK AUDIO STUDIO WITH AN ENGINEER",
+    href: AUDIO_WITH_ENGINEER_BOOKING_LINK,
+  },
+];
+
 export default function WarhaulHomepage() {
   const [activeStudioImage, setActiveStudioImage] = useState(0);
   const [activeEventCard, setActiveEventCard] = useState(2);
@@ -228,6 +332,9 @@ export default function WarhaulHomepage() {
   const [showAmenities, setShowAmenities] = useState(false);
   const [openService, setOpenService] = useState<number | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [bookingMenuOpen, setBookingMenuOpen] = useState<
+    "general" | "audio" | null
+  >(null);
 
   const currentEventCard = eventAlbums[activeEventCard];
   const currentEventImage = currentEventCard.images[0];
@@ -488,14 +595,12 @@ export default function WarhaulHomepage() {
           </nav>
 
           <div className="hidden md:block">
-            <a
-              href={BOOKING_LINK}
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
+              onClick={() => setBookingMenuOpen("general")}
               className="border border-white bg-white px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-[#EF3340] transition hover:bg-[#EF3340] hover:text-white md:px-5 md:py-3"
             >
               BOOK STUDIO
-            </a>
+            </button>
           </div>
 
           <button
@@ -525,14 +630,15 @@ export default function WarhaulHomepage() {
                 </a>
               ))}
 
-              <a
-                href={BOOKING_LINK}
-                target="_blank"
-                rel="noopener noreferrer"
+              <button
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  setBookingMenuOpen("general");
+                }}
                 className="border border-white bg-white px-4 py-3 text-center text-xs font-black uppercase tracking-[0.18em] text-[#EF3340]"
               >
                 BOOK STUDIO
-              </a>
+              </button>
             </div>
           </div>
         )}
@@ -761,7 +867,7 @@ export default function WarhaulHomepage() {
               </p>
 
               <a
-                href={BOOKING_LINK}
+                href={PHOTO_STUDIO_BOOKING_LINK}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-8 inline-flex border border-white bg-white px-6 py-4 text-xs font-black uppercase tracking-[0.16em] text-[#EF3340] hover:bg-[#EF3340] hover:text-white"
@@ -800,14 +906,12 @@ export default function WarhaulHomepage() {
                 FILMED DJ SETS, AND CONTENT CREATION.
               </p>
 
-              <a
-                href={BOOKING_LINK}
-                target="_blank"
-                rel="noopener noreferrer"
+              <button
+                onClick={() => setBookingMenuOpen("audio")}
                 className="mt-8 inline-flex border border-[#EF3340] bg-[#EF3340] px-6 py-4 text-xs font-black uppercase tracking-[0.16em] text-white hover:bg-white hover:text-[#EF3340]"
               >
                 BOOK AUDIO / DJ
-              </a>
+              </button>
             </div>
           </div>
         </div>
@@ -851,10 +955,10 @@ export default function WarhaulHomepage() {
 
       <section
         id="events"
-        className="border-b border-white/30 bg-[#EF3340] px-4 py-16 text-white md:px-8 md:py-20"
+        className="border-b border-black/10 bg-white px-4 py-16 text-black md:px-8 md:py-20"
       >
         <div className="mx-auto max-w-[1600px]">
-          <p className="mb-8 text-[11px] uppercase tracking-[0.32em] text-white/70">
+          <p className="mb-8 text-[11px] uppercase tracking-[0.32em] text-black/45">
             EVENT
           </p>
 
@@ -863,7 +967,7 @@ export default function WarhaulHomepage() {
               EVENT ARCHIVE
             </h2>
 
-            <p className="max-w-3xl text-lg uppercase leading-8 text-white/75">
+            <p className="max-w-3xl text-lg uppercase leading-8 text-black/60">
               WARHAUL EVENTS ARE BUILT TO CONNECT COMMUNITY, DOCUMENT CULTURE,
               AND CREATE CREATIVE MOMENTS ACROSS TORONTO.
             </p>
@@ -876,7 +980,7 @@ export default function WarhaulHomepage() {
             }}
             role="button"
             tabIndex={0}
-            className="relative mt-10 cursor-pointer overflow-hidden border border-white/30 bg-black"
+            className="relative mt-10 cursor-pointer overflow-hidden border border-black/10 bg-black"
           >
             {currentEventImage ? (
               <img
@@ -896,7 +1000,7 @@ export default function WarhaulHomepage() {
                   WARHAUL EVENT GALLERY
                 </p>
 
-                <h3 className="mx-auto max-w-[900px] text-[clamp(2.6rem,14vw,4.6rem)] font-black uppercase leading-[0.82] tracking-[-0.08em] text-white md:text-9xl md:leading-[0.78] md:tracking-[-0.1em]">
+                <h3 className="mx-auto max-w-[260px] break-words text-center text-[2.7rem] font-black uppercase leading-[0.82] tracking-[-0.08em] text-white sm:max-w-[420px] sm:text-[4rem] md:max-w-none md:text-9xl">
                   {currentEventCard.name}
                 </h3>
 
@@ -937,9 +1041,9 @@ export default function WarhaulHomepage() {
             </button>
           </div>
 
-          <div className="mt-12 grid border border-white/30 md:grid-cols-[0.75fr_1.25fr]">
-            <div className="border-b border-white/30 p-6 md:border-b-0 md:border-r md:p-8">
-              <p className="mb-5 text-[11px] uppercase tracking-[0.32em] text-white/70">
+          <div className="mt-12 grid border border-black/10 md:grid-cols-[0.75fr_1.25fr]">
+            <div className="border-b border-black/10 p-6 md:border-b-0 md:border-r md:p-8">
+              <p className="mb-5 text-[11px] uppercase tracking-[0.32em] text-black/45">
                 UPCOMING EVENTS
               </p>
 
@@ -954,9 +1058,9 @@ export default function WarhaulHomepage() {
                   {upcomingEvents.map((event) => (
                     <div
                       key={event.title}
-                      className="border border-white/30 p-5"
+                      className="border border-black/10 p-5"
                     >
-                      <p className="text-xs uppercase tracking-[0.24em] text-white/60">
+                      <p className="text-xs uppercase tracking-[0.24em] text-black/45">
                         {event.date}
                       </p>
 
@@ -964,15 +1068,15 @@ export default function WarhaulHomepage() {
                         {event.title}
                       </h4>
 
-                      <p className="mt-3 text-sm uppercase tracking-[0.12em] text-white/70">
+                      <p className="mt-3 text-sm uppercase tracking-[0.12em] text-black/55">
                         {event.location}
                       </p>
                     </div>
                   ))}
                 </div>
               ) : (
-                <div className="border border-white/30 p-6">
-                  <p className="text-lg uppercase leading-8 text-white/75">
+                <div className="border border-black/10 p-6">
+                  <p className="text-lg uppercase leading-8 text-black/60">
                     NO UPCOMING EVENTS ANNOUNCED RIGHT NOW. NEW WARHAUL EVENTS,
                     LISTENING SESSIONS, SHOWCASES, AND COMMUNITY EXPERIENCES
                     WILL BE POSTED HERE WHEN CONFIRMED.
@@ -980,12 +1084,45 @@ export default function WarhaulHomepage() {
 
                   <a
                     href={mailTo("UPCOMING WARHAUL EVENTS")}
-                    className="mt-6 inline-flex border border-white bg-white px-6 py-4 text-xs font-black uppercase tracking-[0.16em] text-[#EF3340] hover:bg-[#EF3340] hover:text-white"
+                    className="mt-6 inline-flex border border-[#EF3340] bg-[#EF3340] px-6 py-4 text-xs font-black uppercase tracking-[0.16em] text-white hover:bg-white hover:text-[#EF3340]"
                   >
                     EVENT INQUIRIES
                   </a>
                 </div>
               )}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="credits"
+        className="border-t border-white/30 bg-[#EF3340] px-4 py-8 text-white md:px-8 md:py-10"
+      >
+        <div className="mx-auto max-w-[1600px]">
+          <div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
+            <div>
+              <p className="mb-2 text-[10px] uppercase tracking-[0.32em] text-white/60">
+                PLACEMENTS / CREDITS
+              </p>
+
+              <h2 className="text-3xl font-black uppercase leading-none tracking-[-0.06em] md:text-5xl">
+                CREDITS
+              </h2>
+            </div>
+
+            <div className="grid w-full grid-cols-3 gap-2 md:w-auto md:min-w-[720px]">
+              {placementCredits.map((credit) => (
+                <a
+                  key={credit.label}
+                  href={credit.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="border border-white/30 px-3 py-2 text-center text-[10px] font-black uppercase tracking-[0.12em] text-white/70 transition hover:bg-white hover:text-[#EF3340]"
+                >
+                  {credit.label}
+                </a>
+              ))}
             </div>
           </div>
         </div>
@@ -1044,6 +1181,62 @@ export default function WarhaulHomepage() {
           </a>
         </div>
       </section>
+
+      {bookingMenuOpen && (
+        <div
+          onClick={() => setBookingMenuOpen(null)}
+          className="fixed inset-0 z-[9998] flex items-center justify-center bg-black/70 px-4 backdrop-blur-sm"
+        >
+          <div
+            onClick={(event) => event.stopPropagation()}
+            className="w-full max-w-xl border border-white/30 bg-[#EF3340] p-6 text-white shadow-2xl md:p-8"
+          >
+            <div className="flex items-start justify-between gap-6">
+              <div>
+                <p className="mb-4 text-[11px] uppercase tracking-[0.32em] text-white/70">
+                  BOOK WARHAUL
+                </p>
+
+                <h3 className="text-4xl font-black uppercase leading-[0.88] tracking-[-0.08em] md:text-6xl">
+                  {bookingMenuOpen === "audio"
+                    ? "CHOOSE AUDIO BOOKING"
+                    : "CHOOSE BOOKING"}
+                </h3>
+              </div>
+
+              <button
+                onClick={() => setBookingMenuOpen(null)}
+                className="border border-white/30 px-4 py-2 text-[10px] font-black uppercase tracking-[0.18em] text-white transition hover:bg-white hover:text-[#EF3340]"
+              >
+                CLOSE
+              </button>
+            </div>
+
+            <div className="mt-8 grid gap-3">
+              {(bookingMenuOpen === "audio"
+                ? audioBookingOptions
+                : generalBookingOptions
+              ).map((option) => (
+                <a
+                  key={option.label}
+                  href={option.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="border border-white/30 p-5 transition hover:bg-white hover:text-[#EF3340]"
+                >
+                  <p className="text-2xl font-black uppercase leading-none tracking-[-0.05em]">
+                    {option.label}
+                  </p>
+
+                  <p className="mt-3 text-sm font-black uppercase leading-6 tracking-[0.12em] opacity-70">
+                    {option.description}
+                  </p>
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
 
       <a
         href={CHATBOT_LINK}
