@@ -22,6 +22,7 @@ const AUDIO_NO_ENGINEER_BOOKING_LINK =
   "https://WARHAUL.as.me/?appointmentType=category:Audio%2FDJ%20Studio%20-%20No%20Engineer";
 const AUDIO_WITH_ENGINEER_BOOKING_LINK =
   "https://WARHAUL.as.me/?appointmentType=category:Audio%2FDJ%20Studio%20-%20With%20Engineer";
+const DJ_BOOKING_LINK = "https://WARHAUL.as.me/?appointmentType=category:DJ";
 const YOUTUBE_LINK = "https://www.youtube.com/@WarhaulStudio";
 
 const MAPS_LINK = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
@@ -148,11 +149,24 @@ const upcomingEvents: Array<{
   title: string;
   date: string;
   location: string;
+  href?: string;
 }> = [
   {
     title: "WARHAUL RADIO LIVE",
     date: "JULY 2026",
     location: "TORONTO",
+    href: "https://flite.city/e/warhaul-radio-live?t=you",
+  },
+  {
+    title: "2 YEAR ANNIVERSARY + MOOVE",
+    date: "JUL 31, 2026",
+    location: "TORONTO",
+  },
+  {
+    title: "ARTSCAPE 3 + BKTHERULA",
+    date: "AUG 28, 2026",
+    location: "TORONTO",
+    href: "https://flite.city/e/artscape-3-x-bktherula?t=you",
   },
 ];
 
@@ -294,33 +308,55 @@ const amenities = [
   },
 ];
 
+const studioRules = [
+  "NO SMOKING OR VAPING INSIDE",
+  "NO FOOD OR DRINKS ON THE CYC WALL",
+  "CLEAN INDOOR SHOES ONLY ON THE CYC WALL",
+  "DO NOT STEP, SIT, OR LEAN ON THE CYC CURVE",
+  "RETURN PROPS AND EQUIPMENT TO THEIR ORIGINAL POSITION",
+  "LEAVE THE SPACE CLEAN AND LOCKED AFTER USE",
+];
+
 const generalBookingOptions = [
   {
-    label: "PHOTO STUDIO",
+    label: "BOOK PHOTO STUDIO",
     description: "CYCLORAMA / PHOTO STUDIO",
     href: PHOTO_STUDIO_BOOKING_LINK,
   },
   {
-    label: "AUDIO / DJ - NO ENGINEER",
-    description: "BOOK AUDIO OR DJ STUDIO ONLY",
-    href: AUDIO_NO_ENGINEER_BOOKING_LINK,
+    label: "BOOK WARHAUL AUDIO",
+    description: "CHOOSE WITH ENGINEER OR WITHOUT ENGINEER",
+    mode: "audio" as const,
   },
   {
-    label: "AUDIO / DJ - WITH ENGINEER",
-    description: "BOOK AUDIO STUDIO WITH AN ENGINEER",
-    href: AUDIO_WITH_ENGINEER_BOOKING_LINK,
+    label: "BOOK WARHAUL DJ",
+    description: "DJ PRACTICE / DJ STUDIO",
+    href: DJ_BOOKING_LINK,
+  },
+];
+
+const audioDjBookingOptions = [
+  {
+    label: "BOOK WARHAUL AUDIO",
+    description: "CHOOSE WITH ENGINEER OR WITHOUT ENGINEER",
+    mode: "audio" as const,
+  },
+  {
+    label: "BOOK WARHAUL DJ",
+    description: "DJ PRACTICE / DJ STUDIO",
+    href: DJ_BOOKING_LINK,
   },
 ];
 
 const audioBookingOptions = [
   {
-    label: "NO ENGINEER",
-    description: "BOOK AUDIO OR DJ STUDIO ONLY",
+    label: "WITHOUT ENGINEER",
+    description: "AUDIO / DJ STUDIO - NO ENGINEER",
     href: AUDIO_NO_ENGINEER_BOOKING_LINK,
   },
   {
     label: "WITH ENGINEER",
-    description: "BOOK AUDIO STUDIO WITH AN ENGINEER",
+    description: "AUDIO STUDIO WITH ENGINEER",
     href: AUDIO_WITH_ENGINEER_BOOKING_LINK,
   },
 ];
@@ -329,11 +365,14 @@ export default function WarhaulHomepage() {
   const [activeStudioImage, setActiveStudioImage] = useState(0);
   const [activeEventCard, setActiveEventCard] = useState(2);
   const [activeHeroPhrase, setActiveHeroPhrase] = useState(0);
-  const [showAmenities, setShowAmenities] = useState(false);
+  const [showPhotoGear, setShowPhotoGear] = useState(false);
+  const [showPhotoRules, setShowPhotoRules] = useState(false);
+  const [showAudioGear, setShowAudioGear] = useState(false);
+  const [showAudioRules, setShowAudioRules] = useState(false);
   const [openService, setOpenService] = useState<number | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [bookingMenuOpen, setBookingMenuOpen] = useState<
-    "general" | "audio" | null
+    "general" | "audioDj" | "audio" | null
   >(null);
 
   const currentEventCard = eventAlbums[activeEventCard];
@@ -551,6 +590,19 @@ export default function WarhaulHomepage() {
   return (
     <main className="min-h-screen bg-[#EF3340] text-white uppercase">
       <style jsx global>{`
+        :root {
+          --owners-trail: "Owners TRAIL Medium", "Owners TRAIL", "Owners", Arial, Helvetica, sans-serif;
+        }
+
+        h1,
+        h2,
+        h3,
+        button,
+        .major-cta,
+        .booking-category-title {
+          font-family: var(--owners-trail);
+        }
+
         @keyframes logo-marquee {
           from {
             transform: translateX(0);
@@ -574,9 +626,9 @@ export default function WarhaulHomepage() {
         <div className="mx-auto flex max-w-[1600px] items-center justify-between px-4 py-3 md:px-8">
           <a href="#" className="flex items-center">
             <img
-              src="/images/Warhaul-BLK.png"
+              src="/images/wh-monogram.png"
               alt="WARHAUL"
-              className="h-14 invert md:h-16"
+              className="h-12 w-12 object-contain md:h-14 md:w-14"
             />
           </a>
 
@@ -599,7 +651,7 @@ export default function WarhaulHomepage() {
               onClick={() => setBookingMenuOpen("general")}
               className="border border-white bg-white px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-[#EF3340] transition hover:bg-[#EF3340] hover:text-white md:px-5 md:py-3"
             >
-              BOOK STUDIO
+              BOOK NOW
             </button>
           </div>
 
@@ -637,7 +689,7 @@ export default function WarhaulHomepage() {
                 }}
                 className="border border-white bg-white px-4 py-3 text-center text-xs font-black uppercase tracking-[0.18em] text-[#EF3340]"
               >
-                BOOK STUDIO
+                BOOK NOW
               </button>
             </div>
           </div>
@@ -674,8 +726,12 @@ export default function WarhaulHomepage() {
 
       <section className="mx-auto max-w-[1600px] border-b border-white/30 bg-[#EF3340] px-4 pb-12 pt-14 md:px-8 md:pb-16 md:pt-20">
         <div className="flex flex-col items-center text-center">
-          <h1 className="text-center text-[20vw] font-black uppercase leading-[0.78] tracking-[-0.12em] md:text-[13vw]">
-            WARHAUL
+          <h1 className="flex w-full justify-center">
+            <img
+              src="/images/warhaul-full-logo-cropped.png"
+              alt="WARHAUL STUDIO"
+              className="h-auto w-[82vw] max-w-[980px] object-contain invert md:w-[68vw]"
+            />
           </h1>
 
           <div className="mt-7 flex min-h-[72px] w-full max-w-4xl items-center justify-center border-y border-white/30 px-4 py-5">
@@ -685,6 +741,211 @@ export default function WarhaulHomepage() {
             >
               {heroPhrases[activeHeroPhrase]}
             </p>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="studio"
+        className="mx-auto max-w-[1600px] border-b border-white/30 bg-[#EF3340] px-4 py-16 text-white md:px-8 md:py-20"
+      >
+        <p className="mb-8 text-[11px] uppercase tracking-[0.32em] text-white/70">
+          BOOK WARHAUL
+        </p>
+
+        <h2 className="text-5xl font-black uppercase leading-[0.88] tracking-[-0.08em] md:text-8xl">
+          STUDIO
+        </h2>
+
+        <div className="mt-10 border-y border-white/30">
+          <div className="grid md:grid-cols-2">
+            <div className="border-b border-white/30 p-6 md:border-b-0 md:border-r md:p-8">
+              <Camera className="mb-8 h-8 w-8" />
+
+              <h3 className="text-3xl font-black uppercase tracking-[-0.05em] md:text-5xl">
+                PHOTO STUDIO
+              </h3>
+
+              <p className="mt-5 text-lg uppercase leading-8 text-white/75">
+                CYCLORAMA WALL, OPEN LAYOUT, LIGHTING GEAR, DRESSING AREA,
+                PARKING, AND ROOM TO BUILD THE SET.
+              </p>
+
+              <div className="mt-8 flex flex-wrap gap-3">
+                <a
+                  href={PHOTO_STUDIO_BOOKING_LINK}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex border border-white bg-white px-6 py-4 text-xs font-black uppercase tracking-[0.16em] text-[#EF3340] hover:bg-[#EF3340] hover:text-white"
+                >
+                  BOOK PHOTO STUDIO
+                </a>
+
+                <button
+                  onClick={() => setShowPhotoGear((current) => !current)}
+                  className="inline-flex border border-white/40 px-5 py-4 text-xs font-black uppercase tracking-[0.16em] text-white hover:bg-white hover:text-[#EF3340]"
+                >
+                  {showPhotoGear ? "HIDE GEAR" : "AMENITIES & GEAR"}
+                </button>
+
+                <button
+                  onClick={() => setShowPhotoRules((current) => !current)}
+                  className="inline-flex border border-white/40 px-5 py-4 text-xs font-black uppercase tracking-[0.16em] text-white hover:bg-white hover:text-[#EF3340]"
+                >
+                  {showPhotoRules ? "HIDE RULES" : "STUDIO RULES"}
+                </button>
+              </div>
+
+              {showPhotoGear && (
+                <div className="mt-6 grid gap-6 border border-white/30 p-5 md:grid-cols-2">
+                  <div>
+                    <h4 className="text-sm font-black uppercase tracking-[0.22em] text-white/60">
+                      AMENITIES
+                    </h4>
+
+                    <div className="mt-4 divide-y divide-white/20 text-sm uppercase tracking-[0.12em] text-white/75">
+                      {amenities[0].items.map((item) => (
+                        <p key={item} className="py-3">
+                          {item}
+                        </p>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div>
+                    <h4 className="text-sm font-black uppercase tracking-[0.22em] text-white/60">
+                      PHOTO EQUIPMENT
+                    </h4>
+
+                    <div className="mt-4 divide-y divide-white/20 text-sm uppercase tracking-[0.12em] text-white/75">
+                      {amenities[1].items.map((item) => (
+                        <p key={item} className="py-3">
+                          {item}
+                        </p>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {showPhotoRules && (
+                <div className="mt-6 border border-white/30 p-5">
+                  <h4 className="text-sm font-black uppercase tracking-[0.22em] text-white/60">
+                    STUDIO RULES
+                  </h4>
+
+                  <div className="mt-4 divide-y divide-white/20 text-sm uppercase tracking-[0.12em] text-white/75">
+                    {studioRules.map((rule) => (
+                      <p key={rule} className="py-3">
+                        {rule}
+                      </p>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+
+            <div>
+              <img
+                src={studioImages[activeStudioImage]}
+                alt="WARHAUL FILM STUDIO"
+                className="h-[420px] w-full object-cover md:h-[520px]"
+              />
+            </div>
+          </div>
+
+          <div className="grid border-t border-white/30 md:grid-cols-2">
+            <div className="min-h-[420px] border-b border-white/30 md:min-h-[520px] md:border-b-0 md:border-r">
+              <div className="flex h-full min-h-[420px] items-center justify-center p-8 text-center md:min-h-[520px]">
+                <p className="text-[11px] uppercase tracking-[0.32em] text-white/45">
+                  AUDIO / DJ VISUALS COMING SOON
+                </p>
+              </div>
+            </div>
+
+            <div className="bg-white p-6 text-black md:p-8">
+              <Mic2 className="mb-8 h-8 w-8" />
+
+              <h3 className="text-3xl font-black uppercase tracking-[-0.05em] md:text-5xl">
+                RECORDING/DJ STUDIO
+              </h3>
+
+              <p className="mt-5 text-lg uppercase leading-8 text-black/60">
+                RECORDING, VOCAL PRODUCTION, MIXING, MASTERING, DJ PRACTICE,
+                FILMED DJ SETS, AND CONTENT CREATION.
+              </p>
+
+              <div className="mt-8 flex flex-wrap gap-3">
+                <button
+                  onClick={() => setBookingMenuOpen("audioDj")}
+                  className="inline-flex border border-[#EF3340] bg-[#EF3340] px-6 py-4 text-xs font-black uppercase tracking-[0.16em] text-white hover:bg-white hover:text-[#EF3340]"
+                >
+                  BOOK RECORDING/DJ STUDIO
+                </button>
+
+                <button
+                  onClick={() => setShowAudioGear((current) => !current)}
+                  className="inline-flex border border-[#EF3340]/40 px-5 py-4 text-xs font-black uppercase tracking-[0.16em] text-[#EF3340] hover:bg-[#EF3340] hover:text-white"
+                >
+                  {showAudioGear ? "HIDE GEAR" : "AMENITIES & GEAR"}
+                </button>
+
+                <button
+                  onClick={() => setShowAudioRules((current) => !current)}
+                  className="inline-flex border border-[#EF3340]/40 px-5 py-4 text-xs font-black uppercase tracking-[0.16em] text-[#EF3340] hover:bg-[#EF3340] hover:text-white"
+                >
+                  {showAudioRules ? "HIDE RULES" : "STUDIO RULES"}
+                </button>
+              </div>
+
+              {showAudioGear && (
+                <div className="mt-6 grid gap-6 border border-black/10 p-5 md:grid-cols-2">
+                  <div>
+                    <h4 className="text-sm font-black uppercase tracking-[0.22em] text-black/45">
+                      AMENITIES
+                    </h4>
+
+                    <div className="mt-4 divide-y divide-black/10 text-sm uppercase tracking-[0.12em] text-black/60">
+                      {amenities[0].items.map((item) => (
+                        <p key={item} className="py-3">
+                          {item}
+                        </p>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div>
+                    <h4 className="text-sm font-black uppercase tracking-[0.22em] text-black/45">
+                      AUDIO EQUIPMENT
+                    </h4>
+
+                    <div className="mt-4 divide-y divide-black/10 text-sm uppercase tracking-[0.12em] text-black/60">
+                      {amenities[2].items.map((item) => (
+                        <p key={item} className="py-3">
+                          {item}
+                        </p>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {showAudioRules && (
+                <div className="mt-6 border border-black/10 p-5">
+                  <h4 className="text-sm font-black uppercase tracking-[0.22em] text-black/45">
+                    STUDIO RULES
+                  </h4>
+
+                  <div className="mt-4 divide-y divide-black/10 text-sm uppercase tracking-[0.12em] text-black/60">
+                    {studioRules.map((rule) => (
+                      <p key={rule} className="py-3">
+                        {rule}
+                      </p>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </section>
@@ -841,119 +1102,6 @@ export default function WarhaulHomepage() {
       </section>
 
       <section
-        id="studio"
-        className="mx-auto max-w-[1600px] border-b border-white/30 bg-[#EF3340] px-4 py-16 text-white md:px-8 md:py-20"
-      >
-        <p className="mb-8 text-[11px] uppercase tracking-[0.32em] text-white/70">
-          BOOK WARHAUL
-        </p>
-
-        <h2 className="text-5xl font-black uppercase leading-[0.88] tracking-[-0.08em] md:text-8xl">
-          STUDIO
-        </h2>
-
-        <div className="mt-10 border-y border-white/30">
-          <div className="grid md:grid-cols-2">
-            <div className="border-b border-white/30 p-6 md:border-b-0 md:border-r md:p-8">
-              <Camera className="mb-8 h-8 w-8" />
-
-              <h3 className="text-3xl font-black uppercase tracking-[-0.05em] md:text-5xl">
-                FILM STUDIO
-              </h3>
-
-              <p className="mt-5 text-lg uppercase leading-8 text-white/75">
-                CYCLORAMA WALL, OPEN LAYOUT, LIGHTING GEAR, DRESSING AREA,
-                PARKING, AND ROOM TO BUILD THE SET.
-              </p>
-
-              <a
-                href={PHOTO_STUDIO_BOOKING_LINK}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-8 inline-flex border border-white bg-white px-6 py-4 text-xs font-black uppercase tracking-[0.16em] text-[#EF3340] hover:bg-[#EF3340] hover:text-white"
-              >
-                BOOK STUDIO
-              </a>
-            </div>
-
-            <div>
-              <img
-                src={studioImages[activeStudioImage]}
-                alt="WARHAUL FILM STUDIO"
-                className="h-[420px] w-full object-contain md:h-full"
-              />
-            </div>
-          </div>
-
-          <div className="grid border-t border-white/30 md:grid-cols-2">
-            <div className="min-h-[360px] border-b border-white/30 md:border-b-0 md:border-r">
-              <div className="flex h-full min-h-[360px] items-center justify-center p-8 text-center">
-                <p className="text-[11px] uppercase tracking-[0.32em] text-white/45">
-                  AUDIO / DJ VISUALS COMING SOON
-                </p>
-              </div>
-            </div>
-
-            <div className="bg-white p-6 text-black md:p-8">
-              <Mic2 className="mb-8 h-8 w-8" />
-
-              <h3 className="text-3xl font-black uppercase tracking-[-0.05em] md:text-5xl">
-                AUDIO + DJ STUDIO
-              </h3>
-
-              <p className="mt-5 text-lg uppercase leading-8 text-black/60">
-                RECORDING, VOCAL PRODUCTION, MIXING, MASTERING, DJ PRACTICE,
-                FILMED DJ SETS, AND CONTENT CREATION.
-              </p>
-
-              <button
-                onClick={() => setBookingMenuOpen("audio")}
-                className="mt-8 inline-flex border border-[#EF3340] bg-[#EF3340] px-6 py-4 text-xs font-black uppercase tracking-[0.16em] text-white hover:bg-white hover:text-[#EF3340]"
-              >
-                BOOK AUDIO / DJ
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <button
-          onClick={() => setShowAmenities((current) => !current)}
-          className="mt-8 flex w-full items-center justify-between border border-white/30 px-6 py-6 text-left uppercase transition hover:bg-white hover:text-[#EF3340]"
-        >
-          <span className="text-2xl font-black uppercase tracking-[-0.04em]">
-            AMENITIES & GEAR
-          </span>
-
-          <span className="text-xs uppercase tracking-[0.22em] opacity-70">
-            {showAmenities ? "HIDE" : "VIEW"}
-          </span>
-        </button>
-
-        {showAmenities && (
-          <div className="mt-5 grid border border-white/30 md:grid-cols-3">
-            {amenities.map((group) => (
-              <div
-                key={group.title}
-                className="border-b border-white/30 p-6 md:border-b-0 md:border-r md:p-8"
-              >
-                <h3 className="text-3xl font-black uppercase tracking-[-0.05em]">
-                  {group.title}
-                </h3>
-
-                <div className="mt-8 divide-y divide-white/20 text-lg uppercase text-white/75">
-                  {group.items.map((item) => (
-                    <p key={item} className="py-3">
-                      {item}
-                    </p>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        )}
-      </section>
-
-      <section
         id="events"
         className="border-b border-black/10 bg-white px-4 py-16 text-black md:px-8 md:py-20"
       >
@@ -1071,6 +1219,17 @@ export default function WarhaulHomepage() {
                       <p className="mt-3 text-sm uppercase tracking-[0.12em] text-black/55">
                         {event.location}
                       </p>
+
+                      {event.href && (
+                        <a
+                          href={event.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="mt-5 inline-flex border border-[#EF3340] bg-[#EF3340] px-5 py-3 text-[10px] font-black uppercase tracking-[0.16em] text-white hover:bg-white hover:text-[#EF3340]"
+                        >
+                          GET TICKETS
+                        </a>
+                      )}
                     </div>
                   ))}
                 </div>
@@ -1197,10 +1356,12 @@ export default function WarhaulHomepage() {
                   BOOK WARHAUL
                 </p>
 
-                <h3 className="text-4xl font-black uppercase leading-[0.88] tracking-[-0.08em] md:text-6xl">
+                <h3 className="booking-category-title text-4xl font-black uppercase leading-[0.88] tracking-[-0.08em] md:text-6xl">
                   {bookingMenuOpen === "audio"
-                    ? "CHOOSE AUDIO BOOKING"
-                    : "CHOOSE BOOKING"}
+                    ? "BOOK WARHAUL AUDIO"
+                    : bookingMenuOpen === "audioDj"
+                      ? "BOOK RECORDING/DJ STUDIO"
+                      : "BOOK WARHAUL"}
                 </h3>
               </div>
 
@@ -1215,24 +1376,42 @@ export default function WarhaulHomepage() {
             <div className="mt-8 grid gap-3">
               {(bookingMenuOpen === "audio"
                 ? audioBookingOptions
-                : generalBookingOptions
-              ).map((option) => (
-                <a
-                  key={option.label}
-                  href={option.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="border border-white/30 p-5 transition hover:bg-white hover:text-[#EF3340]"
-                >
-                  <p className="text-2xl font-black uppercase leading-none tracking-[-0.05em]">
-                    {option.label}
-                  </p>
+                : bookingMenuOpen === "audioDj"
+                  ? audioDjBookingOptions
+                  : generalBookingOptions
+              ).map((option) =>
+                "mode" in option ? (
+                  <button
+                    key={option.label}
+                    onClick={() => setBookingMenuOpen(option.mode)}
+                    className="border border-white/30 p-5 text-left transition hover:bg-white hover:text-[#EF3340]"
+                  >
+                    <p className="booking-category-title text-2xl font-black uppercase leading-none tracking-[-0.05em]">
+                      {option.label}
+                    </p>
 
-                  <p className="mt-3 text-sm font-black uppercase leading-6 tracking-[0.12em] opacity-70">
-                    {option.description}
-                  </p>
-                </a>
-              ))}
+                    <p className="mt-3 text-sm font-black uppercase leading-6 tracking-[0.12em] opacity-70">
+                      {option.description}
+                    </p>
+                  </button>
+                ) : (
+                  <a
+                    key={option.label}
+                    href={option.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="border border-white/30 p-5 transition hover:bg-white hover:text-[#EF3340]"
+                  >
+                    <p className="booking-category-title text-2xl font-black uppercase leading-none tracking-[-0.05em]">
+                      {option.label}
+                    </p>
+
+                    <p className="mt-3 text-sm font-black uppercase leading-6 tracking-[0.12em] opacity-70">
+                      {option.description}
+                    </p>
+                  </a>
+                )
+              )}
             </div>
           </div>
         </div>
