@@ -747,9 +747,10 @@ export default function WarhaulHomepage() {
 
       <section
         id="studio"
-        className="mx-auto max-w-[1600px] border-b border-white/30 bg-[#EF3340] px-4 py-16 text-white md:px-8 md:py-20"
+        className="border-b border-black/10 bg-white text-black"
       >
-        <p className="mb-8 text-[11px] uppercase tracking-[0.32em] text-white/70">
+        <div className="mx-auto max-w-[1600px] px-4 py-16 md:px-8 md:py-20">
+          <p className="mb-8 text-[11px] uppercase tracking-[0.32em] text-black/45">
           BOOK WARHAUL
         </p>
 
@@ -757,9 +758,9 @@ export default function WarhaulHomepage() {
           STUDIO
         </h2>
 
-        <div className="mt-10 border-y border-white/30">
+        <div className="mt-10 border-y border-black/10">
           <div className="grid md:grid-cols-2">
-            <div className="border-b border-white/30 bg-white p-6 text-black md:border-b-0 md:border-r md:p-8">
+            <div className="border-b border-black/10 bg-white p-6 text-black md:border-b-0 md:border-r md:p-8">
               <Camera className="mb-8 h-8 w-8" />
 
               <h3 className="text-3xl font-black uppercase tracking-[-0.05em] md:text-5xl">
@@ -799,11 +800,11 @@ export default function WarhaulHomepage() {
               {showPhotoGear && (
                 <div className="mt-6 grid gap-6 border border-black/10 p-5 md:grid-cols-2">
                   <div>
-                    <h4 className="text-sm font-black uppercase tracking-[0.22em] text-white/60">
+                    <h4 className="text-sm font-black uppercase tracking-[0.22em] text-black/45">
                       AMENITIES
                     </h4>
 
-                    <div className="mt-4 divide-y divide-white/20 text-sm uppercase tracking-[0.12em] text-white/75">
+                    <div className="mt-4 divide-y divide-black/10 text-sm uppercase tracking-[0.12em] text-black/60">
                       {amenities[0].items.map((item) => (
                         <p key={item} className="py-3">
                           {item}
@@ -830,11 +831,11 @@ export default function WarhaulHomepage() {
 
               {showPhotoRules && (
                 <div className="mt-6 border border-black/10 p-5">
-                  <h4 className="text-sm font-black uppercase tracking-[0.22em] text-white/60">
+                  <h4 className="text-sm font-black uppercase tracking-[0.22em] text-black/45">
                     STUDIO RULES
                   </h4>
 
-                  <div className="mt-4 divide-y divide-white/20 text-sm uppercase tracking-[0.12em] text-white/75">
+                  <div className="mt-4 divide-y divide-black/10 text-sm uppercase tracking-[0.12em] text-black/60">
                     {studioRules.map((rule) => (
                       <p key={rule} className="py-3">
                         {rule}
@@ -854,10 +855,10 @@ export default function WarhaulHomepage() {
             </div>
           </div>
 
-          <div className="grid border-t border-white/30 md:grid-cols-2">
-            <div className="min-h-[420px] border-b border-white/30 md:min-h-[520px] md:border-b-0 md:border-r">
+          <div className="grid border-t border-black/10 md:grid-cols-2">
+            <div className="min-h-[420px] border-b border-black/10 bg-white md:min-h-[520px] md:border-b-0 md:border-r">
               <div className="flex h-full min-h-[420px] items-center justify-center p-8 text-center md:min-h-[520px]">
-                <p className="text-[11px] uppercase tracking-[0.32em] text-white/45">
+                <p className="text-[11px] uppercase tracking-[0.32em] text-black/45">
                   AUDIO / DJ VISUALS COMING SOON
                 </p>
               </div>
@@ -901,11 +902,11 @@ export default function WarhaulHomepage() {
               {showAudioGear && (
                 <div className="mt-6 grid gap-6 border border-white/30 p-5 md:grid-cols-2">
                   <div>
-                    <h4 className="text-sm font-black uppercase tracking-[0.22em] text-black/45">
+                    <h4 className="text-sm font-black uppercase tracking-[0.22em] text-white/60">
                       AMENITIES
                     </h4>
 
-                    <div className="mt-4 divide-y divide-black/10 text-sm uppercase tracking-[0.12em] text-black/60">
+                    <div className="mt-4 divide-y divide-white/20 text-sm uppercase tracking-[0.12em] text-white/75">
                       {amenities[0].items.map((item) => (
                         <p key={item} className="py-3">
                           {item}
@@ -932,11 +933,11 @@ export default function WarhaulHomepage() {
 
               {showAudioRules && (
                 <div className="mt-6 border border-white/30 p-5">
-                  <h4 className="text-sm font-black uppercase tracking-[0.22em] text-black/45">
+                  <h4 className="text-sm font-black uppercase tracking-[0.22em] text-white/60">
                     STUDIO RULES
                   </h4>
 
-                  <div className="mt-4 divide-y divide-black/10 text-sm uppercase tracking-[0.12em] text-black/60">
+                  <div className="mt-4 divide-y divide-white/20 text-sm uppercase tracking-[0.12em] text-white/75">
                     {studioRules.map((rule) => (
                       <p key={rule} className="py-3">
                         {rule}
@@ -947,6 +948,7 @@ export default function WarhaulHomepage() {
               )}
             </div>
           </div>
+        </div>
         </div>
       </section>
 
@@ -1103,10 +1105,10 @@ export default function WarhaulHomepage() {
 
       <section
         id="events"
-        className="border-b border-black/10 bg-white px-4 py-16 text-black md:px-8 md:py-20"
+        className="border-b border-white/30 bg-[#EF3340] px-4 py-16 text-white md:px-8 md:py-20"
       >
         <div className="mx-auto max-w-[1600px]">
-          <p className="mb-8 text-[11px] uppercase tracking-[0.32em] text-black/45">
+          <p className="mb-8 text-[11px] uppercase tracking-[0.32em] text-white/70">
             EVENT
           </p>
 
@@ -1115,7 +1117,7 @@ export default function WarhaulHomepage() {
               EVENT ARCHIVE
             </h2>
 
-            <p className="max-w-3xl text-lg uppercase leading-8 text-black/60">
+            <p className="max-w-3xl text-lg uppercase leading-8 text-white/75">
               WARHAUL EVENTS ARE BUILT TO CONNECT COMMUNITY, DOCUMENT CULTURE,
               AND CREATE CREATIVE MOMENTS ACROSS TORONTO.
             </p>
@@ -1128,7 +1130,7 @@ export default function WarhaulHomepage() {
             }}
             role="button"
             tabIndex={0}
-            className="relative mt-10 cursor-pointer overflow-hidden border border-black/10 bg-black"
+            className="relative mt-10 cursor-pointer overflow-hidden border border-white/30 bg-black"
           >
             {currentEventImage ? (
               <img
@@ -1189,9 +1191,9 @@ export default function WarhaulHomepage() {
             </button>
           </div>
 
-          <div className="mt-12 grid border border-black/10 md:grid-cols-[0.75fr_1.25fr]">
-            <div className="border-b border-black/10 p-6 md:border-b-0 md:border-r md:p-8">
-              <p className="mb-5 text-[11px] uppercase tracking-[0.32em] text-black/45">
+          <div className="mt-12 grid border border-white/30 md:grid-cols-[0.75fr_1.25fr]">
+            <div className="border-b border-white/30 p-6 md:border-b-0 md:border-r md:p-8">
+              <p className="mb-5 text-[11px] uppercase tracking-[0.32em] text-white/70">
                 UPCOMING EVENTS
               </p>
 
@@ -1206,9 +1208,9 @@ export default function WarhaulHomepage() {
                   {upcomingEvents.map((event) => (
                     <div
                       key={event.title}
-                      className="border border-black/10 p-5"
+                      className="border border-white/30 p-5"
                     >
-                      <p className="text-xs uppercase tracking-[0.24em] text-black/45">
+                      <p className="text-xs uppercase tracking-[0.24em] text-white/70">
                         {event.date}
                       </p>
 
@@ -1216,7 +1218,7 @@ export default function WarhaulHomepage() {
                         {event.title}
                       </h4>
 
-                      <p className="mt-3 text-sm uppercase tracking-[0.12em] text-black/55">
+                      <p className="mt-3 text-sm uppercase tracking-[0.12em] text-white/70">
                         {event.location}
                       </p>
 
@@ -1225,7 +1227,7 @@ export default function WarhaulHomepage() {
                           href={event.href}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="mt-5 inline-flex border border-[#EF3340] bg-[#EF3340] px-5 py-3 text-[10px] font-black uppercase tracking-[0.16em] text-white hover:bg-white hover:text-[#EF3340]"
+                          className="mt-5 inline-flex border border-white bg-white px-5 py-3 text-[10px] font-black uppercase tracking-[0.16em] text-[#EF3340] hover:bg-[#EF3340] hover:text-white"
                         >
                           GET TICKETS
                         </a>
@@ -1234,8 +1236,8 @@ export default function WarhaulHomepage() {
                   ))}
                 </div>
               ) : (
-                <div className="border border-black/10 p-6">
-                  <p className="text-lg uppercase leading-8 text-black/60">
+                <div className="border border-white/30 p-6">
+                  <p className="text-lg uppercase leading-8 text-white/75">
                     NO UPCOMING EVENTS ANNOUNCED RIGHT NOW. NEW WARHAUL EVENTS,
                     LISTENING SESSIONS, SHOWCASES, AND COMMUNITY EXPERIENCES
                     WILL BE POSTED HERE WHEN CONFIRMED.
@@ -1383,7 +1385,7 @@ export default function WarhaulHomepage() {
                 "mode" in option ? (
                   <button
                     key={option.label}
-                    onClick={() => setBookingMenuOpen(option.mode)}
+                    onClick={() => setBookingMenuOpen("audio")}
                     className="border border-white/30 p-5 text-left transition hover:bg-white hover:text-[#EF3340]"
                   >
                     <p className="booking-category-title text-2xl font-black uppercase leading-none tracking-[-0.05em]">
