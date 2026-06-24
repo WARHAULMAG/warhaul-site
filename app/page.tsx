@@ -759,14 +759,14 @@ export default function WarhaulHomepage() {
 
         <div className="mt-10 border-y border-white/30">
           <div className="grid md:grid-cols-2">
-            <div className="border-b border-white/30 p-6 md:border-b-0 md:border-r md:p-8">
+            <div className="border-b border-white/30 bg-white p-6 text-black md:border-b-0 md:border-r md:p-8">
               <Camera className="mb-8 h-8 w-8" />
 
               <h3 className="text-3xl font-black uppercase tracking-[-0.05em] md:text-5xl">
                 PHOTO STUDIO
               </h3>
 
-              <p className="mt-5 text-lg uppercase leading-8 text-white/75">
+              <p className="mt-5 text-lg uppercase leading-8 text-black/60">
                 CYCLORAMA WALL, OPEN LAYOUT, LIGHTING GEAR, DRESSING AREA,
                 PARKING, AND ROOM TO BUILD THE SET.
               </p>
@@ -776,28 +776,28 @@ export default function WarhaulHomepage() {
                   href={PHOTO_STUDIO_BOOKING_LINK}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex border border-white bg-white px-6 py-4 text-xs font-black uppercase tracking-[0.16em] text-[#EF3340] hover:bg-[#EF3340] hover:text-white"
+                  className="inline-flex border border-[#EF3340] bg-[#EF3340] px-6 py-4 text-xs font-black uppercase tracking-[0.16em] text-white hover:bg-white hover:text-[#EF3340]"
                 >
                   BOOK PHOTO STUDIO
                 </a>
 
                 <button
                   onClick={() => setShowPhotoGear((current) => !current)}
-                  className="inline-flex border border-white/40 px-5 py-4 text-xs font-black uppercase tracking-[0.16em] text-white hover:bg-white hover:text-[#EF3340]"
+                  className="inline-flex border border-[#EF3340]/40 px-5 py-4 text-xs font-black uppercase tracking-[0.16em] text-[#EF3340] hover:bg-[#EF3340] hover:text-white"
                 >
                   {showPhotoGear ? "HIDE GEAR" : "AMENITIES & GEAR"}
                 </button>
 
                 <button
                   onClick={() => setShowPhotoRules((current) => !current)}
-                  className="inline-flex border border-white/40 px-5 py-4 text-xs font-black uppercase tracking-[0.16em] text-white hover:bg-white hover:text-[#EF3340]"
+                  className="inline-flex border border-[#EF3340]/40 px-5 py-4 text-xs font-black uppercase tracking-[0.16em] text-[#EF3340] hover:bg-[#EF3340] hover:text-white"
                 >
                   {showPhotoRules ? "HIDE RULES" : "STUDIO RULES"}
                 </button>
               </div>
 
               {showPhotoGear && (
-                <div className="mt-6 grid gap-6 border border-white/30 p-5 md:grid-cols-2">
+                <div className="mt-6 grid gap-6 border border-black/10 p-5 md:grid-cols-2">
                   <div>
                     <h4 className="text-sm font-black uppercase tracking-[0.22em] text-white/60">
                       AMENITIES
@@ -813,11 +813,11 @@ export default function WarhaulHomepage() {
                   </div>
 
                   <div>
-                    <h4 className="text-sm font-black uppercase tracking-[0.22em] text-white/60">
+                    <h4 className="text-sm font-black uppercase tracking-[0.22em] text-black/45">
                       PHOTO EQUIPMENT
                     </h4>
 
-                    <div className="mt-4 divide-y divide-white/20 text-sm uppercase tracking-[0.12em] text-white/75">
+                    <div className="mt-4 divide-y divide-black/10 text-sm uppercase tracking-[0.12em] text-black/60">
                       {amenities[1].items.map((item) => (
                         <p key={item} className="py-3">
                           {item}
@@ -829,7 +829,7 @@ export default function WarhaulHomepage() {
               )}
 
               {showPhotoRules && (
-                <div className="mt-6 border border-white/30 p-5">
+                <div className="mt-6 border border-black/10 p-5">
                   <h4 className="text-sm font-black uppercase tracking-[0.22em] text-white/60">
                     STUDIO RULES
                   </h4>
@@ -863,14 +863,14 @@ export default function WarhaulHomepage() {
               </div>
             </div>
 
-            <div className="bg-white p-6 text-black md:p-8">
+            <div className="bg-[#EF3340] p-6 text-white md:p-8">
               <Mic2 className="mb-8 h-8 w-8" />
 
               <h3 className="text-3xl font-black uppercase tracking-[-0.05em] md:text-5xl">
                 RECORDING/DJ STUDIO
               </h3>
 
-              <p className="mt-5 text-lg uppercase leading-8 text-black/60">
+              <p className="mt-5 text-lg uppercase leading-8 text-white/75">
                 RECORDING, VOCAL PRODUCTION, MIXING, MASTERING, DJ PRACTICE,
                 FILMED DJ SETS, AND CONTENT CREATION.
               </p>
@@ -878,28 +878,28 @@ export default function WarhaulHomepage() {
               <div className="mt-8 flex flex-wrap gap-3">
                 <button
                   onClick={() => setBookingMenuOpen("audioDj")}
-                  className="inline-flex border border-[#EF3340] bg-[#EF3340] px-6 py-4 text-xs font-black uppercase tracking-[0.16em] text-white hover:bg-white hover:text-[#EF3340]"
+                  className="inline-flex border border-white bg-white px-6 py-4 text-xs font-black uppercase tracking-[0.16em] text-[#EF3340] hover:bg-[#EF3340] hover:text-white"
                 >
                   BOOK RECORDING/DJ STUDIO
                 </button>
 
                 <button
                   onClick={() => setShowAudioGear((current) => !current)}
-                  className="inline-flex border border-[#EF3340]/40 px-5 py-4 text-xs font-black uppercase tracking-[0.16em] text-[#EF3340] hover:bg-[#EF3340] hover:text-white"
+                  className="inline-flex border border-white/40 px-5 py-4 text-xs font-black uppercase tracking-[0.16em] text-white hover:bg-white hover:text-[#EF3340]"
                 >
                   {showAudioGear ? "HIDE GEAR" : "AMENITIES & GEAR"}
                 </button>
 
                 <button
                   onClick={() => setShowAudioRules((current) => !current)}
-                  className="inline-flex border border-[#EF3340]/40 px-5 py-4 text-xs font-black uppercase tracking-[0.16em] text-[#EF3340] hover:bg-[#EF3340] hover:text-white"
+                  className="inline-flex border border-white/40 px-5 py-4 text-xs font-black uppercase tracking-[0.16em] text-white hover:bg-white hover:text-[#EF3340]"
                 >
                   {showAudioRules ? "HIDE RULES" : "STUDIO RULES"}
                 </button>
               </div>
 
               {showAudioGear && (
-                <div className="mt-6 grid gap-6 border border-black/10 p-5 md:grid-cols-2">
+                <div className="mt-6 grid gap-6 border border-white/30 p-5 md:grid-cols-2">
                   <div>
                     <h4 className="text-sm font-black uppercase tracking-[0.22em] text-black/45">
                       AMENITIES
@@ -915,11 +915,11 @@ export default function WarhaulHomepage() {
                   </div>
 
                   <div>
-                    <h4 className="text-sm font-black uppercase tracking-[0.22em] text-black/45">
+                    <h4 className="text-sm font-black uppercase tracking-[0.22em] text-white/60">
                       AUDIO EQUIPMENT
                     </h4>
 
-                    <div className="mt-4 divide-y divide-black/10 text-sm uppercase tracking-[0.12em] text-black/60">
+                    <div className="mt-4 divide-y divide-white/20 text-sm uppercase tracking-[0.12em] text-white/75">
                       {amenities[2].items.map((item) => (
                         <p key={item} className="py-3">
                           {item}
@@ -931,7 +931,7 @@ export default function WarhaulHomepage() {
               )}
 
               {showAudioRules && (
-                <div className="mt-6 border border-black/10 p-5">
+                <div className="mt-6 border border-white/30 p-5">
                   <h4 className="text-sm font-black uppercase tracking-[0.22em] text-black/45">
                     STUDIO RULES
                   </h4>
