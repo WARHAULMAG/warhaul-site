@@ -327,21 +327,9 @@ const upcomingEvents: Array<{
   href?: string;
 }> = [
   {
-    title: "WARHAUL RADIO LIVE",
-    date: "JULY 2026",
+    title: "TBD",
+    date: "TO BE ANNOUNCED",
     location: "TORONTO",
-    href: "https://flite.city/e/warhaul-radio-live?t=you",
-  },
-  {
-    title: "2 YEAR ANNIVERSARY + MOOVE",
-    date: "JUL 31, 2026",
-    location: "TORONTO",
-  },
-  {
-    title: "ARTSCAPE 3 + BKTHERULA",
-    date: "AUG 28, 2026",
-    location: "TORONTO",
-    href: "https://flite.city/e/artscape-3-x-bktherula?t=you",
   },
 ];
 
